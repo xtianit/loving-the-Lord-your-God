@@ -51,207 +51,37 @@ type BibleVersions = {
 
 type ScriptureDB = Record<string, BibleVersions>;
 
-// const initialScriptureDB: ScriptureDB = {
-//   "Matthew 11:28": {
-//     KJV: "28 Come unto me, all ye that labour and are heavy laden, and I will give you rest.",
-//     NKJV: "28 Come to Me, all you who labor and are heavy laden, and I will give you rest.",
-//     NIV: "28 “Come to me, all you who are weary and burdened, and I will give you rest.",
-//     ESV: "28 “Come to me, all who labor and are heavy laden, and I will give you rest.",
-//     AMP: "28 “Come to Me, all who are weary and heavily burdened [by religious rituals that provide no peace], and I will give you rest [refreshing your souls with salvation].",
-//     NLT: "28 Then Jesus said, “Come to me, all of you who are weary and carry heavy burdens, and I will give you rest.",
-//     MSG: "28 “Are you tired? Worn out? Burned out on religion? Come to me. Get away with me and you’ll recover your life. I’ll show you how to take a real rest."
-//   },
-//   "Jeremiah 17:5": {
-//     KJV: "5 Thus saith the Lord; Cursed be the man that trusteth in man, and maketh flesh his arm, and whose heart departeth from the Lord.",
-//     NKJV: "5 Thus says the Lord: “Cursed is the man who trusts in man And makes flesh his strength, Whose heart departs from the Lord.",
-//     NIV: "5 This is what the Lord says: “Cursed is the one who trusts in man, who draws strength from mere flesh and whose heart turns away from the Lord.",
-//     ESV: "5 Thus says the Lord: “Cursed is the man who trusts in man and makes flesh his strength, whose heart turns away from the Lord.",
-//     AMP: "5 Thus says the Lord, “Cursed is the man who trusts in and relies on mankind, Making [weak, faulty] human flesh his strength, And whose mind and heart turn away from the Lord.",
-//     NLT: "5 This is what the Lord says: “Cursed are those who put their trust in mere humans, who rely on human strength and turn their hearts away from the Lord.",
-//     MSG: "5 God’s Message: “Cursed is the strong one who relies on mere humans, Who thinks he can make it on muscle alone and sets God aside as dead weight."
-//   },
-//   "Psalm 121:2": {
-//     KJV: "2 My help cometh from the Lord, which made heaven and earth.",
-//     NKJV: "2 My help comes from the Lord, Who made heaven and earth.",
-//     NIV: "2 My help comes from the Lord, the Maker of heaven and earth.",
-//     ESV: "2 My help comes from the Lord, who made heaven and earth.",
-//     AMP: "2 My help comes from the Lord, Who made heaven and earth.",
-//     NLT: "2 My help comes from the Lord, who made heaven and earth!",
-//     MSG: "2 My help comes from God, who made heaven and earth."
-//   },
-//   "1 Samuel 2:9": {
-//     KJV: "9 He will keep the feet of his saints, and the wicked shall be silent in darkness; for by strength shall no man prevail.",
-//     NKJV: "9 He will guard the feet of His saints, But the wicked shall be silent in darkness. “For by strength no man shall prevail.",
-//     NIV: "9 He will guard the feet of his faithful servants, but the wicked will be silenced in the place of darkness. “It is not by strength that one prevails;",
-//     ESV: "9 “He will guard the feet of his faithful ones, but the wicked shall be cut off in darkness, for not by might shall a man prevail.",
-//     AMP: "9 “He guards the feet of His godly ones, But the wicked ones are silenced in darkness; For not by might shall a man prevail.",
-//     NLT: "9 He will protect his faithful ones, but the wicked will disappear in darkness. No one will succeed by strength alone.",
-//     MSG: "9 He protects those who follow him, but leaves the wicked to stumble in the dark. No one makes it on 'muscle' alone."
-//   },
-//   "Romans 3:12": {
-//     KJV: "12 They are all gone out of the way, they are together become unprofitable; there is none that doeth good, no, not one.",
-//     NKJV: "12 They have all turned aside; They have together become unprofitable; There is none who does good, no, not one.”",
-//     NIV: "12 All have turned away, they have together become worthless; there is no one who does good, not even one.”",
-//     ESV: "12 All have turned aside; together they have become worthless; no one does good, not even one.”",
-//     AMP: "12 All have turned aside, together they have become useless; There is no one who does good, no, not even one.”",
-//     NLT: "12 All have turned away; all have become useless. No one does good, not a single one.”",
-//     MSG: "12 All over the lot, squandering lives, wastage, everywhere. Not one person has it together, not even one."
-//   },
-//   "Matthew 28:18": {
-//     KJV: "18 And Jesus came and spake unto them, saying, All power is given unto me in heaven and in earth.",
-//     NKJV: "18 And Jesus came and spoke to them, saying, “All authority has been given to Me in heaven and on earth.",
-//     NIV: "18 Then Jesus came to them and said, “All authority in heaven and on earth has been given to me.",
-//     ESV: "18 And Jesus came and said to them, “All authority in heaven and on earth has been given to me.",
-//     AMP: "18 Jesus came up and said to them, “All authority (all power of absolute rule) in heaven and on earth has been given to Me.",
-//     NLT: "18 Jesus came and told his disciples, “I have been given all authority in heaven and on earth.",
-//     MSG: "18 Jesus, undeterred, went right up and said, “God has given me complete charge of actually ruling everything in heaven and on earth."
-//   },
-//   "Isaiah 1:18": {
-//     KJV: "18 Come now, and let us reason together, saith the Lord: though your sins be as scarlet, they shall be as white as snow; though they be red like crimson, they shall be as wool.",
-//     NKJV: "18 “Come now, and let us reason together,” Says the Lord, “Though your sins are like scarlet, They shall be as white as snow; Though they are red like crimson, They shall be as wool.",
-//     NIV: "18 “Come now, let us settle the matter,” says the Lord. “Though your sins are like scarlet, they shall be as white as snow; though they are red like crimson, they shall be as wool.",
-//     ESV: "18 “Come now, let us reason together, says the Lord: though your sins are like scarlet, they shall be as white as snow; though they are red like crimson, they shall be as wool.",
-//     AMP: "18 “Come now, and let us reason together,” Says the Lord. “Though your sins are like scarlet, They shall be as white as snow; Though they are red like crimson, They shall be as wool.",
-//     NLT: "18 “Come now, let us settle the matter,” says the Lord. “Though your sins are like scarlet, I will make them as white as snow. Though they are red like crimson, I will make them as white as wool.",
-//     MSG: "18 “Come. Sit down. Let’s argue this out.” This is God’s Message: “If your sins are blood-red, they’ll be snow-white. If they’re red as crimson, they’ll be like wool."
-//   },
-//   "Isaiah 45:11": {
-//     KJV: "11 Thus saith the Lord, the Holy One of Israel, and his Maker, Ask me of things to come concerning my sons, and concerning the work of my hands command ye me.",
-//     NKJV: "11 Thus says the Lord, The Holy One of Israel, and his Maker: “Ask Me of things to come concerning My sons; And concerning the work of My hands, you command Me.",
-//     NIV: "11 This is what the Lord says—the Holy One of Israel, and its Maker: Concerning things to come, do you question me about my children, or give me orders about the work of my hands?",
-//     ESV: "11 Thus says the Lord, the Holy One of Israel, and the one who formed him: “Ask me of things to come; will you command me concerning my children and the work of my hands?",
-//     AMP: "11 Thus says the Lord, the Holy One of Israel, and its Maker: “Ask Me about the things to come concerning My sons, And give Me orders concerning the work of My hands.",
-//     NLT: "11 This is what the Lord says—the Holy One of Israel and your Creator: “Do you question what I do for my children? Do you give me orders about the work of my hands?",
-//     MSG: "11 Thus God, The Holy of Israel, Israel’s Maker, says: “Do you questions me about my children? Do you tell me what to do with the work of my hands?"
-//   },
-//   "Hosea 14:2": {
-//     KJV: "2 Take with you words, and turn to the Lord: say unto him, Take away all iniquity, and receive us graciously: so will we render the calves of our lips.",
-//     NKJV: "2 Take words with you, And return to the Lord. Say to Him, “Take away all iniquity; Receive us graciously, For we will offer the sacrifices of our lips.",
-//     NIV: "2 Take words with you and return to the Lord. Say to him: “Forgive all our sins and receive us graciously, that we may offer the fruit of our lips.",
-//     ESV: "2 Take with you words and return to the Lord; say to him, “Take away all iniquity; accept what is good, and we will pay with bulls the vows of our lips.",
-//     AMP: "2 Take the words [confessing your guilt] with you and return to the Lord. Say to Him, “Take away all our wickedness; Accept what is good and receive us graciously, So that we may present the fruit of our lips (gratitude).",
-//     NLT: "2 Bring your confessions, and return to the Lord. Say to him, “Forgive all our sins and graciously receive us, so that we may offer you our praises.",
-//     MSG: "2 Prepare your confession and come back to God. Pray to him, “Take away our sin, accept our confession. Receive as restitution our repentant prayers.”"
-//   },
-//   "Genesis 28:12-15": {
-//     KJV: "12 And he dreamed, and behold a ladder set up on the earth, and the top of it reached to heaven: and behold the angels of God ascending and descending on it. 13 And, behold, the Lord stood above it, and said, I am the Lord God of Abraham thy father, and the God of Isaac: the land whereon thou liest, to thee will I give it, and to thy seed; 14 And thy seed shall be as the dust of the earth, and thou shalt spread abroad to the west, and to the east, and to the north, and to the south: and in thee and in thy seed shall all the families of the earth be blessed. 15 And, behold, I am with thee, and will keep thee in all places whither thou goest, and will bring thee again into this land; for I will not leave thee, until I have done that which I have spoken to thee of.",
-//     NKJV: "12 Then he dreamed, and behold, a ladder was set up on the earth, and its top reached to heaven; and there the angels of God were ascending and descending on it. 13 And behold, the Lord stood above it and said: “I am the Lord God of Abraham your father and the God of Isaac; the land on which you lie I will give to you and your descendants. 14 Also your descendants shall be as the dust of the earth; you shall spread abroad to the west and the east, to the north and the south; and in you and in your seed all the families of the earth shall be blessed. 15 Behold, I am with you and will keep you wherever you go, and will bring you back to this land; for I will not leave you until I have done what I have spoken to you.”",
-//     NIV: "12 He had a dream in which he saw a stairway resting on the earth, with its top reaching to heaven, and the angels of God were ascending and descending on it. 13 There above it stood the Lord, and he said: “I am the Lord, the God of your father Abraham and the God of Isaac. I will give you and your descendants the land on which you are lying. 14 Your descendants will be like the dust of the earth, and you will spread out to the west and to the east, to the north and to the south. All peoples on earth will be blessed through you and your offspring. 15 I am with you and will watch over you wherever you go, and I will bring you back to this land. I will not leave you until I have done what I have promised you.”",
-//     ESV: "12 And he dreamed, and behold, there was a ladder set up on the earth, and the top of it reached to heaven. And behold, the angels of God were ascending and descending on it! 13 And behold, the Lord stood above it and said, “I am the Lord, the God of Abraham your father and the God of Isaac. The land on which you lie I will give to you and to your offspring. 14 Your offspring shall be like the dust of the earth, and you shall spread abroad to the west and to the east and to the north and to the south, and in you and your offspring shall all the families of the earth be blessed. 15 Behold, I am with you and will keep you wherever you go, and will bring you back to this land. For I will not leave you until I have done what I have promised you.”",
-//     AMP: "12 He had a dream, and behold, a ladder (stairway) was placed on the earth with its top reaching out toward heaven; and behold, the angels of God were ascending and descending on it [going to and from heaven]. 13 And behold, the Lord stood above it and said, “I am the Lord, the God of Abraham your father [forefather] and the God of Isaac; I will give to you and to your descendants the land on which you are lying. 14 Your descendants shall be as [countless as] the dust of the earth, and you shall spread abroad to the west and the east and to the north and to the south; and in you and in your descendants shall all the families of the earth be blessed. 15 Behold, I am with you and will keep [watch over you with care, take notice of] you wherever you may go, and I will bring you back to this land; for I will not leave you until I have done all that I have told you.”",
-//     NLT: "12 As he slept, he dreamed of a stairway that reached from the earth up to heaven. And he saw the angels of God going up and down the stairway. 13 At the top of the stairway stood the Lord, and he said, “I am the Lord, the God of your grandfather Abraham, and the God of your father, Isaac. The ground you are lying on belongs to you. I am giving it to you and your descendants. 14 Your descendants will be as numerous as the dust of the earth! They will spread out in all directions—to the west and the east, to the north and the south. And all the families of the earth will be blessed through you and your descendants. 15 What’s more, I am with you, and I will protect you wherever you go. One day I will bring you back to this land. I will not leave you until I have finished giving you everything I have promised you.”",
-//     MSG: "12 He had a dream: A stairway rested on the ground, with its top reaching to the sky. Angels of God were going up and coming down on it. 13-15 Then God was there, standing over him, saying, “I am God, the God of Abraham your father and the God of Isaac. I’m giving the ground on which you are sleeping to you and to your descendants. Your descendants will be as the dust of the Earth; they’ll stretch from west to east and from north to south. All the families of the Earth will bless themselves in you and your descendants. Yes. I’ll be with you, I’ll keep a close watch on you wherever you go, and I’ll bring you back to this ground. I’m not leaving you until I’ve finished what I’m telling you now.”"
-//   },
-//   "Genesis 32:22-30": {
-//     KJV: "22 And he rose up that night, and took his two wives, and his two womenservants, and his eleven sons, and passed over the ford Jabbok. 23 And he took them, and sent them over the brook, and sent over that he had. 24 And Jacob was left alone; and there wrestled a man with him until the breaking of the day. 25 And when he saw that he prevailed not against him, he touched the hollow of his thigh; and the hollow of Jacob's thigh was out of joint, as he wrestled with him. 26 And he said, Let me go, for the day breaketh. And he said, I will not let thee go, except thou bless me. 27 And he said unto him, What is thy name? And he said, Jacob. 28 And he said, Thy name shall be called no more Jacob, but Israel: for as a prince hast thou power with God and with men, and hast prevailed. 29 And Jacob asked him, and said, Tell me, I pray thee, thy name. And he said, Wherefore is it that thou dost ask after my name? And he blessed him there. 30 And Jacob called the name of the place Peniel: for I have seen God face to face, and my life is preserved.",
-//     NKJV: "22 And he arose that night and took his two wives, his two female servants, and his eleven sons, and crossed over the ford of Jabbok. 23 He took them, sent them over the brook, and sent over what he had. 24 Then Jacob was left alone; and a Man wrestled with him until the breaking of day. 25 Now when He saw that He did not prevail against him, He touched the socket of his hip; and the socket of Jacob’s hip was out of joint as He wrestled with him. 26 And He said, “Let Me go, for the day breaks.” But he said, “I will not let You go unless You bless me!” 27 So He said to him, “What is your name?” He said, “Jacob.” 28 And He said, “Your name shall no longer be called Jacob, but Israel; for you have struggled with God and with men, and have prevailed.” 29 Then Jacob asked, saying, “Tell me Your name, I pray.” And He said, “Why is it that you ask about My name?” And He blessed him there. 30 So Jacob called the name of the place Peniel: “For I have seen God face to face, and my life is preserved.”",
-//     NIV: "22 That night Jacob got up and took his two wives, his two female servants and his eleven sons and crossed the ford of the Jabbok. 23 After he had sent them across the stream, he sent over all his possessions. 24 So Jacob was left alone, and a man wrestled with him till daybreak. 25 When the man saw that he could not overpower him, he touched the socket of Jacob’s hip so that his hip was wrenched as he wrestled with the man. 26 Then the man said, “Let me go, for it is daybreak.” But Jacob replied, “I will not let you go unless you bless me.” 27 The man asked him, “What is your name?” “Jacob,” he answered. 28 Then the man said, “Your name will no longer be Jacob, but Israel, because you have struggled with God and with humans and have overcome.” 29 Jacob said, “Please tell me your name.” But he replied, “Why do you ask my name?” Then he blessed him there. 30 So Jacob called the place Peniel, saying, “It is because I saw God face to face, and yet my life was spared.”",
-//     ESV: "22 The same night he arose and took his two wives, his two female servants, and his eleven sons, and crossed the ford of the Jabbok. 23 He took them and sent them across the stream, and everything else that he had. 24 And Jacob was left alone. And a man wrestled with him until the breaking of the day. 25 When the man saw that he did not prevail against Jacob, he touched his hip socket, and Jacob's hip was put out of joint as he wrestled with him. 26 Then he said, “Let me go, for the day has broken.” But Jacob said, “I will not let you go unless you bless me.” 27 And he said to him, “What is your name?” And he said, “Jacob.” 28 Then he said, “Your name shall no longer be called Jacob, but Israel, for you have striven with God and with men, and have prevailed.” 29 Then Jacob asked him, “Please tell me your name.” But he said, “Why is it that you ask my name?” And there he blessed him. 30 So Jacob called the name of the place Peniel, saying, “For I have seen God face to face, and yet my life has been delivered.”",
-//     AMP: "22 But he rose up that same night and took his two wives, his two female servants, and his eleven sons, and crossed the ford of the Jabbok. 23 He took them and sent them across the stream, and he also sent across all [the possessions] that he had. 24 So Jacob was left alone, and a Man wrestled with him until daybreak. 25 When the Man saw that He had not prevailed against Jacob, He touched his hip socket; and Jacob’s hip was dislocated as he wrestled with Him. 26 Then He said, “Let Me go, for day is breaking.” But Jacob said, “I will not let You go unless You bless me.” 27 The Man asked him, “What is your name?” And he said, “Jacob.” 28 Then He said, “Your name shall no longer be Jacob, but Israel; for you have struggled with God and with men and have prevailed.” 29 Jacob asked Him, “Please tell me Your name.” But He said, “Why is it that you ask My name?” And He blessed him there. 30 So Jacob named the place Peniel (face of God), saying, “For I have seen God face to face, yet my life has not been taken.”",
-//     NLT: "22 During the night Jacob got up and took his two wives, his two servant wives, and his eleven sons and crossed the Jabbok River with them. 23 After sending them across the stream, he sent over all his possessions. 24 This left Jacob all alone in the camp, and a man came and wrestled with him until the dawn began to break. 25 When the man saw that he would not win the match, he touched the hip socket and wrenched it out of its joint. 26 Then the man said, “Let me go, for the dawn is breaking!” But Jacob said, “I will not let you go unless you bless me.” 27 “What is your name?” the man asked. “Jacob,” he replied. 28 “Your name will no longer be Jacob,” the man told him. “From now on you will be called Israel, because you have fought with God and with men and have won.” 29 “Please tell me your name,” Jacob said. “Why do you want to know my name?” the man replied. Then he blessed Jacob there. 30 Jacob named the place Peniel (which means “face of God”), for he said, “I have seen God face to face, yet my life has been spared.”",
-//     MSG: "22-23 But during the night he got up and took his two wives, his two maidservants, and his eleven children and crossed the ford of the Jabbok. He got them safely across the brook and then brought over his possessions. 24-25 But Jacob stayed behind by himself, and a man wrestled with him until daybreak. When the man saw that he couldn’t get the best of Jacob as they wrestled, he deliberately threw Jacob’s hip out of joint. 26 The man said, “Let me go; it’s daybreak.” Jacob said, “I’m not letting you go till you bless me.” 27 The man said, “What’s your name?” He answered, “Jacob.” 28 The man said, “But no longer. Your name is now Israel (God-Wrestler). You’ve wrestled with God and you’ve wrestled with men. And you’ve won.” 29 Jacob said, “And what’s your name?” The man said, “Why do you want to know my name?” and then, right then and there, he blessed him. 30 Jacob named the place Peniel (God’s Face) because, he said, “I saw God face-to-face and lived to tell the story!”"
-//   },
-//   "Genesis 32:24": {
-//     KJV: "24 And Jacob was left alone; and there wrestled a man with him until the breaking of the day.",
-//     NKJV: "24 Then Jacob was left alone; and a Man wrestled with him until the breaking of day.",
-//     NIV: "24 So Jacob was left alone, and a man wrestled with him till daybreak.",
-//     ESV: "24 And Jacob was left alone. And a man wrestled with him until the breaking of the day.",
-//     AMP: "24 So Jacob was left alone, and a Man [the Angel of the Lord] wrestled with him until daybreak.",
-//     NLT: "24 This left Jacob all alone in the camp, and a man came and wrestled with him until the dawn began to break.",
-//     MSG: "24 But Jacob stayed behind by himself, and a man wrestled with him until daybreak."
-//   },
-//   "Genesis 32:22-23": {
-//     KJV: "22 And he rose up that night, and took his two wives, and his two womenservants, and his eleven sons, and passed over the ford Jabbok. 23 And he took them, and sent them over the brook, and sent over that he had.",
-//     NKJV: "22 And he arose that night and took his two wives, his two female servants, and his eleven sons, and crossed over the ford of Jabbok. 23 He took them, sent them over the brook, and sent over what he had.",
-//     NIV: "22 That night Jacob got up and took his two wives, his two female servants and his eleven sons and crossed the ford of the Jabbok. 23 After he had sent them across the stream, he sent over all his possessions.",
-//     ESV: "22 The same night he arose and took his two wives, his two female servants, and his eleven sons, and crossed the ford of the Jabbok. 23 He took them and sent them across the stream, and everything else that he had.",
-//     AMP: "22 But he rose up that same night and took his two wives, his two female servants, and his eleven sons, and crossed the ford of the Jabbok. 23 He took them and sent them across the stream, and he also sent across all [the possessions] that he had.",
-//     NLT: "22 During the night Jacob got up and took his two wives, his two servant wives, and his eleven sons and crossed the Jabbok River with them. 23 After sending them across the stream, he sent over all his possessions.",
-//     MSG: "22-23 But during the night he got up and took his two wives, his two maidservants, and his eleven children and crossed the ford of the Jabbok. He got them safely across the brook and then brought over his possessions."
-//   },
-//   "Genesis 32:24-26": {
-//     KJV: "24 And Jacob was left alone; and there wrestled a man with him until the breaking of the day. 25 And when he saw that he prevailed not against him, he touched the hollow of his thigh; and the hollow of Jacob's thigh was out of joint, as he wrestled with him. 26 And he said, Let me go, for the day breaketh. And he said, I will not let thee go, except thou bless me.",
-//     NKJV: "24 Then Jacob was left alone; and a Man wrestled with him until the breaking of day. 25 Now when He saw that He did not prevail against him, He touched the socket of his hip; and the socket of Jacob’s hip was out of joint as He wrestled with him. 26 And He said, “Let Me go, for the day breaks.” But he said, “I will not let You go unless You bless me!”",
-//     NIV: "24 So Jacob was left alone, and a man wrestled with him till daybreak. 25 When the man saw that he could not overpower him, he touched the socket of Jacob’s hip so that his hip was wrenched as he wrestled with the man. 26 Then the man said, “Let me go, for it is daybreak.” But Jacob replied, “I will not let you go unless you bless me.”",
-//     ESV: "24 And Jacob was left alone. And a man wrestled with him until the breaking of the day. 25 When the man saw that he did not prevail against Jacob, he touched his hip socket, and Jacob's hip was put out of joint as he wrestled with him. 26 Then he said, “Let me go, for the day has broken.” But Jacob said, “I will not let you go unless you bless me.”",
-//     AMP: "24 So Jacob was left alone, and a Man wrestled with him until daybreak. 25 When the Man saw that He had not prevailed against Jacob, He touched his hip socket; and Jacob’s hip was dislocated as he wrestled with Him. 26 Then He said, “Let Me go, for day is breaking.” But Jacob said, “I will not let You go unless You bless me.”",
-//     NLT: "24 This left Jacob all alone in the camp, and a man came and wrestled with him until the dawn began to break. 25 When the man saw that he would not win the match, he touched the hip socket and wrenched it out of its joint. 26 Then the man said, “Let me go, for the dawn is breaking!” But Jacob said, “I will not let you go unless you bless me.”",
-//     MSG: "24-26 But Jacob stayed behind by himself, and a man wrestled with him until daybreak. When the man saw that he couldn’t get the best of Jacob as they wrestled, he deliberately threw Jacob’s hip out of joint. The man said, “Let me go; it’s daybreak.” Jacob said, “I’m not letting you go till you bless me.”"
-//   },
-//   "Job 14:14": {
-//     KJV: "14 If a man die, shall he live again? all the days of my appointed time will I wait, till my change come.",
-//     NKJV: "14 If a man dies, shall he live again? All the days of my hard service I will wait, Till my change comes.",
-//     NIV: "14 If a man dies, will he live again? All the days of my hard service I will wait for my renewal to come.",
-//     ESV: "14 If a man dies, shall he live again? All the days of my service I would wait, till my renewal should come.",
-//     AMP: "14 “If a man dies, will he live again? All the days of my struggle I will wait Until my change and release come.",
-//     NLT: "14 Can the dead live again? If so, this would give me hope through all my years of struggle, and I would eagerly wait for the release of death.",
-//     MSG: "14 If a man dies, will he live again? I’d welcome the time of my hard service and wait for the release of death."
-//   },
-//   "Genesis 32:26-28": {
-//     KJV: "26 And he said, Let me go, for the day breaketh. And he said, I will not let thee go, except thou bless me. 27 And he said unto him, What is thy name? And he said, Jacob. 28 And he said, Thy name shall be called no more Jacob, but Israel: for as a prince hast thou power with God and with men, and hast prevailed.",
-//     NKJV: "26 And He said, “Let Me go, for the day breaks.” But he said, “I will not let You go unless You bless me!” 27 So He said to him, “What is your name?” He said, “Jacob.” 28 And He said, “Your name shall no longer be called Jacob, but Israel; for you have struggled with God and with men, and have prevailed.”",
-//     NIV: "26 Then the man said, “Let me go, for it is daybreak.” But Jacob replied, “I will not let you go unless you bless me.” 27 The man asked him, “What is your name?” “Jacob,” he answered. 28 Then the man said, “Your name will no longer be Jacob, but Israel, because you have struggled with God and with humans and have overcome.”",
-//     ESV: "26 Then he said, “Let me go, for the day has broken.” But Jacob said, “I will not let you go unless you bless me.” 27 And he said to him, “What is your name?” And he said, “Jacob.” 28 Then he said, “Your name shall no longer be called Jacob, but Israel, for you have striven with God and with men, and have prevailed.”",
-//     AMP: "26 Then He said, “Let Me go, for day is breaking.” But Jacob said, “I will not let You go unless You bless me.” 27 The Man asked him, “What is your name?” And he said, “Jacob.” 28 Then He said, “Your name shall no longer be Jacob, but Israel; for you have struggled with God and with men and have prevailed.”",
-//     NLT: "26 Then the man said, “Let me go, for the dawn is breaking!” But Jacob said, “I will not let you go unless you bless me.” 27 “What is your name?” the man asked. “Jacob,” he replied. 28 “Your name will no longer be Jacob,” the man told him. “From now on you will be called Israel, because you have fought with God and with men and have won.”",
-//     MSG: "26 The man said, “Let me go; it’s daybreak.” Jacob said, “I’m not letting you go till you bless me.” 27 The man said, “What’s your name?” He answered, “Jacob.” 28 The man said, “But no longer. Your name is now Israel (God-Wrestler). You’ve wrestled with God and you’ve wrestled with men. And you’ve won.”"
-//   },
-//   "Genesis 32:26": {
-//     KJV: "26 And he said, Let me go, for the day breaketh. And he said, I will not let thee go, except thou bless me.",
-//     NKJV: "26 And He said, “Let Me go, for the day breaks.” But he said, “I will not let You go unless You bless me!”",
-//     NIV: "26 Then the man said, “Let me go, for it is daybreak.” But Jacob replied, “I will not let you go unless you bless me.”",
-//     ESV: "26 Then he said, “Let me go, for the day has broken.” But Jacob said, “I will not let you go unless you bless me.”",
-//     AMP: "26 Then He said, “Let Me go, for day is breaking.” But Jacob said, “I will not let You go unless You bless me.”",
-//     NLT: "26 Then the man said, “Let me go, for the dawn is breaking!” But Jacob said, “I will not let you go unless you bless me.”",
-//     MSG: "26 The man said, “Let me go; it’s daybreak.” Jacob said, “I’m not letting you go till you bless me.”"
-//   },
-//   "Genesis 32:25": {
-//     KJV: "25 And when he saw that he prevailed not against him, he touched the hollow of his thigh; and the hollow of Jacob's thigh was out of joint, as he wrestled with him.",
-//     NKJV: "25 Now when He saw that He did not prevail against him, He touched the socket of his hip; and the socket of Jacob’s hip was out of joint as He wrestled with him.",
-//     NIV: "25 When the man saw that he could not overpower him, he touched the socket of Jacob’s hip so that his hip was wrenched as he wrestled with the man.",
-//     ESV: "25 When the man saw that he did not prevail against Jacob, he touched his hip socket, and Jacob's hip was put out of joint as he wrestled with him.",
-//     AMP: "25 When the Man saw that He had not prevailed against Jacob, He touched his hip socket; and Jacob’s hip was dislocated as he wrestled with Him.",
-//     NLT: "25 When the man saw that he would not win the match, he touched the hip socket and wrenched it out of its joint.",
-//     MSG: "25 When the man saw that he couldn’t get the best of Jacob as they wrestled, he deliberately threw Jacob’s hip out of joint."
-//   },
-//   "Genesis 32:27-28": {
-//     KJV: "27 And he said unto him, What is thy name? And he said, Jacob. 28 And he said, Thy name shall be called no more Jacob, but Israel: for as a prince hast thou power with God and with men, and hast prevailed.",
-//     NKJV: "27 So He said to him, “What is your name?” He said, “Jacob.” 28 And He said, “Your name shall no longer be called Jacob, but Israel; for you have struggled with God and with men, and have prevailed.”",
-//     NIV: "27 The man asked him, “What is your name?” “Jacob,” he answered. 28 Then the man said, “Your name will no longer be Jacob, but Israel, because you have struggled with God and with humans and have overcome.”",
-//     ESV: "27 And he said to him, “What is your name?” And he said, “Jacob.” 28 Then he said, “Your name shall no longer be called Jacob, but Israel, for you have striven with God and with men, and have prevailed.”",
-//     AMP: "27 The Man asked him, “What is your name?” And he said, “Jacob.” 28 Then He said, “Your name shall no longer be Jacob, but Israel; for you have struggled with God and with men and have prevailed.”",
-//     NLT: "27 “What is your name?” the man asked. “Jacob,” he replied. 28 “Your name will no longer be Jacob,” the man told him. “From now on you will be called Israel, because you have fought with God and with men and have won.”",
-//     MSG: "27-28 The man said, “What’s your name?” He answered, “Jacob.” The man said, “But no longer. Your name is now Israel (God-Wrestler). You’ve wrestled with God and you’ve wrestled with men. And you’ve won.”"
-//   },
-//   "Genesis 32:27": {
-//     KJV: "27 And he said unto him, What is thy name? And he said, Jacob.",
-//     NKJV: "27 So He said to him, “What is your name?” He said, “Jacob.”",
-//     NIV: "27 The man asked him, “What is your name?” “Jacob,” he answered.",
-//     ESV: "27 And he said to him, “What is your name?” And he said, “Jacob.”",
-//     AMP: "27 The Man asked him, “What is your name?” And he said, “Jacob.”",
-//     NLT: "27 “What is your name?” the man asked. “Jacob,” he replied.",
-//     MSG: "27 The man said, “What’s your name?” He answered, “Jacob.”"
-//   },
-//   "Ezekiel 36:11": {
-//     KJV: "11 And I will multiply upon you man and beast; and they shall increase and bring fruit: and I will settle you after your old estates, and will do better unto you than at your beginnings: and ye shall know that I am the Lord.",
-//     NKJV: "11 I will multiply upon you man and beast; and they shall increase and bear young; I will make you inhabited as in former times, and do better for you than at your beginnings. Then you shall know that I am the Lord.",
-//     NIV: "11 I will increase the number of people and animals living on you, and they will be fruitful and become numerous. I will settle people on you as in the past and will make you prosper more than before. Then you will know that I am the Lord.",
-//     ESV: "11 And I will multiply on you man and beast, and they shall multiply and be fruitful. And I will cause you to be inhabited as in your former times, and will do more good to you than ever before. Then you will know that I am the Lord.",
-//     AMP: "11 I will multiply on you man and beast; and they will increase and be fruitful. I will cause you to be inhabited as you were before, and I will do better for you than at your beginnings. Then you will know [with confidence] that I am the Lord.",
-//     NLT: "11 I will increase not only the people, but also your animals. You will be fertile and have many young. I will settle people on you as in the past, and I will make you even more prosperous than before. Then you will know that I am the Lord.",
-//     MSG: "11 I’ll fill you with people and animals. They'll have lots of babies. I'll make you more populous than you've ever been, take better care of you than ever. Then you’ll realize that I am God."
-//   }
-// };
 
 const initialScriptureDB: ScriptureDB = {
-  "Hosea 4:6a": {
-    KJV: "6 My people are destroyed for lack of knowledge:",
-    NKJV: "6 My people are destroyed for lack of knowledge.",
-    NIV: "6 my people are destroyed from lack of knowledge.",
-    ESV: "6 My people are destroyed for lack of knowledge;",
-    AMP: "6 My people are destroyed for lack of knowledge.",
-    NLT: "6 My people are being destroyed because they don’t know me.",
-    MSG: "6 My people are ruined because they don’t know what’s right or true."
+
+  "2 Corinthians 2:11": {
+    "KJV": "11 Lest Satan should get an advantage of us: for we are not ignorant of his devices.",
+    "NKJV": "11 lest Satan should take advantage of us; for we are not ignorant of his devices.",
+    "NIV": "11 in order that Satan might not outwit us. For we are not unaware of his schemes.",
+    "ESV": "11 so that we would not be outwitted by Satan; for we are not ignorant of his designs.",
+    "AMP": "11 to keep Satan from taking advantage of us; for we are not ignorant of his schemes.",
+    "NLT": "11 so that Satan will not outsmart us. For we are familiar with his evil schemes.",
+    "MSG": "11 After all, we don't want to unwittingly give Satan an opening for yet more mischief—we're not oblivious to his sly ways!"
+    },
+
+    "Proverbs 18:10": {
+    "KJV": "10 The name of the Lord is a strong tower: the righteous runneth into it, and is safe.",
+    "NKJV": "10 The name of the Lord is a strong tower; The righteous run to it and are safe.",
+    "NIV": "10 The name of the Lord is a fortified tower; the righteous run to it and are safe.",
+    "ESV": "10 The name of the Lord is a strong tower; the righteous man runs into it and is safe.",
+    "AMP": "10 The name of the Lord is a strong tower; The righteous runs to it and is safe and set on high [far above evil].",
+    "NLT": "10 The name of the Lord is a strong fortress; the godly run to him and are safe.",
+    "MSG": "10 God's name is a place of protection—good people can run there and be safe."
+    },
+
+  "Daniel 11:32": {
+    "KJV": "32 And such as do wickedly against the covenant shall he corrupt by flatteries: but the people that do know their God shall be strong, and do exploits.",
+    "NKJV": "32 Those who do wickedly against the covenant he shall corrupt with flattery; but the people who know their God shall be strong, and carry out great exploits.",
+    "NIV": "32 With flattery he will corrupt those who have violated the covenant, but the people who know their God will firmly resist him.",
+    "ESV": "32 He shall seduce with flattery those who violate the covenant, but the people who know their God shall stand firm and take action.",
+    "AMP": "32 By smooth words he will turn to godlessness those who act wickedly against the covenant, but the people who know their God will be strong and take action.",
+    "NLT": "32 He will flatter and win over those who have violated the covenant. But the people who know their God will be strong and will resist him.",
+    "MSG": "32 Those who betray the covenant will be corrupted by flattery, but people who know their God will be strong and take action."
   },
   "1 Kings 21:1-13": {
         KJV: "1 And it came to pass after these things, that Naboth the Jezreelite had a vineyard, which was in Jezreel, hard by the palace of Ahab king of Samaria. 2 And Ahab spake unto Naboth, saying, Give me thy vineyard, that I may have it for a garden of herbs, because it is near unto my house: and I will give thee for it a better vineyard than it; or, if it seem good to thee, I will give thee the worth of it in money. 3 And Naboth said to Ahab, The Lord forbid it me, that I should give the inheritance of my fathers unto thee. 4 And Ahab came into his house heavy and displeased because of the word which Naboth the Jezreelite had spoken to him: for he had said, I will not give thee the inheritance of my fathers. And he laid him down upon his bed, and turned away his face, and would eat no bread. 5 But Jezebel his wife came to him, and said unto him, Why is thy spirit so sad, that thou eatest no bread? 6 And he said unto her, Because I spake unto Naboth the Jezreelite, and said unto him, Give me thy vineyard for money; or else, if it provide thee better, I will give thee another vineyard for it: and he answered, I will not give thee my vineyard. 7 And Jezebel his wife said unto him, Dost thou now govern the kingdom of Israel? arise, and eat bread, and let thine heart be merry: I will give thee the vineyard of Naboth the Jezreelite. 8 So she wrote letters in Ahab's name, and sealed them with his seal, and sent the letters unto the elders and to the nobles that were in his city, dwelling with Naboth. 9 And she wrote in the letters, saying, Proclaim a fast, and set Naboth on high among the people: 10 And set two men, sons of Belial, before him, to bear witness against him, saying, Thou didst blaspheme God and the king. And then carry him out, and stone him, that he may die. 11 And the men of his city, even the elders and the nobles who were the inhabitants in his city, did as Jezebel had sent unto them, and as it was written in the letters which she had sent unto them. 12 They proclaimed a fast, and set Naboth on high among the people. 13 And there came in two men, children of Belial, and sat before him: and the wicked men witnessed against him, even against Naboth, in the presence of the people, saying, Naboth did blaspheme God and the king. Then they carried him forth out of the city, and stoned him with stones, that he died.",
@@ -293,109 +123,111 @@ const initialScriptureDB: ScriptureDB = {
 
 
 
-
 const quizQuestions = [
     {
-        q: "According to Hosea 4:6a, what is the primary cause of destruction mentioned in the lesson?",
+        q: "According to 2 Corinthians 2:11, why should believers not be ignorant?",
         a: [
-            "Persecution from enemies",
-            "Lack of knowledge",
-            "Absence of leadership",
-            "Lack of financial resources"
+            "So they can gain wealth",
+            "So Satan will not take advantage of them",
+            "So they can rule nations",
+            "So they can avoid responsibility"
         ],
         correct: 1
     },
     {
-        q: "What valuable possession did Naboth inherit that became central to the lesson?",
+        q: "What biblical story forms the foundation of this lesson?",
         a: [
-            "A palace",
-            "A royal inheritance",
-            "A vineyard",
-            "A trade business"
+            "David and Goliath",
+            "Joseph in Egypt",
+            "Naboth and his vineyard",
+            "Elijah and the prophets of Baal"
         ],
         correct: 2
     },
     {
-        q: "Why did King Ahab desire Naboth’s vineyard?",
+        q: "What does the lesson say your 'vineyard' may represent today?",
         a: [
-            "To convert it into a temple",
-            "To use it as a vegetable garden because it was close to his palace",
-            "To expand his military base",
-            "To give it to Jezebel"
-        ],
-        correct: 1
-    },
-    {
-        q: "What major mistake did Naboth make according to the lesson?",
-        a: [
-            "He ignored King Ahab’s authority",
-            "He failed to recognize the full value and potential of what he had",
-            "He relocated without notice",
-            "He sold the vineyard too quickly"
-        ],
-        correct: 1
-    },
-    {
-        q: "The lesson 'Limited Knowledge' teaches believers to:",
-        a: [
-            "Avoid responsibility",
-            "Undervalue inherited possessions",
-            "Examine and appreciate the full value of what they have",
-            "Guard traditions without question"
+            "Only farmland",
+            "Only inherited property",
+            "Talents, business, relationships, position, or God’s assignment",
+            "Government authority"
         ],
         correct: 2
     },
     {
-        q: "What warning is given in 'What’s Close to Others'?",
+        q: "What happened to Naboth according to the lesson review?",
         a: [
-            "Relocate from envious people",
-            "Share everything freely",
-            "Avoid forming relationships",
-            "Protect what others have access to"
+            "He became wealthy",
+            "He moved to another city",
+            "He died as a result of ignorance",
+            "He inherited another vineyard"
         ],
-        correct: 3
+        correct: 2
     },
     {
-        q: "John 5:7 is used in the lesson to emphasize that:",
+        q: "The story of the man who discovered crude oil under his house illustrates that:",
         a: [
-            "Delay can cause others to take available opportunities",
-            "Patience eliminates competition",
-            "Miracles happen automatically",
-            "Healing requires location change"
+            "Oil exploration is profitable",
+            "People can possess great treasure yet remain poor due to ignorance",
+            "Property should always be sold",
+            "Bankruptcy leads to wealth"
+        ],
+        correct: 1
+    },
+    {
+        q: "What does the lesson 'Closeness to God' emphasize?",
+        a: [
+            "Financial success",
+            "Political influence",
+            "Spiritual protection through closeness to God",
+            "Public recognition"
+        ],
+        correct: 2
+    },
+    {
+        q: "Which scripture supports the lesson on closeness to God?",
+        a: [
+            "Proverbs 18:10",
+            "Genesis 1:1",
+            "Matthew 5:9",
+            "Psalm 150:6"
         ],
         correct: 0
     },
     {
-        q: "The point 'Cultivate It Now' teaches that:",
+        q: "According to the lesson, what character flaw did Ahab demonstrate?",
         a: [
-            "Inheritance guarantees success",
-            "Effort is unnecessary",
-            "Others will develop what you neglect",
-            "Opportunities wait indefinitely"
+            "Patience",
+            "Generosity",
+            "Selfishness",
+            "Courage"
         ],
         correct: 2
     },
     {
-        q: "Why does the lesson warn against celebrating poverty?",
+        q: "The lesson 'Consider What’s Dear to Others' teaches believers to:",
         a: [
-            "Wealth is sinful",
-            "Poverty can limit one’s ability to maximize opportunities",
-            "Rich people are always oppressive",
-            "Poverty is spiritually superior"
+            "Respect and value what belongs to others",
+            "Take advantage of others",
+            "Ignore neighbors",
+            "Compete with everyone"
         ],
-        correct: 1
+        correct: 0
     },
     {
-        q: "The overall message of 'Ignorant Of Own Treasure' emphasizes that:",
+        q: "According to the conclusion and Daniel 11:32, those who know their God will:",
         a: [
-            "Inheritance guarantees prosperity",
-            "External enemies are the main threat to destiny",
-            "Ignorance can lead to loss, stagnation, and destruction",
-            "Kings always act unjustly"
+            "Avoid responsibility",
+            "Remain silent",
+            "Do exploits",
+            "Live without challenges"
         ],
         correct: 2
     }
 ];
+
+
+
 
 const SundaySchoolApp = () => {
     const [showPaymentGate, setShowPaymentGate] = useState(true);
@@ -459,21 +291,21 @@ const SundaySchoolApp = () => {
     
 
 const [contentData, setContentData] = useState<ContentData>({
-    lessonDate: "March 8, 2026",
-    lessonTitle: "Ignorant Of Own Treasure (Part 1)",
+    lessonDate: "March 15, 2026",
+    lessonTitle: "Ignorant Of Own Treasure (Part 2)",
 
     memoryVerse:
-        "My people are destroyed for lack of knowledge. - Hosea 4:6a",
-    memoryVerseRef: "Hosea 4:6a",
+        "Lest Satan should get an advantage of us. For we are not ignorant of his devices.",
+    memoryVerseRef: "2 Corinthians 2:11",
 
     introScriptures: [
-        "Hosea 4:6a"
+        "2 Corinthians 2:11"
     ],
 
     lessonIntroScriptures: ["1 Kings 21:1-13"],
 
     introduction:
-        "Every man has been provided with treasures by the Lord as his manner is. He prepared Eden for Adam and Canaan for Israel to possess. Despite this fact, many are rotting away without enjoying these treasures. To Naboth was left a vineyard that could have enriched him but his ignorance did not only retard his progress but also attract his death.",
+        "This lesson should be an eye-opener to every child of God who has been blessed by the Lord. In Naboth's case it was a physical vineyard but yours may be different. Your vineyard could be a talent, business, properties, relations, position, assignment of God, etc. Utilize it appropriately and enjoy what it has to offer.",
 
     aims:
         "To arouse brethren to carefully examine what's at their disposal.",
@@ -482,51 +314,36 @@ const [contentData, setContentData] = useState<ContentData>({
         "To prevent the brethren from premature death out of ignorance.",
 
     lessonIntro:
-        "This vineyard was the only reflection of the lives and labours of Naboth's ancestors but he was too naive to appreciate it for its real potentials. King Ahab coveted it but could not strike a deal with Naboth and consequently killed him for it. The lesson and the consequences are below to consider.",
+        "Naboth was poor and died as a result of his ignorance. Vineyards are great asset far beyond the understanding of Naboth. This incident is like that of a man who sold his properties except the house he lived in due to bankruptcy. He had decided to sell the house also until he mistakenly plunged a pole on the floor which vomited crude oil. All that treasure was under him but he was poor due to ignorance. Appreciate what you have before others will take it.",
 
     lessonPoints: [
         {
-            title: "LIMITED KNOWLEDGE:",
+            title: "CLOSENESS TO GOD:",
             content:
-                "Vs 1-2. Naboth held to the vineyard because it was the only prominent memory of his fathers. He did not realize that there was more to the vineyard like King Ahab saw. Ahab was restless until he confiscated what Naboth commonised. Let us examine what we have and appreciate its entire value. It may be your way to the top.",
-            scriptures: ["1 Kings 21:1-2"],
+                "Naboth was too far from God to get his protection for himself and the vineyard. Get closer to God for your security.",
+            scriptures: ["Proverbs 18:10"],
             subPoints: [],
         },
         {
-            title: "WHAT'S CLOSE TO OTHERS:",
+            title: "CONSIDER WHAT'S DEAR TO OTHERS:",
             content:
-                "Vs 1. This passage teaches us to be mindful of our belongings that are close to other people. Protect what other people have access to. If you are loose, you will loose the loosed belongings.",
-            scriptures: ["1 Kings 21:1"],
+                "Ahab was so selfish and didn't consider his neighbor. We must learn to respect and value what belongs to others.",
+            scriptures: [],
             subPoints: [],
-        },
-        {
-            title: "CULTIVATE IT NOW:",
-            content:
-                "If you don't cultivate your vineyard others will. Time and chance waits for no man. The man by the pool said while I was still trying another goes down before me. Don't let desperate people seize your treasure base.",
-            scriptures: ["John 5:7"],
-            subPoints: [],
-        },
-        {
-            title: "DON'T CELEBRATE POVERTY:",
-            content:
-                "Vs 1-2. One reason Naboth could not maximize the use of the vineyard was poverty. Don't celebrate it but do something about it because if not you will loose precious things. Wealth and riches are also powerful that other noble people like Ahab will respect and stay clear.",
-            scriptures: ["1 Kings 21:1-2"],
-            subPoints: [],
-        },
+        }
     ],
 
     conclusion:
-        "All the results of ignorance are at the extreme and we must not patronize it.",
+        "Don't give any place for ignorance in your life because it will destroy you. They that obtain knowledge shall do exploits.",
 
-    conclusionScriptures: [],
+    conclusionScriptures: ["Daniel 11:32"],
 
     prayerPoints: [
-        "Father, open my eyes to recognize and appreciate the treasures You have given me.",
-        "Lord, deliver me from ignorance that can destroy my destiny.",
-        "Father, give me wisdom to cultivate and protect what You have placed in my hands."
+        "Father, remove every form of ignorance from my life.",
+        "Lord, help me recognize and value the treasures You have given me.",
+        "Father, draw me closer to You so that I may enjoy Your protection and guidance."
     ],
 });
-
 
 
 
@@ -917,7 +734,7 @@ const [contentData, setContentData] = useState<ContentData>({
                             Sunday School Lesson
                         </h1>
                         <p className="text-xl opacity-80">
-                            Ignorant Of Own Treasure (Part 1)
+                            Ignorant Of Own Treasure (Part 2)
                         </p>
                     </div>
                     <div className="grid md:grid-cols-2 gap-6">
