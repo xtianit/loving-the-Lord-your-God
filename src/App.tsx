@@ -52,228 +52,431 @@ type BibleVersions = {
 type ScriptureDB = Record<string, BibleVersions>;
 
 
+// const initialScriptureDB: ScriptureDB = {
+//   "Matthew 22:37": {
+//     "KJV": "37 Jesus said unto him, Thou shalt love the Lord thy God with all thy heart, and with all thy soul, and with all thy mind.",
+//     "NKJV": "37 Jesus said to him, ‘You shall love the Lord your God with all your heart, with all your soul, and with all your mind.’",
+//     "NIV": "37 Jesus replied: “‘Love the Lord your God with all your heart and with all your soul and with all your mind.’",
+//     "ESV": "37 And he said to him, “You shall love the Lord your God with all your heart and with all your soul and with all your mind.",
+//     "AMP": "37 And Jesus replied to him, “‘You shall love the Lord your God with all your heart, and with all your soul, and with all your mind.’",
+//     "NLT": "37 Jesus replied, “‘You must love the Lord your God with all your heart, all your soul, and all your mind.’",
+//     "MSG": "37 Jesus said, “‘Love the Lord your God with all your passion and prayer and intelligence.’"
+//   },
+
+//   "Matthew 11:20-24": {
+//     "KJV": "20 Then began he to upbraid the cities wherein most of his mighty works were done, because they repented not: 21 Woe unto thee, Chorazin! woe unto thee, Bethsaida! for if the mighty works, which were done in you, had been done in Tyre and Sidon, they would have repented long ago in sackcloth and ashes. 22 But I say unto you, It shall be more tolerable for Tyre and Sidon at the day of judgment, than for you. 23 And thou, Capernaum, which art exalted unto heaven, shalt be brought down to hell: for if the mighty works, which have been done in thee, had been done in Sodom, it would have remained until this day. 24 But I say unto you, That it shall be more tolerable for the land of Sodom in the day of judgment, than for thee.",
+//     "NKJV": "20 Then He began to rebuke the cities in which most of His mighty works had been done, because they did not repent: 21 “Woe to you, Chorazin! Woe to you, Bethsaida! For if the mighty works which were done in you had been done in Tyre and Sidon, they would have repented long ago in sackcloth and ashes. 22 But I say to you, it will be more tolerable for Tyre and Sidon in the day of judgment than for you. 23 And you, Capernaum, who are exalted to heaven, will be brought down to Hades; for if the mighty works which were done in you had been done in Sodom, it would have remained until this day. 24 But I say to you that it shall be more tolerable for the land of Sodom in the day of judgment than for you.”",
+//     "NIV": "20 Then Jesus began to denounce the towns in which most of his miracles had been performed, because they did not repent. 21 “Woe to you, Chorazin! Woe to you, Bethsaida! For if the miracles that were performed in you had been performed in Tyre and Sidon, they would have repented long ago in sackcloth and ashes. 22 But I tell you, it will be more bearable for Tyre and Sidon on the day of judgment than for you. 23 And you, Capernaum, will you be lifted to the heavens? No, you will go down to the depths. If the miracles that were performed in you had been performed in Sodom, it would have remained to this day. 24 But I tell you that it will be more bearable for Sodom on the day of judgment than for you.”",
+//     "ESV": "20 Then he began to denounce the cities where most of his mighty works had been done, because they did not repent. 21 “Woe to you, Chorazin! Woe to you, Bethsaida! For if the mighty works done in you had been done in Tyre and Sidon, they would have repented long ago in sackcloth and ashes. 22 But I tell you, it will be more bearable on the day of judgment for Tyre and Sidon than for you. 23 And you, Capernaum, will you be exalted to heaven? You will be brought down to Hades. For if the mighty works done in you had been done in Sodom, it would have remained until this day. 24 But I tell you that it will be more tolerable on the day of judgment for the land of Sodom than for you.”",
+//     "AMP": "20 Then He began to denounce the cities in which most of His miracles had been done, because they did not repent. 21 “Woe to you, Chorazin! Woe to you, Bethsaida! For if the miracles done in you had been done in Tyre and Sidon, they would have repented long ago in sackcloth and ashes. 22 Nevertheless I say to you, it will be more tolerable for Tyre and Sidon on the day of judgment than for you. 23 And you, Capernaum, will you be exalted to heaven? You will descend to Hades; for if the miracles done in you had been done in Sodom, it would have remained until this day. 24 But I say to you that it will be more tolerable for the land of Sodom on the day of judgment, than for you.”",
+//     "NLT": "20 Then Jesus began to denounce the towns where he had done so many of his miracles, because they hadn’t repented of their sins and turned to God. 21 “What sorrow awaits you, Chorazin and Bethsaida! For if the miracles I did in you had been done in wicked Tyre and Sidon, their people would have repented of their sins long ago, clothing themselves in burlap and throwing ashes on their heads to show their remorse. 22 I tell you, Tyre and Sidon will be better off on judgment day than you. 23 “And you people of Capernaum, will you be honored in heaven? No, you will go down to the place of the dead. For if the miracles I did in you had been done in wicked Sodom, it would still be here today. 24 I tell you, even Sodom will be better off on judgment day than you.”",
+//     "MSG": "20-22 Next Jesus began to denouncing the towns where most of his miracles had been done, because they hadn’t turned to God. “Doom to you, Chorazin! Doom to you, Bethsaida! If Tyre and Sidon had seen half of the miracles you’re seeing, they’d have been on their knees in a minute. At Judgment Day they’ll get off easy compared to you. 23-24 And Capernaum! With your head in the clouds, do you think you’ll sit on the highest council of heaven? You’re going to end up in the abyss. If Sodom had just seen what you’ve seen, she’d still be on the map. At Judgment Day they’ll get off easy compared to you.”"
+//   },
+
+//   "Mark 6:45": {
+//     "KJV": "45 And straightway he constrained his disciples to get into the ship, and to go to the other side before unto Bethsaida, while he sent away the people.",
+//     "NKJV": "45 Immediately He made His disciples get into the boat and go before Him to the other side, to Bethsaida, while He sent the multitude away.",
+//     "NIV": "45 Immediately Jesus made his disciples get into the boat and go on ahead of him to Bethsaida, while he dismissed the crowd.",
+//     "ESV": "45 Immediately he made his disciples get into the boat and go before him to the other side, to Bethsaida, while he dismissed the crowd.",
+//     "AMP": "45 Immediately Jesus insisted that His disciples get into the boat and go ahead of Him to the other side to Bethsaida, while He was dismissing the crowd.",
+//     "NLT": "45 Immediately after this, Jesus insisted that his disciples get back into the boat and head across the lake to Bethsaida, while he sent the people home.",
+//     "MSG": "45 Right of the bat, Jesus made his disciples get into the boat and head for Bethsaida on the other side, while he dismissed the crowd."
+//   },
+
+//   "Mark 8:22": {
+//     "KJV": "22 And he cometh to Bethsaida; and they bring a blind man unto him, and besought him to touch him.",
+//     "NKJV": "22 Then He came to Bethsaida; and they brought a blind man to Him, and begged Him to touch him.",
+//     "NIV": "22 They came to Bethsaida, and some people brought a blind man and begged Jesus to touch him.",
+//     "ESV": "22 And they came to Bethsaida. And some people brought to him a blind man and begged him to touch him.",
+//     "AMP": "22 And they came to Bethsaida. And some people brought a blind man to Jesus and begged Him to touch him.",
+//     "NLT": "22 When they arrived at Bethsaida, some people brought a blind man to Jesus, and they begged him to touch the man and heal him.",
+//     "MSG": "22 They arrived at Bethsaida. Some people brought a blind man and begged him to touch him."
+//   },
+
+//   "Matthew 4:13-16": {
+//     "KJV": "13 And leaving Nazareth, he came and dwelt in Capernaum, which is upon the sea coast, in the borders of Zabulon and Nephthalim: 14 That it might be fulfilled which was spoken by Esaias the prophet, saying, 15 The land of Zabulon, and the land of Nephthalim, by the way of the sea, beyond Jordan, Galilee of the Gentiles; 16 The people which sat in darkness saw great light; and to them which sat in the region and shadow of death light is sprung up.",
+//     "NKJV": "13 And leaving Nazareth, He came and dwelt in Capernaum, which is by the sea, in the regions of Zebulun and Naphtali, 14 that it might be fulfilled which was spoken by Isaiah the prophet, saying: 15 “The land of Zebulun and the land of Naphtali, By the way of the sea, beyond the Jordan, Galilee of the Gentiles: 16 The people who sat in darkness have seen a great light, And upon those who sat in the region and shadow of death Light has dawned.”",
+//     "NIV": "13 Leaving Nazareth, he went and lived in Capernaum, which was by the lake in the area of Zebulun and Naphtali— 14 to fulfill what was said through the prophet Isaiah: 15 “Land of Zebulun and land of Naphtali, the Way of the Sea, beyond the Jordan, Galilee of the Gentiles— 16 the people living in darkness have seen a great light; on those living in the land of the shadow of death a light has dawned.”",
+//     "ESV": "13 And leaving Nazareth he went and lived in Capernaum by the sea, in the territory of Zebulun and Naphtali, 14 so that what was spoken by the prophet Isaiah might be fulfilled: 15 “The land of Zebulun and the land of Naphtali, the way of the sea, beyond the Jordan, Galilee of the Gentiles— 16 the people dwelling in darkness have seen a great light, and for those dwelling in the region and shadow of death, on them a light has dawned.”",
+//     "AMP": "13 And leaving Nazareth, He went and settled in Capernaum, which is by the sea, in the country of Zebulun and Naphtali. 14 This was to fulfill what was spoken by the prophet Isaiah: 15 “The land of Zebulun and the land of Naphtali, by the way of the sea, beyond the Jordan, Galilee of the Gentiles (non-Jews)— 16 The people who were sitting (living) in spiritual darkness have seen a great Light, and for those who were sitting (living) in the region and shadow of [spiritual] death, upon them a Light has dawned.”",
+//     "NLT": "13 He went first to Nazareth, then left there and moved to Capernaum, beside the Sea of Galilee, in the region of Zebulun and Naphtali. 14 This fulfilled what God said through the prophet Isaiah: 15 “In the land of Zebulun and of Naphtali, beside the sea, beyond the Jordan River, in Galilee where so many Gentiles live, 16 the people who sat in darkness have seen a great light. And for those who lived in the land where death casts its shadow, a light has shined.”",
+//     "MSG": "13-16 He left Nazareth and moved to Capernaum, alongside the Sea of Galilee, at the crossroads of Zebulun and Naphtali. This moved realized Isaiah’s prophecy: Land of Zebulun, land of Naphtali, road to the sea, over Jordan, Galilee, crossroads for the nations. People sitting out in the dark saw a huge light; sitting in that black-hole territory of death, they got fresh light, dawned for them."
+//   },
+
+//   "Mark 2:1": {
+//     "KJV": "1 And again he entered into Capernaum after some days; and it was noised that he was in the house.",
+//     "NKJV": "1 And again He entered Capernaum after some days, and it was heard that He was in the house.",
+//     "NIV": "1 A few days later, when Jesus again entered Capernaum, the people heard that he had come home.",
+//     "ESV": "1 And when he returned to Capernaum after some days, it was reported that he was at home.",
+//     "AMP": "1 When Jesus returned to Capernaum a few days later, the news went around that He was at home.",
+//     "NLT": "1 When Jesus returned to Capernaum several days later, the news spread quickly that he was back home.",
+//     "MSG": "1 After a few days, Jesus went back to Capernaum, and word got around that he was back home."
+//   },
+
+//   "1 Chronicles 1:13": {
+//     "KJV": "13 And Mizraim begat Ludim, and Anamim, and Lehabim, and Naphtuhim,",
+//     "NKJV": "13 Mizraim begat Ludim, Anamim, Lehabim, Naphtuhim,",
+//     "NIV": "13 Mizraim was the father of the Ludites, Anamites, Lehabites, Naphtuhites,",
+//     "ESV": "13 Mizraim fathered Ludim, Anamim, Lehabim, Naphtuhim,",
+//     "AMP": "13 Mizraim was the father of Ludim, Anamim, Lehabim, Naphtuhim,",
+//     "NLT": "13 Mizraim was the ancestor of the Ludites, Anamites, Lehabites, Naphtuhites,",
+//     "MSG": "13 Mizraim was the ancestor of the Ludim, the Anamim, the Lehabim, the Naphtuhim,"
+//   },
+
+//   "Genesis 19:24-25": {
+//     "KJV": "24 Then the Lord rained upon Sodom and upon Gomorrah brimstone and fire from the Lord out of heaven; 25 And he overthrew those cities, and all the plain, and all the inhabitants of the cities, and that which grew upon the ground.",
+//     "NKJV": "24 Then the Lord rained brimstone and fire on Sodom and Gomorrah, from the Lord out of heaven. 25 So He overthrew those cities, all the plain, all the inhabitants of the cities, and what grew on the ground.",
+//     "NIV": "24 Then the Lord rained down burning sulfur on Sodom and Gomorrah—from the Lord out of the heavens. 25 Thus he overthrew those cities and the entire plain, destroying all those living in the cities—and also the vegetation in the land.",
+//     "ESV": "24 Then the Lord rained on Sodom and Gomorrah sulfur and fire from the Lord out of heaven. 25 And he overthrew those cities, and all the valley, and all the inhabitants of the cities, and what grew on the ground.",
+//     "AMP": "24 Then the Lord rained brimstone and fire on Sodom and on Gomorrah from the Lord out of heaven, 25 and He overthrew (demolished) those cities, and the entire valley, and all the inhabitants of the cities, and whatever grew on the ground.",
+//     "NLT": "24 Then the Lord rained down fire and burning sulfur from the sky on Sodom and Gomorrah. 25 He utterly destroyed them and the other cities of the plain, wiping out all the people and every bit of vegetation.",
+//     "MSG": "24-25 Then God rained brimstone and fire down on Sodom and Gomorrah—a river of lava from God out of the sky!—and overthrew those cities and the entire plain and everyone who lived in the cities, everything that grew from the ground."
+//   },
+
+//   "Matthew 11:22-24": {
+//     "KJV": "22 But I say unto you, It shall be more tolerable for Tyre and Sidon at the day of judgment, than for you. 23 And thou, Capernaum, which art exalted unto heaven, shalt be brought down to hell: for if the mighty works, which have been done in thee, had been done in Sodom, it would have remained until this day. 24 But I say unto you, That it shall be more tolerable for the land of Sodom in the day of judgment, than for thee.",
+//     "NKJV": "22 But I say to you, it will be more tolerable for Tyre and Sidon in the day of judgment than for you. 23 And you, Capernaum, who are exalted to heaven, will be brought down to Hades; for if the mighty works which were done in you had been done in Sodom, it would have remained until this day. 24 But I say to you that it shall be more tolerable for the land of Sodom in the day of judgment than for you.”",
+//     "NIV": "22 But I tell you, it will be more bearable for Tyre and Sidon on the day of judgment than for you. 23 And you, Capernaum, will you be lifted to the heavens? No, you will go down to the depths. If the miracles that were performed in you had been performed in Sodom, it would have remained to this day. 24 But I tell you that it will be more bearable for Sodom on the day of judgment than for you.”",
+//     "ESV": "22 But I tell you, it will be more bearable on the day of judgment for Tyre and Sidon than for you. 23 And you, Capernaum, will you be exalted to heaven? You will be brought down to Hades. For if the mighty works done in you had been done in Sodom, it would have remained until this day. 24 But I tell you that it will be more tolerable on the day of judgment for the land of Sodom than for you.”",
+//     "AMP": "22 Nevertheless I say to you, it will be more tolerable for Tyre and Sidon on the day of judgment than for you. 23 And you, Capernaum, will you be exalted to heaven? You will descend to Hades; for if the miracles done in you had been done in Sodom, it would have remained until this day. 24 But I say to you that it will be more tolerable for the land of Sodom on the day of judgment, than for you.”",
+//     "NLT": "22 I tell you, Tyre and Sidon will be better off on judgment day than you. 23 “And you people of Capernaum, will you be honored in heaven? No, you will go down to the place of the dead. For if the miracles I did in you had been done in wicked Sodom, it would still be here today. 24 I tell you, even Sodom will be better off on judgment day than you.”",
+//     "MSG": "22 At Judgment Day they’ll get off easy compared to you. 23-24 And Capernaum! With your head in the clouds, do you think you’ll sit on the highest council of heaven? You’re going to end up in the abyss. If Sodom had just seen what you’ve seen, she’d still be on the map. At Judgment Day they’ll get off easy compared to you.”"
+//   },
+//   "Matthew 11:20": {
+//     "KJV": "20 Then began he to upbraid the cities wherein most of his mighty works were done, because they repented not:",
+//     "NKJV": "20 Then He began to rebuke the cities in which most of His mighty works had been done, because they did not repent:",
+//     "NIV": "20 Then Jesus began to denounce the towns in which most of his miracles had been performed, because they did not repent.",
+//     "ESV": "20 Then he began to denounce the cities where most of his mighty works had been done, because they did not repent.",
+//     "AMP": "20 Then He began to denounce the cities in which most of His miracles had been done, because they did not repent.",
+//     "NLT": "20 Then Jesus began to denounce the towns where he had done so many of his miracles, because they hadn’t repented of their sins and turned to God.",
+//     "MSG": "20 Next Jesus began to denouncing the towns where most of his miracles had been done, because they hadn’t turned to God."
+//   },
+
+//   "Luke 13:4-5": {
+//     "KJV": "4 Or those eighteen, upon whom the tower in Siloam fell, and slew them, think ye that they were sinners above all men that dwelt in Jerusalem? 5 I tell you, Nay: but, except ye repent, ye shall all likewise perish.",
+//     "NKJV": "4 Or those eighteen on whom the tower in Siloam fell and killed them, do you think that they were worse sinners than all other men who dwelt in Jerusalem? 5 I tell you, no; but unless you repent you will all likewise perish.”",
+//     "NIV": "4 Or those eighteen who died when the tower in Siloam fell on them—do you think they were guiltier than all the others living in Jerusalem? 5 I tell you, no! But unless you repent, you too will all perish.”",
+//     "ESV": "4 Or those eighteen on whom the tower in Siloam fell and killed them: do you think that they were worse offenders than all the others who lived in Jerusalem? 5 No, I tell you; but unless you repent, you will all likewise perish.”",
+//     "AMP": "4 Or those eighteen on whom the tower in Siloam fell and killed them: do you think that they were worse sinners than all the others who lived in Jerusalem? 5 I tell you, no; but unless you repent [change your old way of thinking, turn from your sinful ways and live changed lives], you will all likewise perish.”",
+//     "NLT": "4 And what about the eighteen people who died when the tower in Siloam fell on them? Were they the worst sinners in Jerusalem? 5 No, and I tell you again that unless you repent, you will perish, too.”",
+//     "MSG": "4-5 And what about the eighteen people who died when the Tower of Siloam fell on them? Do you think they were more bad than any other people living in Jerusalem? No. And I’m telling you that if you don’t change your ways, you’ll end up the same way.”"
+//   },
+
+//   "Revelation 3:22": {
+//     "KJV": "22 He that hath an ear, let him hear what the Spirit saith unto the churches.",
+//     "NKJV": "22 “He who has an ear, let him hear what the Spirit says to the churches.” ’ ”",
+//     "NIV": "22 Whoever has ears, let them hear what the Spirit says to the churches.”",
+//     "ESV": "22 He who has an ear, let him hear what the Spirit says to the churches.’”",
+//     "AMP": "22 He who has an ear, let him hear and heed what the Spirit says to the churches.’”",
+//     "NLT": "22 “Anyone with ears to hear must listen to the Spirit and understand what he is saying to the churches.”",
+//     "MSG": "22 “Are your ears awake? Listen. Listen to the Wind Words, the Spirit blowing through the churches.”"
+//   }
+// };
 const initialScriptureDB: ScriptureDB = {
-  "Matthew 22:37": {
-    "KJV": "37 Jesus said unto him, Thou shalt love the Lord thy God with all thy heart, and with all thy soul, and with all thy mind.",
-    "NKJV": "37 Jesus said to him, ‘You shall love the Lord your God with all your heart, with all your soul, and with all your mind.’",
-    "NIV": "37 Jesus replied: “‘Love the Lord your God with all your heart and with all your soul and with all your mind.’",
-    "ESV": "37 And he said to him, “You shall love the Lord your God with all your heart and with all your soul and with all your mind.",
-    "AMP": "37 And Jesus replied to him, “‘You shall love the Lord your God with all your heart, and with all your soul, and with all your mind.’",
-    "NLT": "37 Jesus replied, “‘You must love the Lord your God with all your heart, all your soul, and all your mind.’",
-    "MSG": "37 Jesus said, “‘Love the Lord your God with all your passion and prayer and intelligence.’"
+  "James 4:8": {
+    "KJV": "8 Draw nigh to God, and he will draw nigh to you. Cleanse your hands, ye sinners; and purify your hearts, ye double minded.",
+    "NKJV": "8 Draw near to God and He will draw near to you. Cleanse your hands, you sinners; and purify your hearts, you double-minded.",
+    "NIV": "8 Come near to God and he will come near to you. Wash your hands, you sinners, and purify your hearts, you double-minded.",
+    "ESV": "8 Draw near to God, and he will draw near to you. Cleanse your hands, you sinners, and purify your hearts, you double-minded.",
+    "AMP": "8 Draw near to God and He will draw near to you. Cleanse your hands, you sinners; and purify your hearts, you double-minded [wavering in self-control, divided in interests between God and the world].",
+    "NLT": "8 Come close to God, and God will come close to you. Wash your hands, you sinners; purify your hearts, for your loyalty is divided between God and the world.",
+    "MSG": "8 Say a quiet yes to God and he’ll be there in no time. Quit playing the field. Purify your inner life. Quit spiritual wavering."
   },
 
-  "Matthew 11:20-24": {
-    "KJV": "20 Then began he to upbraid the cities wherein most of his mighty works were done, because they repented not: 21 Woe unto thee, Chorazin! woe unto thee, Bethsaida! for if the mighty works, which were done in you, had been done in Tyre and Sidon, they would have repented long ago in sackcloth and ashes. 22 But I say unto you, It shall be more tolerable for Tyre and Sidon at the day of judgment, than for you. 23 And thou, Capernaum, which art exalted unto heaven, shalt be brought down to hell: for if the mighty works, which have been done in thee, had been done in Sodom, it would have remained until this day. 24 But I say unto you, That it shall be more tolerable for the land of Sodom in the day of judgment, than for thee.",
-    "NKJV": "20 Then He began to rebuke the cities in which most of His mighty works had been done, because they did not repent: 21 “Woe to you, Chorazin! Woe to you, Bethsaida! For if the mighty works which were done in you had been done in Tyre and Sidon, they would have repented long ago in sackcloth and ashes. 22 But I say to you, it will be more tolerable for Tyre and Sidon in the day of judgment than for you. 23 And you, Capernaum, who are exalted to heaven, will be brought down to Hades; for if the mighty works which were done in you had been done in Sodom, it would have remained until this day. 24 But I say to you that it shall be more tolerable for the land of Sodom in the day of judgment than for you.”",
-    "NIV": "20 Then Jesus began to denounce the towns in which most of his miracles had been performed, because they did not repent. 21 “Woe to you, Chorazin! Woe to you, Bethsaida! For if the miracles that were performed in you had been performed in Tyre and Sidon, they would have repented long ago in sackcloth and ashes. 22 But I tell you, it will be more bearable for Tyre and Sidon on the day of judgment than for you. 23 And you, Capernaum, will you be lifted to the heavens? No, you will go down to the depths. If the miracles that were performed in you had been performed in Sodom, it would have remained to this day. 24 But I tell you that it will be more bearable for Sodom on the day of judgment than for you.”",
-    "ESV": "20 Then he began to denounce the cities where most of his mighty works had been done, because they did not repent. 21 “Woe to you, Chorazin! Woe to you, Bethsaida! For if the mighty works done in you had been done in Tyre and Sidon, they would have repented long ago in sackcloth and ashes. 22 But I tell you, it will be more bearable on the day of judgment for Tyre and Sidon than for you. 23 And you, Capernaum, will you be exalted to heaven? You will be brought down to Hades. For if the mighty works done in you had been done in Sodom, it would have remained until this day. 24 But I tell you that it will be more tolerable on the day of judgment for the land of Sodom than for you.”",
-    "AMP": "20 Then He began to denounce the cities in which most of His miracles had been done, because they did not repent. 21 “Woe to you, Chorazin! Woe to you, Bethsaida! For if the miracles done in you had been done in Tyre and Sidon, they would have repented long ago in sackcloth and ashes. 22 Nevertheless I say to you, it will be more tolerable for Tyre and Sidon on the day of judgment than for you. 23 And you, Capernaum, will you be exalted to heaven? You will descend to Hades; for if the miracles done in you had been done in Sodom, it would have remained until this day. 24 But I say to you that it will be more tolerable for the land of Sodom on the day of judgment, than for you.”",
-    "NLT": "20 Then Jesus began to denounce the towns where he had done so many of his miracles, because they hadn’t repented of their sins and turned to God. 21 “What sorrow awaits you, Chorazin and Bethsaida! For if the miracles I did in you had been done in wicked Tyre and Sidon, their people would have repented of their sins long ago, clothing themselves in burlap and throwing ashes on their heads to show their remorse. 22 I tell you, Tyre and Sidon will be better off on judgment day than you. 23 “And you people of Capernaum, will you be honored in heaven? No, you will go down to the place of the dead. For if the miracles I did in you had been done in wicked Sodom, it would still be here today. 24 I tell you, even Sodom will be better off on judgment day than you.”",
-    "MSG": "20-22 Next Jesus began to denouncing the towns where most of his miracles had been done, because they hadn’t turned to God. “Doom to you, Chorazin! Doom to you, Bethsaida! If Tyre and Sidon had seen half of the miracles you’re seeing, they’d have been on their knees in a minute. At Judgment Day they’ll get off easy compared to you. 23-24 And Capernaum! With your head in the clouds, do you think you’ll sit on the highest council of heaven? You’re going to end up in the abyss. If Sodom had just seen what you’ve seen, she’d still be on the map. At Judgment Day they’ll get off easy compared to you.”"
+  "Matthew 6:25-34": {
+    "KJV": "25 Therefore I say unto you, Take no thought for your life, what ye shall eat, or what ye shall drink; nor yet for your body, what ye shall put on. Is not the life more than meat, and the body than raiment? 26 Behold the fowls of the air: for they sow not, neither do they reap, nor gather into barns; yet your heavenly Father feedeth them. Are ye not much better than they? 27 Which of you by taking thought can add one cubit unto his stature? 28 And why take ye thought for raiment? Consider the lilies of the field, how they grow; they toil not, neither do they spin: 29 And yet I say unto you, That even Solomon in all his glory was not arrayed like one of these. 30 Wherefore, if God so clothe the grass of the field, which to day is, and to morrow is cast into the oven, shall he not much more clothe you, O ye of little faith? 31 Therefore take no thought, saying, What shall we eat? or, What shall we drink? or, Wherewithal shall we be clothed? 32 (For after all these things do the Gentiles seek:) for your heavenly Father knoweth that ye have need of all these things. 33 But seek ye first the kingdom of God, and his righteousness; and all these things shall be added unto you. 34 Take therefore no thought for the morrow: for the morrow shall take thought for the things of itself. Sufficient unto the day is the evil thereof.",
+    "NKJV": "25 “Therefore I say to you, do not worry about your life, what you will eat or what you will drink; nor about your body, what you will put on. Is not life more than food and the body more than clothing? 26 Look at the birds of the air, for they neither sow nor reap nor gather into barns; yet your heavenly Father feeds them. Are you not of more value than they? 27 Which of you by worrying can add one cubit to his stature? 28 “So why do you worry about clothing? Consider the lilies of the field, how they grow: they neither toil nor spin; 29 and yet I say to you that even Solomon in all his glory was not arrayed like one of these. 30 Now if God so clothes the grass of the field, which today is, and tomorrow is thrown into the oven, will He not much more clothe you, O you of little faith? 31 “Therefore do not worry, saying, ‘What shall we eat?’ or ‘What shall we drink?’ or ‘What shall we wear?’ 32 For after all these things the Gentiles seek. For your heavenly Father knows that you need all these things. 33 But seek first the kingdom of God and His righteousness, and all these things shall be added to you. 34 Therefore do not worry about tomorrow, for tomorrow will worry about its own things. Sufficient for the day is its own trouble.",
+    "NIV": "25 “Therefore I tell you, do not worry about your life, what you will eat or drink; or about your body, what you will wear. Is not life more than food, and the body more than clothes? 26 Look at the birds of the air; they do not sow or reap or store away in barns, and yet your heavenly Father feeds them. Are you not much more valuable than they? 27 Can any one of you by worrying add a single hour to your life? 28 “And why do you worry about clothes? See how the flowers of the field grow. They do not labor or spin. 29 Yet I tell you that not even Solomon in all his splendor was dressed like one of these. 30 If that is how God clothes the grass of the field, which is here today, and tomorrow is thrown into the fire, will he not much more clothe you—you of little faith? 31 So do not worry, saying, ‘What shall we eat?’ or ‘What shall we drink?’ or ‘What shall we wear?’ 32 For the pagans run after all these things, and your heavenly Father knows that you need them. 33 But seek first his kingdom and his righteousness, and all these things will be given to you as well. 34 Therefore do not worry about tomorrow, for tomorrow will worry about itself. Each day has enough trouble of its own.",
+    "ESV": "25 “Therefore I tell you, do not be anxious about your life, what you will eat or what you will drink, nor about your body, what you will wear. Is not life more than food, and the body more than clothing? 26 Look at the birds of the air: they neither sow nor reap nor gather into barns, and yet your heavenly Father feeds them. Are you not of more value than they? 27 And which of you by being anxious can add a single hour to his span of life? 28 And why are you anxious about clothing? Consider the lilies of the field, how they grow: they neither toil nor spin, 29 yet I tell you, even Solomon in all his glory was not arrayed like one of these. 30 But if God so clothes the grass of the field, which today is alive and tomorrow is thrown into the oven, will he not much more clothe you, O you of little faith? 31 Therefore do not be anxious, saying, ‘What shall we eat?’ or ‘What shall we drink?’ or ‘What shall we wear?’ 32 For the Gentiles seek after all these things, and your heavenly Father knows that you need them all. 33 But seek first the kingdom of God and his righteousness, and all these things will be added to you. 34 “Therefore do not be anxious about tomorrow, for tomorrow will be anxious for itself. Sufficient for the day is its own trouble.",
+    "AMP": "25 “Therefore I tell you, stop being worried or anxious (perpetually uneasy, distracted) about your life, as to what you will eat or what you will drink; nor about your body, as to what you will wear. Is not life more than food, and the body more than clothing? 26 Look at the birds of the air; they neither sow [seed] nor reap [the harvest] nor gather [the crops] into barns, and yet your heavenly Father keeps feeding them. Are you not worth much more than they? 27 And who of you by being worried can add one hour to his [long] life? 28 And why are you worried about clothing? See how the lilies and wildflowers of the field grow; they do not labor nor do they spin [wool to make clothing], 29 yet I say to you that not even Solomon in all his glory and splendor dressed himself like one of these. 30 But if God so clothes the grass of the field, which is alive and green today and tomorrow is [cut and] thrown into the furnace, will He not much more clothe you? You of little faith! 31 Therefore do not worry or be anxious (perpetually uneasy, distracted), saying, ‘What are we going to eat?’ or ‘What are we going to drink?’ or ‘What are we going to wear?’ 32 For the [pagan] Gentiles eagerly seek all these things; but your heavenly Father knows that you need them. 33 But first and most importantly seek (aim at, strive after) His kingdom and His righteousness [His way of doing and being right—the attitude and character of God], and all these things will be given to you also. 34 “So do not worry about tomorrow; for tomorrow will worry about itself. Each day has enough trouble of its own.",
+    "NLT": "25 “That is why I tell you not to worry about everyday life—whether you have enough food and drink, or enough clothes to wear. Isn’t life more than food, and your body more than clothing? 26 Look at the birds. They don’t plant or harvest or store food in barns, for your heavenly Father feeds them. And aren’t you far more valuable to him than they are? 27 Can all your worries add a single moment to your life? 28 “And why worry about your clothing? Look at the lilies of the field and how they grow. They don’t work or make their clothing, 29 yet Solomon in all his glory was not dressed as beautifully as they are. 30 And if God cares so wonderfully for wildflowers that are here today and thrown into the fire tomorrow, he will certainly care for you. Why do you have so little faith? 31 “So don’t worry about these things, saying, ‘What will we eat? What will we drink? What will we wear?’ 32 These things dominate the thoughts of unbelievers, but your heavenly Father already knows all your needs. 33 Seek the Kingdom of God above all else, and live righteously, and he will give you everything you need. 34 “So don’t worry about tomorrow, for tomorrow will bring its own worries. Today’s trouble is enough for today.",
+    "MSG": "25-26 “If you decide for God, living a life of God-worship, it follows that you don’t fuss about what’s on the table at mealtimes or whether the clothes in your closet are in fashion. There is far more to your life than the food you put in your stomach, more to your outer appearance than the clothes you hang on your body. Look at the birds, free and unfettered, not tied down to a job description, careless in the care of God. And you count far more to him than birds. 27-29 “Has anyone by fussing in front of the mirror ever gotten taller by so much as an inch? All this time and money wasted on fashion—do you think it makes that much difference? Instead of looking at the fashions, walk out into the fields and look at the wildflowers. They never primp or shop, but have you ever seen color and design quite like it? The ten best-dressed men and women in the country look shabby alongside them. 30-33 “If God gives such attention to the appearance of wildflowers—most of which are never even seen—don’t you think he’ll attend to you, take pride in you, do his best for you? What I’m trying to do here is to get you to relax, to not be so preoccupied with getting, so you can respond to God’s giving. People who don’t know God and the way he works fuss over these things, but you know both God and how he works. Steep your life in God-reality, God-initiative, God-provisions. Don’t worry about missing out. You’ll find all your everyday human concerns will be met. 34 “Give your entire attention to what God is doing right now, and don’t get worked up about what may or may not happen tomorrow. God will help you deal with whatever hard things come up when the time comes."
   },
 
-  "Mark 6:45": {
-    "KJV": "45 And straightway he constrained his disciples to get into the ship, and to go to the other side before unto Bethsaida, while he sent away the people.",
-    "NKJV": "45 Immediately He made His disciples get into the boat and go before Him to the other side, to Bethsaida, while He sent the multitude away.",
-    "NIV": "45 Immediately Jesus made his disciples get into the boat and go on ahead of him to Bethsaida, while he dismissed the crowd.",
-    "ESV": "45 Immediately he made his disciples get into the boat and go before him to the other side, to Bethsaida, while he dismissed the crowd.",
-    "AMP": "45 Immediately Jesus insisted that His disciples get into the boat and go ahead of Him to the other side to Bethsaida, while He was dismissing the crowd.",
-    "NLT": "45 Immediately after this, Jesus insisted that his disciples get back into the boat and head across the lake to Bethsaida, while he sent the people home.",
-    "MSG": "45 Right of the bat, Jesus made his disciples get into the boat and head for Bethsaida on the other side, while he dismissed the crowd."
+  "Revelation 4:11": {
+    "KJV": "11 Thou art worthy, O Lord, to receive glory and honour and power: for thou hast created all things, and for thy pleasure they are and were created.",
+    "NKJV": "11 “You are worthy, O Lord, To receive glory and honor and power; For You created all things, And by Your will they exist and were created.”",
+    "NIV": "11 “You are worthy, our Lord and God, to receive glory and honor and power, for you created all things, and by your will they were created and have their being.”",
+    "ESV": "11 “Worthy are you, our Lord and God, to receive glory and honor and power, for you created all things, and by your will they existed and were created.”",
+    "AMP": "11 “Worthy are You, our Lord and God, to receive the glory and the honor and the power; for You created all things, and because of Your will they exist, and were created and brought into being.”",
+    "NLT": "11 “You are worthy, O Lord our God, to receive glory and honor and power. For you created all things, and they exist because you created what you pleased.”",
+    "MSG": "11 “Worthy, O Master! Yes, our God! Take the glory! the honor! the power! You created it all; It was created because you wanted it.”"
   },
 
-  "Mark 8:22": {
-    "KJV": "22 And he cometh to Bethsaida; and they bring a blind man unto him, and besought him to touch him.",
-    "NKJV": "22 Then He came to Bethsaida; and they brought a blind man to Him, and begged Him to touch him.",
-    "NIV": "22 They came to Bethsaida, and some people brought a blind man and begged Jesus to touch him.",
-    "ESV": "22 And they came to Bethsaida. And some people brought to him a blind man and begged him to touch him.",
-    "AMP": "22 And they came to Bethsaida. And some people brought a blind man to Jesus and begged Him to touch him.",
-    "NLT": "22 When they arrived at Bethsaida, some people brought a blind man to Jesus, and they begged him to touch the man and heal him.",
-    "MSG": "22 They arrived at Bethsaida. Some people brought a blind man and begged him to touch him."
+  "Matthew 6:25": {
+    "KJV": "25 Therefore I say unto you, Take no thought for your life, what ye shall eat, or what ye shall drink; nor yet for your body, what ye shall put on. Is not the life more than meat, and the body than raiment?",
+    "NKJV": "25 “Therefore I say to you, do not worry about your life, what you will eat or what you will drink; nor about your body, what you will put on. Is not life more than food and the body more than clothing?",
+    "NIV": "25 “Therefore I tell you, do not worry about your life, what you will eat or drink; or about your body, what you will wear. Is not life more than food, and the body more than clothes?",
+    "ESV": "25 “Therefore I tell you, do not be anxious about your life, what you will eat or what you will drink, nor about your body, what you will wear. Is not life more than food, and the body more than clothing?",
+    "AMP": "25 “Therefore I tell you, stop being worried or anxious (perpetually uneasy, distracted) about your life, as to what you will eat or what you will drink; nor about your body, as to what you will wear. Is not life more than food, and the body more than clothing?",
+    "NLT": "25 “That is why I tell you not to worry about everyday life—whether you have enough food and drink, or enough clothes to wear. Isn’t life more than food, and your body more than clothing?",
+    "MSG": "25 “If you decide for God, living a life of God-worship, it follows that you don’t fuss about what’s on the table at mealtimes or whether the clothes in your closet are in fashion. There is far more to your life than the food you put in your stomach, more to your outer appearance than the clothes you hang on your body."
   },
 
-  "Matthew 4:13-16": {
-    "KJV": "13 And leaving Nazareth, he came and dwelt in Capernaum, which is upon the sea coast, in the borders of Zabulon and Nephthalim: 14 That it might be fulfilled which was spoken by Esaias the prophet, saying, 15 The land of Zabulon, and the land of Nephthalim, by the way of the sea, beyond Jordan, Galilee of the Gentiles; 16 The people which sat in darkness saw great light; and to them which sat in the region and shadow of death light is sprung up.",
-    "NKJV": "13 And leaving Nazareth, He came and dwelt in Capernaum, which is by the sea, in the regions of Zebulun and Naphtali, 14 that it might be fulfilled which was spoken by Isaiah the prophet, saying: 15 “The land of Zebulun and the land of Naphtali, By the way of the sea, beyond the Jordan, Galilee of the Gentiles: 16 The people who sat in darkness have seen a great light, And upon those who sat in the region and shadow of death Light has dawned.”",
-    "NIV": "13 Leaving Nazareth, he went and lived in Capernaum, which was by the lake in the area of Zebulun and Naphtali— 14 to fulfill what was said through the prophet Isaiah: 15 “Land of Zebulun and land of Naphtali, the Way of the Sea, beyond the Jordan, Galilee of the Gentiles— 16 the people living in darkness have seen a great light; on those living in the land of the shadow of death a light has dawned.”",
-    "ESV": "13 And leaving Nazareth he went and lived in Capernaum by the sea, in the territory of Zebulun and Naphtali, 14 so that what was spoken by the prophet Isaiah might be fulfilled: 15 “The land of Zebulun and the land of Naphtali, the way of the sea, beyond the Jordan, Galilee of the Gentiles— 16 the people dwelling in darkness have seen a great light, and for those dwelling in the region and shadow of death, on them a light has dawned.”",
-    "AMP": "13 And leaving Nazareth, He went and settled in Capernaum, which is by the sea, in the country of Zebulun and Naphtali. 14 This was to fulfill what was spoken by the prophet Isaiah: 15 “The land of Zebulun and the land of Naphtali, by the way of the sea, beyond the Jordan, Galilee of the Gentiles (non-Jews)— 16 The people who were sitting (living) in spiritual darkness have seen a great Light, and for those who were sitting (living) in the region and shadow of [spiritual] death, upon them a Light has dawned.”",
-    "NLT": "13 He went first to Nazareth, then left there and moved to Capernaum, beside the Sea of Galilee, in the region of Zebulun and Naphtali. 14 This fulfilled what God said through the prophet Isaiah: 15 “In the land of Zebulun and of Naphtali, beside the sea, beyond the Jordan River, in Galilee where so many Gentiles live, 16 the people who sat in darkness have seen a great light. And for those who lived in the land where death casts its shadow, a light has shined.”",
-    "MSG": "13-16 He left Nazareth and moved to Capernaum, alongside the Sea of Galilee, at the crossroads of Zebulun and Naphtali. This moved realized Isaiah’s prophecy: Land of Zebulun, land of Naphtali, road to the sea, over Jordan, Galilee, crossroads for the nations. People sitting out in the dark saw a huge light; sitting in that black-hole territory of death, they got fresh light, dawned for them."
+  "Matthew 6:26": {
+    "KJV": "26 Behold the fowls of the air: for they sow not, neither do they reap, nor gather into barns; yet your heavenly Father feedeth them. Are ye not much better than they?",
+    "NKJV": "26 Look at the birds of the air, for they neither sow nor reap nor gather into barns; yet your heavenly Father feeds them. Are you not of more value than they?",
+    "NIV": "26 Look at the birds of the air; they do not sow or reap or store away in barns, and yet your heavenly Father feeds them. Are you not much more valuable than they?",
+    "ESV": "26 Look at the birds of the air: they neither sow nor reap nor gather into barns, and yet your heavenly Father feeds them. Are you not of more value than they?",
+    "AMP": "26 Look at the birds of the air; they neither sow [seed] nor reap [the harvest] nor gather [the crops] into barns, and yet your heavenly Father keeps feeding them. Are you not worth much more than they?",
+    "NLT": "26 Look at the birds. They don’t plant or harvest or store food in barns, for your heavenly Father feeds them. And aren’t you far more valuable to him than they are?",
+    "MSG": "26 Look at the birds, free and unfettered, not tied down to a job description, careless in the care of God. And you count far more to him than birds."
   },
 
-  "Mark 2:1": {
-    "KJV": "1 And again he entered into Capernaum after some days; and it was noised that he was in the house.",
-    "NKJV": "1 And again He entered Capernaum after some days, and it was heard that He was in the house.",
-    "NIV": "1 A few days later, when Jesus again entered Capernaum, the people heard that he had come home.",
-    "ESV": "1 And when he returned to Capernaum after some days, it was reported that he was at home.",
-    "AMP": "1 When Jesus returned to Capernaum a few days later, the news went around that He was at home.",
-    "NLT": "1 When Jesus returned to Capernaum several days later, the news spread quickly that he was back home.",
-    "MSG": "1 After a few days, Jesus went back to Capernaum, and word got around that he was back home."
+  "Matthew 6:28": {
+    "KJV": "28 And why take ye thought for raiment? Consider the lilies of the field, how they grow; they toil not, neither do they spin:",
+    "NKJV": "28 “So why do you worry about clothing? Consider the lilies of the field, how they grow: they neither toil nor spin;",
+    "NIV": "28 “And why do you worry about clothes? See how the flowers of the field grow. They do not labor or spin.",
+    "ESV": "28 And why are you anxious about clothing? Consider the lilies of the field, how they grow: they neither toil nor spin,",
+    "AMP": "28 And why are you worried about clothing? See how the lilies and wildflowers of the field grow; they do not labor nor do they spin [wool to make clothing],",
+    "NLT": "28 “And why worry about your clothing? Look at the lilies of the field and how they grow. They don’t work or make their clothing,",
+    "MSG": "28 Instead of looking at the fashions, walk out into the fields and look at the wildflowers. They never primp or shop, but have you ever seen color and design quite like it?"
   },
 
-  "1 Chronicles 1:13": {
-    "KJV": "13 And Mizraim begat Ludim, and Anamim, and Lehabim, and Naphtuhim,",
-    "NKJV": "13 Mizraim begat Ludim, Anamim, Lehabim, Naphtuhim,",
-    "NIV": "13 Mizraim was the father of the Ludites, Anamites, Lehabites, Naphtuhites,",
-    "ESV": "13 Mizraim fathered Ludim, Anamim, Lehabim, Naphtuhim,",
-    "AMP": "13 Mizraim was the father of Ludim, Anamim, Lehabim, Naphtuhim,",
-    "NLT": "13 Mizraim was the ancestor of the Ludites, Anamites, Lehabites, Naphtuhites,",
-    "MSG": "13 Mizraim was the ancestor of the Ludim, the Anamim, the Lehabim, the Naphtuhim,"
+  "Matthew 6:27": {
+    "KJV": "27 Which of you by taking thought can add one cubit unto his stature?",
+    "NKJV": "27 Which of you by worrying can add one cubit to his stature?",
+    "NIV": "27 Can any one of you by worrying add a single hour to your life?",
+    "ESV": "27 And which of you by being anxious can add a single hour to his span of life?",
+    "AMP": "27 And who of you by being worried can add one hour to his [long] life?",
+    "NLT": "27 Can all your worries add a single moment to your life?",
+    "MSG": "27 Has anyone by fussing in front of the mirror ever gotten taller by so much as an inch?"
   },
 
-  "Genesis 19:24-25": {
-    "KJV": "24 Then the Lord rained upon Sodom and upon Gomorrah brimstone and fire from the Lord out of heaven; 25 And he overthrew those cities, and all the plain, and all the inhabitants of the cities, and that which grew upon the ground.",
-    "NKJV": "24 Then the Lord rained brimstone and fire on Sodom and Gomorrah, from the Lord out of heaven. 25 So He overthrew those cities, all the plain, all the inhabitants of the cities, and what grew on the ground.",
-    "NIV": "24 Then the Lord rained down burning sulfur on Sodom and Gomorrah—from the Lord out of the heavens. 25 Thus he overthrew those cities and the entire plain, destroying all those living in the cities—and also the vegetation in the land.",
-    "ESV": "24 Then the Lord rained on Sodom and Gomorrah sulfur and fire from the Lord out of heaven. 25 And he overthrew those cities, and all the valley, and all the inhabitants of the cities, and what grew on the ground.",
-    "AMP": "24 Then the Lord rained brimstone and fire on Sodom and on Gomorrah from the Lord out of heaven, 25 and He overthrew (demolished) those cities, and the entire valley, and all the inhabitants of the cities, and whatever grew on the ground.",
-    "NLT": "24 Then the Lord rained down fire and burning sulfur from the sky on Sodom and Gomorrah. 25 He utterly destroyed them and the other cities of the plain, wiping out all the people and every bit of vegetation.",
-    "MSG": "24-25 Then God rained brimstone and fire down on Sodom and Gomorrah—a river of lava from God out of the sky!—and overthrew those cities and the entire plain and everyone who lived in the cities, everything that grew from the ground."
+  "Genesis 2:8": {
+    "KJV": "8 And the Lord God planted a garden eastward in Eden; and there he put the man whom he had formed.",
+    "NKJV": "8 The Lord God planted a garden eastward in Eden, and there He put the man whom He had formed.",
+    "NIV": "8 Now the Lord God had planted a garden in the east, in Eden; and there he put the man he had formed.",
+    "ESV": "8 And the Lord God planted a garden in Eden, in the east, and there he put the man whom he had formed.",
+    "AMP": "8 And the Lord God planted a garden toward the east, in Eden [a land of happiness and plenty]; and there He put the man whom He had formed (fashioned, constituted).",
+    "NLT": "8 Then the Lord God planted a garden in Eden in the east, and there he placed the man he had made.",
+    "MSG": "8 Then God planted a garden in Eden, in the east. He put the Man he had just made in it."
   },
 
-  "Matthew 11:22-24": {
-    "KJV": "22 But I say unto you, It shall be more tolerable for Tyre and Sidon at the day of judgment, than for you. 23 And thou, Capernaum, which art exalted unto heaven, shalt be brought down to hell: for if the mighty works, which have been done in thee, had been done in Sodom, it would have remained until this day. 24 But I say unto you, That it shall be more tolerable for the land of Sodom in the day of judgment, than for thee.",
-    "NKJV": "22 But I say to you, it will be more tolerable for Tyre and Sidon in the day of judgment than for you. 23 And you, Capernaum, who are exalted to heaven, will be brought down to Hades; for if the mighty works which were done in you had been done in Sodom, it would have remained until this day. 24 But I say to you that it shall be more tolerable for the land of Sodom in the day of judgment than for you.”",
-    "NIV": "22 But I tell you, it will be more bearable for Tyre and Sidon on the day of judgment than for you. 23 And you, Capernaum, will you be lifted to the heavens? No, you will go down to the depths. If the miracles that were performed in you had been performed in Sodom, it would have remained to this day. 24 But I tell you that it will be more bearable for Sodom on the day of judgment than for you.”",
-    "ESV": "22 But I tell you, it will be more bearable on the day of judgment for Tyre and Sidon than for you. 23 And you, Capernaum, will you be exalted to heaven? You will be brought down to Hades. For if the mighty works done in you had been done in Sodom, it would have remained until this day. 24 But I tell you that it will be more tolerable on the day of judgment for the land of Sodom than for you.”",
-    "AMP": "22 Nevertheless I say to you, it will be more tolerable for Tyre and Sidon on the day of judgment than for you. 23 And you, Capernaum, will you be exalted to heaven? You will descend to Hades; for if the miracles done in you had been done in Sodom, it would have remained until this day. 24 But I say to you that it will be more tolerable for the land of Sodom on the day of judgment, than for you.”",
-    "NLT": "22 I tell you, Tyre and Sidon will be better off on judgment day than you. 23 “And you people of Capernaum, will you be honored in heaven? No, you will go down to the place of the dead. For if the miracles I did in you had been done in wicked Sodom, it would still be here today. 24 I tell you, even Sodom will be better off on judgment day than you.”",
-    "MSG": "22 At Judgment Day they’ll get off easy compared to you. 23-24 And Capernaum! With your head in the clouds, do you think you’ll sit on the highest council of heaven? You’re going to end up in the abyss. If Sodom had just seen what you’ve seen, she’d still be on the map. At Judgment Day they’ll get off easy compared to you.”"
-  },
-  "Matthew 11:20": {
-    "KJV": "20 Then began he to upbraid the cities wherein most of his mighty works were done, because they repented not:",
-    "NKJV": "20 Then He began to rebuke the cities in which most of His mighty works had been done, because they did not repent:",
-    "NIV": "20 Then Jesus began to denounce the towns in which most of his miracles had been performed, because they did not repent.",
-    "ESV": "20 Then he began to denounce the cities where most of his mighty works had been done, because they did not repent.",
-    "AMP": "20 Then He began to denounce the cities in which most of His miracles had been done, because they did not repent.",
-    "NLT": "20 Then Jesus began to denounce the towns where he had done so many of his miracles, because they hadn’t repented of their sins and turned to God.",
-    "MSG": "20 Next Jesus began to denouncing the towns where most of his miracles had been done, because they hadn’t turned to God."
+  "Matthew 6:31-32": {
+    "KJV": "31 Therefore take no thought, saying, What shall we eat? or, What shall we drink? or, Wherewithal shall we be clothed? 32 (For after all these things do the Gentiles seek:) for your heavenly Father knoweth that ye have need of all these things.",
+    "NKJV": "31 “Therefore do not worry, saying, ‘What shall we eat?’ or ‘What shall we drink?’ or ‘What shall we wear?’ 32 For after all these things the Gentiles seek. For your heavenly Father knows that you need all these things.",
+    "NIV": "31 So do not worry, saying, ‘What shall we eat?’ or ‘What shall we drink?’ or ‘What shall we wear?’ 32 For the pagans run after all these things, and your heavenly Father knows that you need them.",
+    "ESV": "31 Therefore do not be anxious, saying, ‘What shall we eat?’ or ‘What shall we drink?’ or ‘What shall we wear?’ 32 For the Gentiles seek after all these things, and your heavenly Father knows that you need them all.",
+    "AMP": "31 Therefore do not worry or be anxious (perpetually uneasy, distracted), saying, ‘What are we going to eat?’ or ‘What are we going to drink?’ or ‘What are we going to wear?’ 32 For the [pagan] Gentiles eagerly seek all these things; but your heavenly Father knows that you need them.",
+    "NLT": "31 “So don’t worry about these things, saying, ‘What will we eat? What will we drink? What will we wear?’ 32 These things dominate the thoughts of unbelievers, but your heavenly Father already knows all your needs.",
+    "MSG": "31-32 What I’m trying to do here is to get you to relax, to not be so preoccupied with getting, so you can respond to God’s giving. People who don’t know God and the way he works fuss over these things, but you know both God and how he works."
   },
 
-  "Luke 13:4-5": {
-    "KJV": "4 Or those eighteen, upon whom the tower in Siloam fell, and slew them, think ye that they were sinners above all men that dwelt in Jerusalem? 5 I tell you, Nay: but, except ye repent, ye shall all likewise perish.",
-    "NKJV": "4 Or those eighteen on whom the tower in Siloam fell and killed them, do you think that they were worse sinners than all other men who dwelt in Jerusalem? 5 I tell you, no; but unless you repent you will all likewise perish.”",
-    "NIV": "4 Or those eighteen who died when the tower in Siloam fell on them—do you think they were guiltier than all the others living in Jerusalem? 5 I tell you, no! But unless you repent, you too will all perish.”",
-    "ESV": "4 Or those eighteen on whom the tower in Siloam fell and killed them: do you think that they were worse offenders than all the others who lived in Jerusalem? 5 No, I tell you; but unless you repent, you will all likewise perish.”",
-    "AMP": "4 Or those eighteen on whom the tower in Siloam fell and killed them: do you think that they were worse sinners than all the others who lived in Jerusalem? 5 I tell you, no; but unless you repent [change your old way of thinking, turn from your sinful ways and live changed lives], you will all likewise perish.”",
-    "NLT": "4 And what about the eighteen people who died when the tower in Siloam fell on them? Were they the worst sinners in Jerusalem? 5 No, and I tell you again that unless you repent, you will perish, too.”",
-    "MSG": "4-5 And what about the eighteen people who died when the Tower of Siloam fell on them? Do you think they were more bad than any other people living in Jerusalem? No. And I’m telling you that if you don’t change your ways, you’ll end up the same way.”"
-  },
-
-  "Revelation 3:22": {
-    "KJV": "22 He that hath an ear, let him hear what the Spirit saith unto the churches.",
-    "NKJV": "22 “He who has an ear, let him hear what the Spirit says to the churches.” ’ ”",
-    "NIV": "22 Whoever has ears, let them hear what the Spirit says to the churches.”",
-    "ESV": "22 He who has an ear, let him hear what the Spirit says to the churches.’”",
-    "AMP": "22 He who has an ear, let him hear and heed what the Spirit says to the churches.’”",
-    "NLT": "22 “Anyone with ears to hear must listen to the Spirit and understand what he is saying to the churches.”",
-    "MSG": "22 “Are your ears awake? Listen. Listen to the Wind Words, the Spirit blowing through the churches.”"
+  "Matthew 6:30": {
+    "KJV": "30 Wherefore, if God so clothe the grass of the field, which to day is, and to morrow is cast into the oven, shall he not much more clothe you, O ye of little faith?",
+    "NKJV": "30 Now if God so clothes the grass of the field, which today is, and tomorrow is thrown into the oven, will He not much more clothe you, O you of little faith?",
+    "NIV": "30 If that is how God clothes the grass of the field, which is here today, and tomorrow is thrown into the fire, will he not much more clothe you—you of little faith?",
+    "ESV": "30 But if God so clothes the grass of the field, which today is alive and tomorrow is thrown into the oven, will he not much more clothe you, O you of little faith?",
+    "AMP": "30 But if God so clothes the grass of the field, which is alive and green today and tomorrow is [cut and] thrown into the furnace, will He not much more clothe you? You of little faith!",
+    "NLT": "30 And if God cares so wonderfully for wildflowers that are here today and thrown into the fire tomorrow, he will certainly care for you. Why do you have so little faith?",
+    "MSG": "30 If God gives such attention to the appearance of wildflowers—most of which are never even seen—don’t you think he’ll attend to you, take pride in you, do his best for you?"
   }
 };
 
 
+// const quizQuestions = [
+//     {
+//         q: "What is the main theme or title of this lesson?",
+//         a: [
+//             "The Power of Forgiveness",
+//             "Penalty For Unyielding To God",
+//             "The Blessings of Obedience",
+//             "The History of Galilee"
+//         ],
+//         correct: 1
+//     },
+//     {
+//         q: "According to the Introduction, what is the ultimate aim of every miracle and blessing from God?",
+//         a: [
+//             "To make us famous",
+//             "To solve all financial problems",
+//             "To return man to God in a restoration exercise",
+//             "To prove that Christians are superior"
+//         ],
+//         correct: 2
+//     },
+//     {
+//         q: "In this lesson, what do the mentioned cities (Chorazin, Bethsaida, etc.) represent?",
+//         a: [
+//             "Historical landmarks only",
+//             "Individuals and families who received God’s blessing but turned their backs on Him",
+//             "The only places where Jesus preached",
+//             "Ancient trade routes"
+//         ],
+//         correct: 1
+//     },
+//     {
+//         q: "What does the city 'Bethsaida' mean and what does it represent in the lesson?",
+//         a: [
+//             "House of Bread; represents prosperity",
+//             "Fortified city; represents arrogance",
+//             "House of Fishing; represents those delivered from struggling who now ignore God",
+//             "City of Palms; represents peace"
+//         ],
+//         correct: 2
+//     },
+//     {
+//         q: "Which city is described as the headquarters of Jesus' earthly ministry?",
+//         a: [
+//             "Sodom",
+//             "Tyre",
+//             "Capernaum",
+//             "Sidon"
+//         ],
+//         correct: 2
+//     },
+//     {
+//         q: "What character trait of the city of Tyre led God to use conquerors like Alexander the Great to wipe it out?",
+//         a: [
+//             "Arrogance",
+//             "Poverty",
+//             "Lack of intelligence",
+//             "Kindness"
+//         ],
+//         correct: 0
+//     },
+//     {
+//         q: "The lesson 'THE DENOUNCE' suggests that God does what to the ungrateful?",
+//         a: [
+//             "Forces them to obey",
+//             "Openly withdraws from them",
+//             "Gives them more miracles",
+//             "Changes His mind about judgment"
+//         ],
+//         correct: 1
+//     },
+//     {
+//         q: "According to 'GOD’S CONCENTRATION,' why have many received greater attention from God?",
+//         a: [
+//             "Because they are better than others",
+//             "Due to the nature of their problems",
+//             "Because they paid for it",
+//             "By accident"
+//         ],
+//         correct: 1
+//     },
+//     {
+//         q: "What is the memory verse for this lesson?",
+//         a: [
+//             "John 3:16",
+//             "Psalm 23:1",
+//             "Matthew 22:37",
+//             "Genesis 1:1"
+//         ],
+//         correct: 2
+//     },
+//     {
+//         q: "According to the conclusion and Luke 13:4-5, what does God expect from those who receive His blessings?",
+//         a: [
+//             "That they should become wealthy",
+//             "That they should yield themselves to Him",
+//             "That they should build large monuments",
+//             "That they should stop working"
+//         ],
+//         correct: 1
+//     }
+// ];
 const quizQuestions = [
     {
         q: "What is the main theme or title of this lesson?",
         a: [
-            "The Power of Forgiveness",
             "Penalty For Unyielding To God",
-            "The Blessings of Obedience",
-            "The History of Galilee"
+            "Do The First Thing First (Part 1)",
+            "The Power of Faith",
+            "God's Judgment on Cities"
         ],
         correct: 1
     },
     {
-        q: "According to the Introduction, what is the ultimate aim of every miracle and blessing from God?",
+        q: "According to the introduction, what should man primarily live for?",
         a: [
-            "To make us famous",
-            "To solve all financial problems",
-            "To return man to God in a restoration exercise",
-            "To prove that Christians are superior"
+            "Material success",
+            "Personal happiness",
+            "God’s pleasure",
+            "Fame and recognition"
         ],
         correct: 2
     },
     {
-        q: "In this lesson, what do the mentioned cities (Chorazin, Bethsaida, etc.) represent?",
+        q: "What is the memory verse of this lesson?",
         a: [
-            "Historical landmarks only",
-            "Individuals and families who received God’s blessing but turned their backs on Him",
-            "The only places where Jesus preached",
-            "Ancient trade routes"
+            "Matthew 6:33",
+            "James 4:8",
+            "Revelation 4:11",
+            "Genesis 2:8"
         ],
         correct: 1
     },
     {
-        q: "What does the city 'Bethsaida' mean and what does it represent in the lesson?",
+        q: "According to the lesson, what problem did many followers of Christ have?",
         a: [
-            "House of Bread; represents prosperity",
-            "Fortified city; represents arrogance",
-            "House of Fishing; represents those delivered from struggling who now ignore God",
-            "City of Palms; represents peace"
+            "They did not believe in God",
+            "They were too focused on material things",
+            "They refused to pray",
+            "They lacked knowledge of scripture"
+        ],
+        correct: 1
+    },
+    {
+        q: "What does Jesus teach about worry in Matthew 6:25?",
+        a: [
+            "It helps solve problems",
+            "It adds to your life",
+            "You should not be worried",
+            "It is necessary for success"
         ],
         correct: 2
     },
     {
-        q: "Which city is described as the headquarters of Jesus' earthly ministry?",
+        q: "What example did Jesus use to show God's provision?",
         a: [
-            "Sodom",
-            "Tyre",
-            "Capernaum",
-            "Sidon"
+            "Kings and rulers",
+            "Birds and flowers",
+            "Farmers and traders",
+            "Soldiers and workers"
+        ],
+        correct: 1
+    },
+    {
+        q: "According to the lesson, what effect do anxious thoughts have?",
+        a: [
+            "They increase wisdom",
+            "They add to life",
+            "They subtract and can lead to sin and sickness",
+            "They bring success"
         ],
         correct: 2
     },
     {
-        q: "What character trait of the city of Tyre led God to use conquerors like Alexander the Great to wipe it out?",
+        q: "Why is provision important to God according to the lesson?",
         a: [
-            "Arrogance",
-            "Poverty",
-            "Lack of intelligence",
-            "Kindness"
-        ],
-        correct: 0
-    },
-    {
-        q: "The lesson 'THE DENOUNCE' suggests that God does what to the ungrateful?",
-        a: [
-            "Forces them to obey",
-            "Openly withdraws from them",
-            "Gives them more miracles",
-            "Changes His mind about judgment"
+            "Because man demanded it",
+            "Because God made man and placed him in a garden",
+            "Because angels need it",
+            "Because it increases wealth"
         ],
         correct: 1
     },
     {
-        q: "According to 'GOD’S CONCENTRATION,' why have many received greater attention from God?",
+        q: "What assurance does the lesson give about God and our needs?",
         a: [
-            "Because they are better than others",
-            "Due to the nature of their problems",
-            "Because they paid for it",
-            "By accident"
+            "God ignores our needs",
+            "God knows our needs and will provide",
+            "God provides only for some people",
+            "God provides only after suffering"
         ],
         correct: 1
     },
     {
-        q: "What is the memory verse for this lesson?",
+        q: "According to the lesson, what is more valuable than material things?",
         a: [
-            "John 3:16",
-            "Psalm 23:1",
-            "Matthew 22:37",
-            "Genesis 1:1"
+            "Gold and silver",
+            "Education",
+            "Salvation and life",
+            "Fame"
         ],
         correct: 2
-    },
-    {
-        q: "According to the conclusion and Luke 13:4-5, what does God expect from those who receive His blessings?",
-        a: [
-            "That they should become wealthy",
-            "That they should yield themselves to Him",
-            "That they should build large monuments",
-            "That they should stop working"
-        ],
-        correct: 1
     }
 ];
 
@@ -343,116 +546,156 @@ const SundaySchoolApp = () => {
         prayerPoints: string[];
     };
     
-const [contentData, setContentData] = useState<ContentData>({
-    lessonDate: "March 22, 2026",
-    lessonTitle: "Penalty For Unyielding To God",
+
+
+
+
+
+    const [contentData, setContentData] = useState<ContentData>({
+    lessonDate: "March 29, 2026",
+    lessonTitle: "DO THE FIRST THING FIRST (PART 1)",
 
     memoryVerse:
-        "Jesus said unto him, Thou shall love the lord thy God with all thy heart and with all thy soul, and with all thy mind.",
-    memoryVerseRef: "Matthew 22:37",
+        "Draw nigh to God and he will draw nigh to you. Cleanse your hands, ye sinners; and purify your hearts, ye double minded. - James 4:8",
+    memoryVerseRef: "James 4:8",
 
-    introScriptures: ["Matthew 11:20-24"],
+    introScriptures: ["Matthew 6:25-34"],
 
-    lessonIntroScriptures: ["Matthew 11:20-24"],
+    lessonIntroScriptures: ["Matthew 6:25-34"],
 
     introduction:
-        "The fall of man is costing God a lot of resources to restore the earth. Every miracle, favour, blessing and benevolence is aimed at returning man to God in the restoration exercise. Your benefits are God profits. If you hinder his profits by unyielding to him despite his benefits, you will incur his wrath. God is sure prepared to frustrate the efforts of any man who frustrates his.",
+        "Almost everyone that returns to God through the Lord Jesus has a handful of needs that they require God to meet almost immediately. Only a few people seek God for what He wants of them and even fewer consider God’s concern. However, it is important to understand that man was created for God’s pleasure and not the other way round. Until God finds pleasure in you, you cannot find pleasure in Him.",
 
     aims:
-        "To warn those who mistreat God after receiving his attention.",
+        "To create a good relationship between man and his God.",
 
     objectives:
-        "To save the believer from unfailing impending doom for misconduct.",
+        "To achieve a double side pleasure that God delights to",
 
     lessonIntro:
-        "The text is a pointer to the LORD’S disappointment, displeasure and punitive plan concerning certain persons for their unexpected misbehavior inspite of his love. Let us consider what God is revealing in this lesson.",
+        "It is obvious that many followers of Christ then were so worried and anxious like our days about material things instead of seeking to please God. They realized that the more they sought for it the farther the substances were from them and were worried. Jesus was therefore addressing this audience of God's formula of receiving the things they so desired.",
 
     lessonPoints: [
         {
-            title: "THE REPRESENTATION:",
+            title: "CONSIDERING THE REALITIES:",
             content:
-                "The cities mentioned are representing different individual, families and place who have received God’s blessing and have turn their back on him.",
+                "There are things that are reflected in this text that the Lord wants us to consider",
             scriptures: [],
-            subPoints: [
+            // subPoints: [
+            //     {
+            //         title: "THOUGHTS AND WORRY",
+            //         content:
+            //             "Thoughts flow and appeal to a man. Do your best not to be worried about the issues in your mind – Vs 25",
+            //             scriptures: ["Matthew 6:25"]
+            //     },
+            //     {
+            //         title: "GOD CARES FOR CREATION",
+            //         content:
+            //             "Birds and flowers don't labour yet God takes care of them – Vs 26, 28",
+            //     },
+            //     {
+            //         title: "",
+            //         content:
+            //             "You are better and preferred; How much more will God provide for you – Vs 26",
+            //     },
+            //     {
+            //         title: "(d)",
+            //         content:
+            //             "Thoughts never add but subtracts in the ways of causing sin and sickness – Vs 27",
+            //     }
+            // ],
+              subPoints: [
                 {
-                    title: "CHORAZIN",
+                    title: "THOUGHTS AND WORRY",
                     content:
-                        "An unknown city in the Bible days that received God’s favours. Many of us were nobodies but God has now made somebody and yet despise him."
+                        "Thoughts flow and appeal to a man. Do your best not to worry about the issues in your mind.",
+                    scriptures: ["Matthew 6:25"]
                 },
                 {
-                    title: "BETHSAIDA",
+                    title: "GOD CARES FOR CREATION",
                     content:
-                        "Means an house of fishing. A city located in a DESERT place by the sea of Galilee characterized by struggling but touched by God. This place speaks of men delivered and established from suffering who now pays no attention to God.",
-                    scriptures: ["Mark 6:45", "Mark 8:22"]
+                        "Birds and flowers do not labour, yet God takes care of them.",
+                    scriptures: ["Matthew 6:26", "Matthew 6:28"]
                 },
                 {
-                    title: "CAPERNAUM",
+                    title: "YOUR VALUE",
                     content:
-                        "A city where Jesus established the headquarters of his earthly ministries. Where could be considered more favoured than a place where Jesus establish his HQTRS. This represents people that are highly favoured and blessed for grace’ sake yet treats God with contempt.",
-                    scriptures: ["Matthew 4:13-16", "Mark 2:1"]
+                        "You are better and more valued; how much more will God provide for you.",
+                    scriptures: ["Matthew 6:26"]
                 },
                 {
-                    title: "TYRE",
+                    title: "EFFECT OF WORRY",
                     content:
-                        "A greatly fortified city who sometimes controlled the rich commerce and treasures of the then world. Whose arrogance tried the patience of God and he used Nebuchadnezzar and Alexander the great at different times to wipe out."
-                },
-                {
-                    title: "SIDON",
-                    content:
-                        "Means fortified. A gentile tribe of Canaan that was destroyed for wickedness.",
-                    scriptures: ["1 Chronicles 1:13"]
-                },
-                {
-                    title: "SODOM",
-                    content:
-                        "The city of great wickedness that was destroy with fire.",
-                    scriptures: ["Genesis 19:24-25"]
+                        "Worry does not add anything but subtracts, leading to sin and sickness.",
+                    scriptures: ["Matthew 6:27"]
                 }
             ],
         },
+        // {
+        //     title: "PROVISION IS PARAMOUNT IN GOD'S HEART:",
+        //     content:
+        //         "God made man and gave him a garden and this is because provision is paramount in his heart for man – Gen 2:8. Yield yourself to him and wait for his provision. Let the revelation and facts Jesus gave below incite us to trust God to supply in his terms. That",
+        //     scriptures: [],
+        //     subPoints: [
+        //         {
+        //             title: "(a)",
+        //             content:
+        //                 "God knows your needs and he his too good and faithful to ignore it. Vs 31-32",
+        //         },
+        //         {
+        //             title: "(b)",
+        //             content:
+        //                 "God has a better package for mankind than birds and flowers. Work with this faith and you will reach the place of receiving – Vs 30",
+        //         },
+        //         {
+        //             title: "(c)",
+        //             content:
+        //                 "God has already given you what is best and more valuable. Your salvation and life is more valuable than materials you seek; because dead men don't seek things. God started to give the best to let us know that the less valuables are no stress to give.",
+        //         }
+        //     ],
+        // }
         {
-            title: "THE DENOUNCE:",
+            title: "PROVISION IS PARAMOUNT IN GOD’S HEART:",
             content:
-                "God clearly reveals here that he is openly withdrawing from the ungrateful.",
-            scriptures: ["Matthew 11:20"],
-            subPoints: [],
-        },
-        {
-            title: "GOD’S CONCENTRATION:",
-            content:
-                "Most of us have received a greater attention from God due to the nature of our problems yet we don’t treat him accordingly.",
-            scriptures: ["Matthew 11:20"],
-            subPoints: [],
-        },
-        {
-            title: "THE BENEVOLENCE:",
-            content:
-                "Whatever God does for you is expected to humble you and draw you closer to him but the case is a reverse for many people.",
-            scriptures: [],
-            subPoints: [],
-        },
-        {
-            title: "GOD’S MIND REVEALED:",
-            content:
-                "Judgment awaits those who receive God’s blessings but refuse to yield to him.",
-            scriptures: ["Matthew 11:22-24"],
-            subPoints: [],
+                "God created man and placed him in a garden, showing that provision is important to Him. We must yield to Him and trust His provision.",
+            scriptures: ["Genesis 2:8"],
+            subPoints: [
+                {
+                    title: "GOD KNOWS YOUR NEEDS",
+                    content:
+                        "God knows your needs and is too faithful to ignore them.",
+                    scriptures: ["Matthew 6:31-32"]
+                },
+                {
+                    title: "GOD’S BETTER PLAN",
+                    content:
+                        "God has a better plan for mankind than for birds and flowers. Trust Him and you will receive.",
+                    scriptures: ["Matthew 6:30"]
+                },
+                {
+                    title: "THE BEST GIFT",
+                    content:
+                        "God has already given you what is most valuable—your salvation and life. Material things are lesser and easier for Him to provide.",
+                    scriptures: []
+                }
+            ],
         }
+
+
     ],
 
     conclusion:
-        "City d, e, and f represent people judged and destroyed by God who by comparison could be better than you except for grace. God expects that those who receive his blessings should yield themselves to him.",
+        "It is easy to receive from God if we understand and walk with him.",
 
-    conclusionScriptures: ["Revelation 3:22"],
+    conclusionScriptures: [],
 
     prayerPoints: [
-        "Father, help me not to despise Your blessings in my life.",
-        "Lord, remove every form of ingratitude from my heart.",
-        "Father, help me to always yield myself to You.",
-        "Lord, draw me closer to You so that I will not lose Your favour."
+        "Father, help me to seek You above material things.",
+        "Lord, remove every worry from my heart.",
+        "Father, help me to trust in Your provision.",
+        "Lord, help me to value my salvation above all things."
     ],
 });
-
 
 
 
@@ -734,7 +977,7 @@ const [contentData, setContentData] = useState<ContentData>({
 
 
         if (appLoading) {
-    const animatedText = "Dancing in Fame and Glory".split("");
+    const animatedText = "Liberated Already".split("");
 
     return (
         <div className="fixed inset-0 bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-700 flex items-center justify-center z-50">
@@ -841,7 +1084,7 @@ const [contentData, setContentData] = useState<ContentData>({
                             Sunday School Lesson
                         </h1>
                         <p className="text-xl opacity-80">
-                            Penalty For Unyielding To God
+                            DO THE FIRST THING FIRST - PART 1
                         </p>
                     </div>
                     <div className="grid md:grid-cols-2 gap-6">
@@ -1113,19 +1356,19 @@ const [contentData, setContentData] = useState<ContentData>({
                                 </div>
                                 <div>
                                     <h3 className="text-2xl font-bold mb-3">
-                                        Text: Matthew 11:20-24
+                                        Text: Matthew 6:25-34
                                     </h3>
                                     <div className="flex gap-2 flex-wrap">
                                         <button
                                             onClick={() =>
                                                 showBibleVersions(
-                                                    "Matthew 11:20-24"
+                                                    "Matthew 6:25-34"
                                                 )
                                             }
                                             className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition flex items-center gap-2"
                                         >
                                         <BookOpen size={16} />
-                                            Read  Matthew 11:20-24
+                                            Read  Matthew 6:25-34
                                         </button>
 
                                     </div>
@@ -1706,7 +1949,7 @@ const [contentData, setContentData] = useState<ContentData>({
             
 
                       
-                        {activeTab === "application" && (
+                       {activeTab === "application" && (
     <div className="space-y-6">
         <h3 className="text-2xl font-bold mb-4">Personal Application</h3>
 
@@ -1719,13 +1962,13 @@ const [contentData, setContentData] = useState<ContentData>({
             } p-6 rounded-lg`}
         >
             <h4 className="text-xl font-semibold mb-4">
-                Self-Assessment: Yielding To God
+                Self-Assessment: Seeking God First
             </h4>
 
             <p className="mb-4">
-                On a scale of 1 to 10, how responsive are you to God's voice and
-                instructions after receiving His blessings and attention
-                (Matthew 11:20–24; Matthew 22:37)?
+                On a scale of 1 to 10, how well do you seek God first and trust
+                Him for your needs instead of worrying about material things
+                (Matthew 6:25–34)?
             </p>
 
             <div className="flex items-center gap-4">
@@ -1744,10 +1987,10 @@ const [contentData, setContentData] = useState<ContentData>({
 
             <p className="mt-3 text-sm italic">
                 {faithRating >= 8
-                    ? "Excellent! Continue loving and yielding to God wholeheartedly so that His blessings in your life will not be in vain."
+                    ? "Excellent! You are learning to trust God and seek Him first. Continue walking in this understanding."
                     : faithRating >= 5
-                    ? "You are making progress. Reflect on areas where you may still resist God's will and surrender them to Him."
-                    : "This is a wake-up call. Ask God for grace to repent and yield completely to Him before His patience turns to judgment."}
+                    ? "You are growing. Ask God to help you trust Him more and reduce worry in your life."
+                    : "This is a call to realign your priorities. Ask God to help you seek Him first and trust His provision."}
             </p>
         </div>
 
@@ -1760,7 +2003,7 @@ const [contentData, setContentData] = useState<ContentData>({
             } p-6 rounded-lg`}
         >
             <h4 className="text-xl font-semibold mb-4">
-                Personal Decisions: Yielding My Life To God
+                Personal Decisions: Seeking God First
             </h4>
 
             <div className="flex flex-col sm:flex-row gap-2 mb-4">
@@ -1768,7 +2011,7 @@ const [contentData, setContentData] = useState<ContentData>({
                     type="text"
                     value={commitmentInput}
                     onChange={(e) => setCommitmentInput(e.target.value)}
-                    placeholder="Write a personal decision (e.g., obey God's instructions promptly, appreciate His blessings, repent from stubbornness, seek Him daily, avoid ingratitude)..."
+                    placeholder="Write a personal decision (e.g., trust God instead of worrying, seek Him daily, depend on His provision, focus on pleasing Him)..."
                     className={`flex-1 px-4 py-2 rounded-lg border ${
                         darkMode
                             ? "bg-gray-800 border-gray-600"
@@ -1809,13 +2052,11 @@ const [contentData, setContentData] = useState<ContentData>({
             </div>
 
             <p className="mt-4 text-sm italic text-gray-500">
-                Cities like Chorazin, Bethsaida, and Capernaum experienced
-                great miracles yet failed to respond appropriately to God
-                (Matthew 11:20–24). God expects His blessings to draw us
-                closer to Him in humility and obedience. Do not allow
-                ingratitude or stubbornness to make you lose God's favour.
-                Make practical decisions today to love God with all your
-                heart, soul, and mind (Matthew 22:37).
+                Jesus teaches that life is more than food, clothing, and
+                material things. God cares for the birds and flowers, and you
+                are much more valuable than they are (Matthew 6:25–30). When you
+                seek God first and trust Him, He will provide all your needs.
+                Avoid worry and focus on pleasing God daily.
             </p>
         </div>
     </div>
