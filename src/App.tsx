@@ -52,431 +52,364 @@ type BibleVersions = {
 type ScriptureDB = Record<string, BibleVersions>;
 
 
-// const initialScriptureDB: ScriptureDB = {
-//   "Matthew 22:37": {
-//     "KJV": "37 Jesus said unto him, Thou shalt love the Lord thy God with all thy heart, and with all thy soul, and with all thy mind.",
-//     "NKJV": "37 Jesus said to him, ‘You shall love the Lord your God with all your heart, with all your soul, and with all your mind.’",
-//     "NIV": "37 Jesus replied: “‘Love the Lord your God with all your heart and with all your soul and with all your mind.’",
-//     "ESV": "37 And he said to him, “You shall love the Lord your God with all your heart and with all your soul and with all your mind.",
-//     "AMP": "37 And Jesus replied to him, “‘You shall love the Lord your God with all your heart, and with all your soul, and with all your mind.’",
-//     "NLT": "37 Jesus replied, “‘You must love the Lord your God with all your heart, all your soul, and all your mind.’",
-//     "MSG": "37 Jesus said, “‘Love the Lord your God with all your passion and prayer and intelligence.’"
-//   },
 
-//   "Matthew 11:20-24": {
-//     "KJV": "20 Then began he to upbraid the cities wherein most of his mighty works were done, because they repented not: 21 Woe unto thee, Chorazin! woe unto thee, Bethsaida! for if the mighty works, which were done in you, had been done in Tyre and Sidon, they would have repented long ago in sackcloth and ashes. 22 But I say unto you, It shall be more tolerable for Tyre and Sidon at the day of judgment, than for you. 23 And thou, Capernaum, which art exalted unto heaven, shalt be brought down to hell: for if the mighty works, which have been done in thee, had been done in Sodom, it would have remained until this day. 24 But I say unto you, That it shall be more tolerable for the land of Sodom in the day of judgment, than for thee.",
-//     "NKJV": "20 Then He began to rebuke the cities in which most of His mighty works had been done, because they did not repent: 21 “Woe to you, Chorazin! Woe to you, Bethsaida! For if the mighty works which were done in you had been done in Tyre and Sidon, they would have repented long ago in sackcloth and ashes. 22 But I say to you, it will be more tolerable for Tyre and Sidon in the day of judgment than for you. 23 And you, Capernaum, who are exalted to heaven, will be brought down to Hades; for if the mighty works which were done in you had been done in Sodom, it would have remained until this day. 24 But I say to you that it shall be more tolerable for the land of Sodom in the day of judgment than for you.”",
-//     "NIV": "20 Then Jesus began to denounce the towns in which most of his miracles had been performed, because they did not repent. 21 “Woe to you, Chorazin! Woe to you, Bethsaida! For if the miracles that were performed in you had been performed in Tyre and Sidon, they would have repented long ago in sackcloth and ashes. 22 But I tell you, it will be more bearable for Tyre and Sidon on the day of judgment than for you. 23 And you, Capernaum, will you be lifted to the heavens? No, you will go down to the depths. If the miracles that were performed in you had been performed in Sodom, it would have remained to this day. 24 But I tell you that it will be more bearable for Sodom on the day of judgment than for you.”",
-//     "ESV": "20 Then he began to denounce the cities where most of his mighty works had been done, because they did not repent. 21 “Woe to you, Chorazin! Woe to you, Bethsaida! For if the mighty works done in you had been done in Tyre and Sidon, they would have repented long ago in sackcloth and ashes. 22 But I tell you, it will be more bearable on the day of judgment for Tyre and Sidon than for you. 23 And you, Capernaum, will you be exalted to heaven? You will be brought down to Hades. For if the mighty works done in you had been done in Sodom, it would have remained until this day. 24 But I tell you that it will be more tolerable on the day of judgment for the land of Sodom than for you.”",
-//     "AMP": "20 Then He began to denounce the cities in which most of His miracles had been done, because they did not repent. 21 “Woe to you, Chorazin! Woe to you, Bethsaida! For if the miracles done in you had been done in Tyre and Sidon, they would have repented long ago in sackcloth and ashes. 22 Nevertheless I say to you, it will be more tolerable for Tyre and Sidon on the day of judgment than for you. 23 And you, Capernaum, will you be exalted to heaven? You will descend to Hades; for if the miracles done in you had been done in Sodom, it would have remained until this day. 24 But I say to you that it will be more tolerable for the land of Sodom on the day of judgment, than for you.”",
-//     "NLT": "20 Then Jesus began to denounce the towns where he had done so many of his miracles, because they hadn’t repented of their sins and turned to God. 21 “What sorrow awaits you, Chorazin and Bethsaida! For if the miracles I did in you had been done in wicked Tyre and Sidon, their people would have repented of their sins long ago, clothing themselves in burlap and throwing ashes on their heads to show their remorse. 22 I tell you, Tyre and Sidon will be better off on judgment day than you. 23 “And you people of Capernaum, will you be honored in heaven? No, you will go down to the place of the dead. For if the miracles I did in you had been done in wicked Sodom, it would still be here today. 24 I tell you, even Sodom will be better off on judgment day than you.”",
-//     "MSG": "20-22 Next Jesus began to denouncing the towns where most of his miracles had been done, because they hadn’t turned to God. “Doom to you, Chorazin! Doom to you, Bethsaida! If Tyre and Sidon had seen half of the miracles you’re seeing, they’d have been on their knees in a minute. At Judgment Day they’ll get off easy compared to you. 23-24 And Capernaum! With your head in the clouds, do you think you’ll sit on the highest council of heaven? You’re going to end up in the abyss. If Sodom had just seen what you’ve seen, she’d still be on the map. At Judgment Day they’ll get off easy compared to you.”"
-//   },
-
-//   "Mark 6:45": {
-//     "KJV": "45 And straightway he constrained his disciples to get into the ship, and to go to the other side before unto Bethsaida, while he sent away the people.",
-//     "NKJV": "45 Immediately He made His disciples get into the boat and go before Him to the other side, to Bethsaida, while He sent the multitude away.",
-//     "NIV": "45 Immediately Jesus made his disciples get into the boat and go on ahead of him to Bethsaida, while he dismissed the crowd.",
-//     "ESV": "45 Immediately he made his disciples get into the boat and go before him to the other side, to Bethsaida, while he dismissed the crowd.",
-//     "AMP": "45 Immediately Jesus insisted that His disciples get into the boat and go ahead of Him to the other side to Bethsaida, while He was dismissing the crowd.",
-//     "NLT": "45 Immediately after this, Jesus insisted that his disciples get back into the boat and head across the lake to Bethsaida, while he sent the people home.",
-//     "MSG": "45 Right of the bat, Jesus made his disciples get into the boat and head for Bethsaida on the other side, while he dismissed the crowd."
-//   },
-
-//   "Mark 8:22": {
-//     "KJV": "22 And he cometh to Bethsaida; and they bring a blind man unto him, and besought him to touch him.",
-//     "NKJV": "22 Then He came to Bethsaida; and they brought a blind man to Him, and begged Him to touch him.",
-//     "NIV": "22 They came to Bethsaida, and some people brought a blind man and begged Jesus to touch him.",
-//     "ESV": "22 And they came to Bethsaida. And some people brought to him a blind man and begged him to touch him.",
-//     "AMP": "22 And they came to Bethsaida. And some people brought a blind man to Jesus and begged Him to touch him.",
-//     "NLT": "22 When they arrived at Bethsaida, some people brought a blind man to Jesus, and they begged him to touch the man and heal him.",
-//     "MSG": "22 They arrived at Bethsaida. Some people brought a blind man and begged him to touch him."
-//   },
-
-//   "Matthew 4:13-16": {
-//     "KJV": "13 And leaving Nazareth, he came and dwelt in Capernaum, which is upon the sea coast, in the borders of Zabulon and Nephthalim: 14 That it might be fulfilled which was spoken by Esaias the prophet, saying, 15 The land of Zabulon, and the land of Nephthalim, by the way of the sea, beyond Jordan, Galilee of the Gentiles; 16 The people which sat in darkness saw great light; and to them which sat in the region and shadow of death light is sprung up.",
-//     "NKJV": "13 And leaving Nazareth, He came and dwelt in Capernaum, which is by the sea, in the regions of Zebulun and Naphtali, 14 that it might be fulfilled which was spoken by Isaiah the prophet, saying: 15 “The land of Zebulun and the land of Naphtali, By the way of the sea, beyond the Jordan, Galilee of the Gentiles: 16 The people who sat in darkness have seen a great light, And upon those who sat in the region and shadow of death Light has dawned.”",
-//     "NIV": "13 Leaving Nazareth, he went and lived in Capernaum, which was by the lake in the area of Zebulun and Naphtali— 14 to fulfill what was said through the prophet Isaiah: 15 “Land of Zebulun and land of Naphtali, the Way of the Sea, beyond the Jordan, Galilee of the Gentiles— 16 the people living in darkness have seen a great light; on those living in the land of the shadow of death a light has dawned.”",
-//     "ESV": "13 And leaving Nazareth he went and lived in Capernaum by the sea, in the territory of Zebulun and Naphtali, 14 so that what was spoken by the prophet Isaiah might be fulfilled: 15 “The land of Zebulun and the land of Naphtali, the way of the sea, beyond the Jordan, Galilee of the Gentiles— 16 the people dwelling in darkness have seen a great light, and for those dwelling in the region and shadow of death, on them a light has dawned.”",
-//     "AMP": "13 And leaving Nazareth, He went and settled in Capernaum, which is by the sea, in the country of Zebulun and Naphtali. 14 This was to fulfill what was spoken by the prophet Isaiah: 15 “The land of Zebulun and the land of Naphtali, by the way of the sea, beyond the Jordan, Galilee of the Gentiles (non-Jews)— 16 The people who were sitting (living) in spiritual darkness have seen a great Light, and for those who were sitting (living) in the region and shadow of [spiritual] death, upon them a Light has dawned.”",
-//     "NLT": "13 He went first to Nazareth, then left there and moved to Capernaum, beside the Sea of Galilee, in the region of Zebulun and Naphtali. 14 This fulfilled what God said through the prophet Isaiah: 15 “In the land of Zebulun and of Naphtali, beside the sea, beyond the Jordan River, in Galilee where so many Gentiles live, 16 the people who sat in darkness have seen a great light. And for those who lived in the land where death casts its shadow, a light has shined.”",
-//     "MSG": "13-16 He left Nazareth and moved to Capernaum, alongside the Sea of Galilee, at the crossroads of Zebulun and Naphtali. This moved realized Isaiah’s prophecy: Land of Zebulun, land of Naphtali, road to the sea, over Jordan, Galilee, crossroads for the nations. People sitting out in the dark saw a huge light; sitting in that black-hole territory of death, they got fresh light, dawned for them."
-//   },
-
-//   "Mark 2:1": {
-//     "KJV": "1 And again he entered into Capernaum after some days; and it was noised that he was in the house.",
-//     "NKJV": "1 And again He entered Capernaum after some days, and it was heard that He was in the house.",
-//     "NIV": "1 A few days later, when Jesus again entered Capernaum, the people heard that he had come home.",
-//     "ESV": "1 And when he returned to Capernaum after some days, it was reported that he was at home.",
-//     "AMP": "1 When Jesus returned to Capernaum a few days later, the news went around that He was at home.",
-//     "NLT": "1 When Jesus returned to Capernaum several days later, the news spread quickly that he was back home.",
-//     "MSG": "1 After a few days, Jesus went back to Capernaum, and word got around that he was back home."
-//   },
-
-//   "1 Chronicles 1:13": {
-//     "KJV": "13 And Mizraim begat Ludim, and Anamim, and Lehabim, and Naphtuhim,",
-//     "NKJV": "13 Mizraim begat Ludim, Anamim, Lehabim, Naphtuhim,",
-//     "NIV": "13 Mizraim was the father of the Ludites, Anamites, Lehabites, Naphtuhites,",
-//     "ESV": "13 Mizraim fathered Ludim, Anamim, Lehabim, Naphtuhim,",
-//     "AMP": "13 Mizraim was the father of Ludim, Anamim, Lehabim, Naphtuhim,",
-//     "NLT": "13 Mizraim was the ancestor of the Ludites, Anamites, Lehabites, Naphtuhites,",
-//     "MSG": "13 Mizraim was the ancestor of the Ludim, the Anamim, the Lehabim, the Naphtuhim,"
-//   },
-
-//   "Genesis 19:24-25": {
-//     "KJV": "24 Then the Lord rained upon Sodom and upon Gomorrah brimstone and fire from the Lord out of heaven; 25 And he overthrew those cities, and all the plain, and all the inhabitants of the cities, and that which grew upon the ground.",
-//     "NKJV": "24 Then the Lord rained brimstone and fire on Sodom and Gomorrah, from the Lord out of heaven. 25 So He overthrew those cities, all the plain, all the inhabitants of the cities, and what grew on the ground.",
-//     "NIV": "24 Then the Lord rained down burning sulfur on Sodom and Gomorrah—from the Lord out of the heavens. 25 Thus he overthrew those cities and the entire plain, destroying all those living in the cities—and also the vegetation in the land.",
-//     "ESV": "24 Then the Lord rained on Sodom and Gomorrah sulfur and fire from the Lord out of heaven. 25 And he overthrew those cities, and all the valley, and all the inhabitants of the cities, and what grew on the ground.",
-//     "AMP": "24 Then the Lord rained brimstone and fire on Sodom and on Gomorrah from the Lord out of heaven, 25 and He overthrew (demolished) those cities, and the entire valley, and all the inhabitants of the cities, and whatever grew on the ground.",
-//     "NLT": "24 Then the Lord rained down fire and burning sulfur from the sky on Sodom and Gomorrah. 25 He utterly destroyed them and the other cities of the plain, wiping out all the people and every bit of vegetation.",
-//     "MSG": "24-25 Then God rained brimstone and fire down on Sodom and Gomorrah—a river of lava from God out of the sky!—and overthrew those cities and the entire plain and everyone who lived in the cities, everything that grew from the ground."
-//   },
-
-//   "Matthew 11:22-24": {
-//     "KJV": "22 But I say unto you, It shall be more tolerable for Tyre and Sidon at the day of judgment, than for you. 23 And thou, Capernaum, which art exalted unto heaven, shalt be brought down to hell: for if the mighty works, which have been done in thee, had been done in Sodom, it would have remained until this day. 24 But I say unto you, That it shall be more tolerable for the land of Sodom in the day of judgment, than for thee.",
-//     "NKJV": "22 But I say to you, it will be more tolerable for Tyre and Sidon in the day of judgment than for you. 23 And you, Capernaum, who are exalted to heaven, will be brought down to Hades; for if the mighty works which were done in you had been done in Sodom, it would have remained until this day. 24 But I say to you that it shall be more tolerable for the land of Sodom in the day of judgment than for you.”",
-//     "NIV": "22 But I tell you, it will be more bearable for Tyre and Sidon on the day of judgment than for you. 23 And you, Capernaum, will you be lifted to the heavens? No, you will go down to the depths. If the miracles that were performed in you had been performed in Sodom, it would have remained to this day. 24 But I tell you that it will be more bearable for Sodom on the day of judgment than for you.”",
-//     "ESV": "22 But I tell you, it will be more bearable on the day of judgment for Tyre and Sidon than for you. 23 And you, Capernaum, will you be exalted to heaven? You will be brought down to Hades. For if the mighty works done in you had been done in Sodom, it would have remained until this day. 24 But I tell you that it will be more tolerable on the day of judgment for the land of Sodom than for you.”",
-//     "AMP": "22 Nevertheless I say to you, it will be more tolerable for Tyre and Sidon on the day of judgment than for you. 23 And you, Capernaum, will you be exalted to heaven? You will descend to Hades; for if the miracles done in you had been done in Sodom, it would have remained until this day. 24 But I say to you that it will be more tolerable for the land of Sodom on the day of judgment, than for you.”",
-//     "NLT": "22 I tell you, Tyre and Sidon will be better off on judgment day than you. 23 “And you people of Capernaum, will you be honored in heaven? No, you will go down to the place of the dead. For if the miracles I did in you had been done in wicked Sodom, it would still be here today. 24 I tell you, even Sodom will be better off on judgment day than you.”",
-//     "MSG": "22 At Judgment Day they’ll get off easy compared to you. 23-24 And Capernaum! With your head in the clouds, do you think you’ll sit on the highest council of heaven? You’re going to end up in the abyss. If Sodom had just seen what you’ve seen, she’d still be on the map. At Judgment Day they’ll get off easy compared to you.”"
-//   },
-//   "Matthew 11:20": {
-//     "KJV": "20 Then began he to upbraid the cities wherein most of his mighty works were done, because they repented not:",
-//     "NKJV": "20 Then He began to rebuke the cities in which most of His mighty works had been done, because they did not repent:",
-//     "NIV": "20 Then Jesus began to denounce the towns in which most of his miracles had been performed, because they did not repent.",
-//     "ESV": "20 Then he began to denounce the cities where most of his mighty works had been done, because they did not repent.",
-//     "AMP": "20 Then He began to denounce the cities in which most of His miracles had been done, because they did not repent.",
-//     "NLT": "20 Then Jesus began to denounce the towns where he had done so many of his miracles, because they hadn’t repented of their sins and turned to God.",
-//     "MSG": "20 Next Jesus began to denouncing the towns where most of his miracles had been done, because they hadn’t turned to God."
-//   },
-
-//   "Luke 13:4-5": {
-//     "KJV": "4 Or those eighteen, upon whom the tower in Siloam fell, and slew them, think ye that they were sinners above all men that dwelt in Jerusalem? 5 I tell you, Nay: but, except ye repent, ye shall all likewise perish.",
-//     "NKJV": "4 Or those eighteen on whom the tower in Siloam fell and killed them, do you think that they were worse sinners than all other men who dwelt in Jerusalem? 5 I tell you, no; but unless you repent you will all likewise perish.”",
-//     "NIV": "4 Or those eighteen who died when the tower in Siloam fell on them—do you think they were guiltier than all the others living in Jerusalem? 5 I tell you, no! But unless you repent, you too will all perish.”",
-//     "ESV": "4 Or those eighteen on whom the tower in Siloam fell and killed them: do you think that they were worse offenders than all the others who lived in Jerusalem? 5 No, I tell you; but unless you repent, you will all likewise perish.”",
-//     "AMP": "4 Or those eighteen on whom the tower in Siloam fell and killed them: do you think that they were worse sinners than all the others who lived in Jerusalem? 5 I tell you, no; but unless you repent [change your old way of thinking, turn from your sinful ways and live changed lives], you will all likewise perish.”",
-//     "NLT": "4 And what about the eighteen people who died when the tower in Siloam fell on them? Were they the worst sinners in Jerusalem? 5 No, and I tell you again that unless you repent, you will perish, too.”",
-//     "MSG": "4-5 And what about the eighteen people who died when the Tower of Siloam fell on them? Do you think they were more bad than any other people living in Jerusalem? No. And I’m telling you that if you don’t change your ways, you’ll end up the same way.”"
-//   },
-
-//   "Revelation 3:22": {
-//     "KJV": "22 He that hath an ear, let him hear what the Spirit saith unto the churches.",
-//     "NKJV": "22 “He who has an ear, let him hear what the Spirit says to the churches.” ’ ”",
-//     "NIV": "22 Whoever has ears, let them hear what the Spirit says to the churches.”",
-//     "ESV": "22 He who has an ear, let him hear what the Spirit says to the churches.’”",
-//     "AMP": "22 He who has an ear, let him hear and heed what the Spirit says to the churches.’”",
-//     "NLT": "22 “Anyone with ears to hear must listen to the Spirit and understand what he is saying to the churches.”",
-//     "MSG": "22 “Are your ears awake? Listen. Listen to the Wind Words, the Spirit blowing through the churches.”"
-//   }
-// };
 const initialScriptureDB: ScriptureDB = {
-  "James 4:8": {
-    "KJV": "8 Draw nigh to God, and he will draw nigh to you. Cleanse your hands, ye sinners; and purify your hearts, ye double minded.",
-    "NKJV": "8 Draw near to God and He will draw near to you. Cleanse your hands, you sinners; and purify your hearts, you double-minded.",
-    "NIV": "8 Come near to God and he will come near to you. Wash your hands, you sinners, and purify your hearts, you double-minded.",
-    "ESV": "8 Draw near to God, and he will draw near to you. Cleanse your hands, you sinners, and purify your hearts, you double-minded.",
-    "AMP": "8 Draw near to God and He will draw near to you. Cleanse your hands, you sinners; and purify your hearts, you double-minded [wavering in self-control, divided in interests between God and the world].",
-    "NLT": "8 Come close to God, and God will come close to you. Wash your hands, you sinners; purify your hearts, for your loyalty is divided between God and the world.",
-    "MSG": "8 Say a quiet yes to God and he’ll be there in no time. Quit playing the field. Purify your inner life. Quit spiritual wavering."
+  "Matthew 5:48": {
+    "KJV": "Be ye therefore perfect, even as your Father which is in heaven is perfect.",
+    "NKJV": "Therefore you shall be perfect, just as your Father in heaven is perfect.",
+    "NIV": "Be perfect, therefore, as your heavenly Father is perfect.",
+    "ESV": "You therefore must be perfect, as your heavenly Father is perfect.",
+    "AMP": "You, therefore, must be perfect [growing into complete maturity of godliness in mind and character, having reached the proper height of virtue and integrity], as your heavenly Father is perfect.",
+    "NLT": "But you are to be perfect, even as your Father in heaven is perfect.",
+    "MSG": "In a word, what I’m saying is, Grow up. You’re kingdom subjects. Now live like it! Live out your God-created identity. Live generously and graciously toward others, the way God lives toward you."
   },
 
-  "Matthew 6:25-34": {
-    "KJV": "25 Therefore I say unto you, Take no thought for your life, what ye shall eat, or what ye shall drink; nor yet for your body, what ye shall put on. Is not the life more than meat, and the body than raiment? 26 Behold the fowls of the air: for they sow not, neither do they reap, nor gather into barns; yet your heavenly Father feedeth them. Are ye not much better than they? 27 Which of you by taking thought can add one cubit unto his stature? 28 And why take ye thought for raiment? Consider the lilies of the field, how they grow; they toil not, neither do they spin: 29 And yet I say unto you, That even Solomon in all his glory was not arrayed like one of these. 30 Wherefore, if God so clothe the grass of the field, which to day is, and to morrow is cast into the oven, shall he not much more clothe you, O ye of little faith? 31 Therefore take no thought, saying, What shall we eat? or, What shall we drink? or, Wherewithal shall we be clothed? 32 (For after all these things do the Gentiles seek:) for your heavenly Father knoweth that ye have need of all these things. 33 But seek ye first the kingdom of God, and his righteousness; and all these things shall be added unto you. 34 Take therefore no thought for the morrow: for the morrow shall take thought for the things of itself. Sufficient unto the day is the evil thereof.",
-    "NKJV": "25 “Therefore I say to you, do not worry about your life, what you will eat or what you will drink; nor about your body, what you will put on. Is not life more than food and the body more than clothing? 26 Look at the birds of the air, for they neither sow nor reap nor gather into barns; yet your heavenly Father feeds them. Are you not of more value than they? 27 Which of you by worrying can add one cubit to his stature? 28 “So why do you worry about clothing? Consider the lilies of the field, how they grow: they neither toil nor spin; 29 and yet I say to you that even Solomon in all his glory was not arrayed like one of these. 30 Now if God so clothes the grass of the field, which today is, and tomorrow is thrown into the oven, will He not much more clothe you, O you of little faith? 31 “Therefore do not worry, saying, ‘What shall we eat?’ or ‘What shall we drink?’ or ‘What shall we wear?’ 32 For after all these things the Gentiles seek. For your heavenly Father knows that you need all these things. 33 But seek first the kingdom of God and His righteousness, and all these things shall be added to you. 34 Therefore do not worry about tomorrow, for tomorrow will worry about its own things. Sufficient for the day is its own trouble.",
-    "NIV": "25 “Therefore I tell you, do not worry about your life, what you will eat or drink; or about your body, what you will wear. Is not life more than food, and the body more than clothes? 26 Look at the birds of the air; they do not sow or reap or store away in barns, and yet your heavenly Father feeds them. Are you not much more valuable than they? 27 Can any one of you by worrying add a single hour to your life? 28 “And why do you worry about clothes? See how the flowers of the field grow. They do not labor or spin. 29 Yet I tell you that not even Solomon in all his splendor was dressed like one of these. 30 If that is how God clothes the grass of the field, which is here today, and tomorrow is thrown into the fire, will he not much more clothe you—you of little faith? 31 So do not worry, saying, ‘What shall we eat?’ or ‘What shall we drink?’ or ‘What shall we wear?’ 32 For the pagans run after all these things, and your heavenly Father knows that you need them. 33 But seek first his kingdom and his righteousness, and all these things will be given to you as well. 34 Therefore do not worry about tomorrow, for tomorrow will worry about itself. Each day has enough trouble of its own.",
-    "ESV": "25 “Therefore I tell you, do not be anxious about your life, what you will eat or what you will drink, nor about your body, what you will wear. Is not life more than food, and the body more than clothing? 26 Look at the birds of the air: they neither sow nor reap nor gather into barns, and yet your heavenly Father feeds them. Are you not of more value than they? 27 And which of you by being anxious can add a single hour to his span of life? 28 And why are you anxious about clothing? Consider the lilies of the field, how they grow: they neither toil nor spin, 29 yet I tell you, even Solomon in all his glory was not arrayed like one of these. 30 But if God so clothes the grass of the field, which today is alive and tomorrow is thrown into the oven, will he not much more clothe you, O you of little faith? 31 Therefore do not be anxious, saying, ‘What shall we eat?’ or ‘What shall we drink?’ or ‘What shall we wear?’ 32 For the Gentiles seek after all these things, and your heavenly Father knows that you need them all. 33 But seek first the kingdom of God and his righteousness, and all these things will be added to you. 34 “Therefore do not be anxious about tomorrow, for tomorrow will be anxious for itself. Sufficient for the day is its own trouble.",
-    "AMP": "25 “Therefore I tell you, stop being worried or anxious (perpetually uneasy, distracted) about your life, as to what you will eat or what you will drink; nor about your body, as to what you will wear. Is not life more than food, and the body more than clothing? 26 Look at the birds of the air; they neither sow [seed] nor reap [the harvest] nor gather [the crops] into barns, and yet your heavenly Father keeps feeding them. Are you not worth much more than they? 27 And who of you by being worried can add one hour to his [long] life? 28 And why are you worried about clothing? See how the lilies and wildflowers of the field grow; they do not labor nor do they spin [wool to make clothing], 29 yet I say to you that not even Solomon in all his glory and splendor dressed himself like one of these. 30 But if God so clothes the grass of the field, which is alive and green today and tomorrow is [cut and] thrown into the furnace, will He not much more clothe you? You of little faith! 31 Therefore do not worry or be anxious (perpetually uneasy, distracted), saying, ‘What are we going to eat?’ or ‘What are we going to drink?’ or ‘What are we going to wear?’ 32 For the [pagan] Gentiles eagerly seek all these things; but your heavenly Father knows that you need them. 33 But first and most importantly seek (aim at, strive after) His kingdom and His righteousness [His way of doing and being right—the attitude and character of God], and all these things will be given to you also. 34 “So do not worry about tomorrow; for tomorrow will worry about itself. Each day has enough trouble of its own.",
-    "NLT": "25 “That is why I tell you not to worry about everyday life—whether you have enough food and drink, or enough clothes to wear. Isn’t life more than food, and your body more than clothing? 26 Look at the birds. They don’t plant or harvest or store food in barns, for your heavenly Father feeds them. And aren’t you far more valuable to him than they are? 27 Can all your worries add a single moment to your life? 28 “And why worry about your clothing? Look at the lilies of the field and how they grow. They don’t work or make their clothing, 29 yet Solomon in all his glory was not dressed as beautifully as they are. 30 And if God cares so wonderfully for wildflowers that are here today and thrown into the fire tomorrow, he will certainly care for you. Why do you have so little faith? 31 “So don’t worry about these things, saying, ‘What will we eat? What will we drink? What will we wear?’ 32 These things dominate the thoughts of unbelievers, but your heavenly Father already knows all your needs. 33 Seek the Kingdom of God above all else, and live righteously, and he will give you everything you need. 34 “So don’t worry about tomorrow, for tomorrow will bring its own worries. Today’s trouble is enough for today.",
-    "MSG": "25-26 “If you decide for God, living a life of God-worship, it follows that you don’t fuss about what’s on the table at mealtimes or whether the clothes in your closet are in fashion. There is far more to your life than the food you put in your stomach, more to your outer appearance than the clothes you hang on your body. Look at the birds, free and unfettered, not tied down to a job description, careless in the care of God. And you count far more to him than birds. 27-29 “Has anyone by fussing in front of the mirror ever gotten taller by so much as an inch? All this time and money wasted on fashion—do you think it makes that much difference? Instead of looking at the fashions, walk out into the fields and look at the wildflowers. They never primp or shop, but have you ever seen color and design quite like it? The ten best-dressed men and women in the country look shabby alongside them. 30-33 “If God gives such attention to the appearance of wildflowers—most of which are never even seen—don’t you think he’ll attend to you, take pride in you, do his best for you? What I’m trying to do here is to get you to relax, to not be so preoccupied with getting, so you can respond to God’s giving. People who don’t know God and the way he works fuss over these things, but you know both God and how he works. Steep your life in God-reality, God-initiative, God-provisions. Don’t worry about missing out. You’ll find all your everyday human concerns will be met. 34 “Give your entire attention to what God is doing right now, and don’t get worked up about what may or may not happen tomorrow. God will help you deal with whatever hard things come up when the time comes."
+  "Acts 4:13-14": {
+    "KJV": "13 Now when they saw the boldness of Peter and John, and perceived that they were unlearned and ignorant men, they marvelled; and they took knowledge of them, that they had been with Jesus. 14 And beholding the man which was healed standing with them, they could say nothing against it.",
+    "NKJV": "13 Now when they saw the boldness of Peter and John, and perceived that they were uneducated and untrained men, they marveled. And they realized that they had been with Jesus. 14 And seeing the man who had been healed standing with them, they could say nothing against it.",
+    "NIV": "13 When they saw the courage of Peter and John and realized that they were unschooled, ordinary men, they were astonished and they took note that these men had been with Jesus. 14 But since they could see the man who had been healed standing there with them, there was nothing they could say.",
+    "ESV": "13 Now when they saw the boldness of Peter and John, and perceived that they were uneducated, common men, they were astonished. And they recognized that they had been with Jesus. 14 But seeing the man who was healed standing beside them, they had nothing to say in opposition.",
+    "AMP": "13 Now when the men of the Sanhedrin saw the confidence and boldness of Peter and John, and grasped the fact that they were uneducated and untrained [ordinary] men, they were astounded, and began to recognize that they had been with Jesus. 14 And seeing the man who had been healed standing there with them, they had nothing to say in reply.",
+    "NLT": "13 The members of the council were amazed when they saw the boldness of Peter and John, for they could see that they were ordinary men with no special training in the Scriptures. They also recognized them as men who had been with Jesus. 14 But since they could see the man who had been healed standing right there among them, there was nothing the council could say.",
+    "MSG": "13-14 They couldn't take their eyes off them—Peter and John standing there so confident, so sure of themselves! Their fascination deepened when they realized these two were laymen with no training in Scripture or formal education. They recognized them as companions of Jesus, but with the man right before them, seeing him standing there so upright—so healed!—what could they say against that?"
+  },
+  "Titus 2:12": {
+    "KJV": "Teaching us that, denying ungodliness and worldly lusts, we should live soberly, righteously, and godly, in this present world;",
+    "NKJV": "teaching us that, denying ungodliness and worldly lusts, we should live soberly, righteously, and godly in the present age,",
+    "NIV": "It teaches us to say “No” to ungodliness and worldly passions, and to live self-controlled, upright and godly lives in this present age,",
+    "ESV": "training us to renounce ungodliness and worldly passions, and to live self-controlled, upright, and godly lives in the present age,",
+    "AMP": "it teaches us to reject ungodliness and worldly (immoral) desires, and to live sensible, upright, and godly lives [with a vortex of peace that centers on His Word and His power] in this present age,",
+    "NLT": "And we are instructed to turn from godless living and sinful pleasures. We should live in this evil world with wisdom, righteousness, and devotion to God,",
+    "MSG": "We’re being disciplined to say no to godless junk and to self-indulgent passions, and to say yes to a God-filled, God-honoring life in our day-to-day lives, right in the middle of the dark world of sin."
+  },
+  "Mark 3:14": {
+    "KJV": "And he ordained twelve, that they should be with him, and that he might send them forth to preach,",
+    "NKJV": "Then He appointed twelve, that they might be with Him and that He might send them out to preach,",
+    "NIV": "He appointed twelve that they might be with him and that he might send them out to preach",
+    "ESV": "And he appointed twelve (whom he also named apostles) so that they might be with him and he might send them out to preach",
+    "AMP": "And He appointed twelve [distinct companions], whom He also named apostles, so that they would be with Him [for instruction] and so that He could send them out to preach [the good news of salvation],",
+    "NLT": "Then he appointed twelve of them and called them his apostles. They were to accompany him, and he would send them out to preach,",
+    "MSG": "He settled on twelve, and designated them apostles. The plan was that they would be with him, and he would send them out to proclaim the Word"
+  },
+  
+  "Matthew 7:13-14": {
+    "KJV": "13 Enter ye in at the strait gate: for wide is the gate, and broad is the way, that leadeth to destruction, and many there be which go in thereat: 14 Because strait is the gate, and narrow is the way, which leadeth unto life, and few there be that find it.",
+    "NKJV": "13 “Enter by the narrow gate; for wide is the gate and broad is the way that leads to destruction, and there are many who go in by it. 14 Because narrow is the gate and difficult is the way which leads to life, and there are few who find it.",
+    "NIV": "13 “Enter through the narrow gate. For wide is the gate and broad is the road that leads to destruction, and many enter through it. 14 But small is the gate and narrow the road that leads to life, and only a few find it.",
+    "ESV": "13 “Enter by the narrow gate. For the gate is wide and the way is easy that leads to destruction, and those who enter by it are many. 14 For the gate is narrow and the way is hard that leads to life, and those who find it are few.",
+    "AMP": "13 “Enter through the narrow gate. For wide is the gate and broad and easy to travel is the path that leads the way to destruction and eternal loss, and there are many who enter through it. 14 But small is the gate and narrow and difficult to travel is the path that leads the way to [everlasting] life, and there are few who find it.",
+    "NLT": "13 “You can enter God’s Kingdom only through the narrow gate. The highway to hell is broad, and its gate is wide for the many who choose that way. 14 But the gateway to life is very narrow and the road is difficult, and only a few ever find it.",
+    "MSG": "13-14 “Don’t look for shortcuts to God. The market is flooded with surefire, easygoing formulas for a successful life that can be practiced in your spare time. Don’t fall for that stuff, even though crowds of people do. The way to life—to God!—is vigorous and requires total attention."
+  },
+  "Matthew 3:17": {
+    "KJV": "And lo a voice from heaven, saying, This is my beloved Son, in whom I am well pleased.",
+    "NKJV": "And suddenly a voice came from heaven, saying, “This is My beloved Son, in whom I am well pleased.”",
+    "NIV": "And a voice from heaven said, “This is my Son, whom I love; with him I am well pleased.”",
+    "ESV": "and behold, a voice from heaven said, “This is my beloved Son, with whom I am well pleased.”",
+    "AMP": "And behold, a voice from heaven said, “This is My beloved Son, in whom I am well-pleased and delighted.”",
+    "NLT": "And a voice from heaven said, “This is my dearly loved Son, who brings me great joy.”",
+    "MSG": "And then a voice from heaven said, “This is my Son, chosen and marked by my love, delight of my life.”"
   },
 
-  "Revelation 4:11": {
-    "KJV": "11 Thou art worthy, O Lord, to receive glory and honour and power: for thou hast created all things, and for thy pleasure they are and were created.",
-    "NKJV": "11 “You are worthy, O Lord, To receive glory and honor and power; For You created all things, And by Your will they exist and were created.”",
-    "NIV": "11 “You are worthy, our Lord and God, to receive glory and honor and power, for you created all things, and by your will they were created and have their being.”",
-    "ESV": "11 “Worthy are you, our Lord and God, to receive glory and honor and power, for you created all things, and by your will they existed and were created.”",
-    "AMP": "11 “Worthy are You, our Lord and God, to receive the glory and the honor and the power; for You created all things, and because of Your will they exist, and were created and brought into being.”",
-    "NLT": "11 “You are worthy, O Lord our God, to receive glory and honor and power. For you created all things, and they exist because you created what you pleased.”",
-    "MSG": "11 “Worthy, O Master! Yes, our God! Take the glory! the honor! the power! You created it all; It was created because you wanted it.”"
+  "Matthew 17:5": {
+    "KJV": "While he yet spake, behold, a bright cloud overshadowed them: and behold a voice out of the cloud, which said, This is my beloved Son, in whom I am well pleased; hear ye him.",
+    "NKJV": "While he was still speaking, behold, a bright cloud overshadowed them; and suddenly a voice came out of the cloud, saying, “This is My beloved Son, in whom I am well pleased. Hear Him!”",
+    "NIV": "While he was still speaking, a bright cloud covered them, and a voice from the cloud said, “This is my Son, whom I love; with him I am well pleased. Listen to him!”",
+    "ESV": "He was still speaking when, behold, a bright cloud overshadowed them, and a voice from the cloud said, “This is my beloved Son, with whom I am well pleased; listen to him.”",
+    "AMP": "While he was still speaking, behold, a bright cloud overshadowed them, and a voice out of the cloud said, “This is My beloved Son, with whom I am well-pleased and delighted! Listen to Him!”",
+    "NLT": "But even as he spoke, a bright cloud overshadowed them, and a voice from the cloud said, “This is my dearly loved Son, who brings me great joy. Listen to him.”",
+    "MSG": "While he was goes on like this, optimistic and mistake-prone, a radiant cloud hovered over them, and from the cloud a voice: “This is my Son, marked by my love, focus of my delight. Listen to him.”"
+  },
+"John 3:36": {
+    "KJV": "He that believeth on the Son hath everlasting life: and he that believeth not the Son shall not see life; but the wrath of God abideth on him.",
+    "NKJV": "He who believes in the Son has everlasting life; and he who does not believe the Son shall not see life, but the wrath of God abides on him.",
+    "NIV": "Whoever believes in the Son has eternal life, but whoever rejects the Son will not see life, for God’s wrath remains on them.",
+    "ESV": "Whoever believes in the Son has eternal life; whoever does not obey the Son shall not see life, but the wrath of God remains on him.",
+    "AMP": "He who believes and trusts in the Son and accepts Him [as Savior] has eternal life [that is, already possesses it]; but he who does not believe the Son and chooses to separate himself (disobey, unbelieve) [from Him] will not see life [joyful, blessed life], but the wrath of God remains on him.",
+    "NLT": "And anyone who believes in God’s Son has eternal life. Anyone who doesn’t obey the Son will never have eternal life, but the vertical judgment of God remains upon them.",
+    "MSG": "Whoever accepts and trusts the Son gets in on everything`, life complete and forever! And that is also why the person who avoids the Son and refuses to trust him doesn’t experience anything of life. Instead of experiencing life, he can’t get out from under the darkness and the anger of God."
+  },
+  "Colossians 1:18-19": {
+    "KJV": "18 And he is the head of the body, the church: who is the beginning, the firstborn from the dead; that in all things he might have the preeminence. 19 For it pleased the Father that in him should all fulness dwell;",
+    "NKJV": "18 And He is the head of the body, the church, who is the beginning, the firstborn from the dead, that in all things He may have the preeminence. 19 For it pleased the Father that in Him all the fullness should dwell,",
+    "NIV": "18 And he is the head of the body, the church; he is the beginning and the firstborn from among the dead, so that in everything he might have the supremacy. 19 For God was pleased to have all his fullness dwell in him,",
+    "ESV": "18 And he is the head of the body, the church. He is the beginning, the firstborn from the dead, that in everything he might be preeminent. 19 For in him all the fullness of God was pleased to dwell,",
+    "AMP": "18 He is also the head [the life-source and leader] of the body, the church; and He is the beginning, the firstborn from the dead, so that He Himself will come to have first place in everything. 19 For it was the Father’s good pleasure for all the fullness to dwell in Him,",
+    "NLT": "18 He is the head of the body, the church; he is the beginning and the firstborn from among the dead, so that in everything he might have supremacy. 19 For God was pleased to have all his fullness dwell in him,",
+    "MSG": "18-19 He is the head of the church, which is his body. He is the beginning, supreme over all who rise from the dead. So he is first in everything. For God in all his fullness was pleased to live in Christ,"  
+  },
+  "Hebrews 2:10": {
+    "KJV": "For it became him, for whom are all things, and by whom are all things, in bringing many sons unto glory, to make the captain of their salvation perfect through sufferings.",
+    "NKJV": "For it was fitting for Him, for whom are all things and by whom are all things, in bringing many sons to glory, to make the captain of their salvation perfect through sufferings.",
+    "NIV": "In bringing many sons and daughters to glory, it was fitting that God, for whom and through whom everything exists, should make the pioneer of their salvation perfect through what he suffered.",
+    "ESV": "For it was fitting that he, for whom and by whom all things exist, in bringing many sons to glory, should make the founder of their salvation perfect through suffering.",
+    "AMP": "For it was fitting for God [that is, an act worthy of His divine nature] that He, for whom are all things, and through whom are all things, in bringing many sons to glory, should make the author and founder of their salvation perfect through suffering [bringing Him to the full maturity of His human experience].",
+    "NLT": "God, for whom and through whom everything was made, chose to bring many children into his glory. And it was only right that he should make Jesus, through his suffering, a perfect leader, fit to bring them into their salvation.",
+    "MSG": "It makes good sense that God, who got everything started and keeps everything going, now involving himself in creating a line of sons, should make Jesus, a perfect leader through the experience of suffering."
+  },
+  "Matthew 10:25": {
+    "KJV": "It is enough for the disciple that he be as his master, and the servant as his lord. If they have called the master of the house Beelzebub, how much more shall they call them of his household?",
+    "NKJV": "It is enough for a disciple that he be like his teacher, and a servant like his master. If they have called the master of the house Beelzebub, how much more will they call those of his household!",
+    "NIV": "It is enough for students to be like their teachers, and servants like their masters. If the head of the house has been called Beelzebub, how much more the members of his household!",
+    "ESV": "It is enough for the disciple to be like his teacher, and the servant like his master. If they have called the master of the house Beelzebub, how much more will they malign those of his household.",
+    "AMP": "It is enough for the disciple to be like his teacher, and the servant like his master. If they have called the head of the house Beelzebul (the prince of demons), how much more [will they malign] the members of his household!",
+    "NLT": "Students are to be like their teacher, and slaves are to be like their master. And since I, the master of the household, have been called the prince of demons, the members of my household will be called by even worse names!",
+    "MSG": "A student doesn’t get a better desk than her teacher. A laborer doesn’t make more money than his boss. Be content—pleased, even—when you, my students, are treated the same way I’m treated. If they call me, the Master of the House, ‘Satan’s Right-Hand Man,’ what do you think they’re going to call you?"
+  },
+  "Matthew 5:16": {
+    "KJV": "Let your light so shine before men, that they may see your good works, and glorify your Father which is in heaven.",
+    "NKJV": "Let your light so shine before men, that they may see your good works and glorify your Father in heaven.",
+    "NIV": "In the same way, let your light shine before others, that they may see your good deeds and glorify your Father in heaven.",
+    "ESV": "In the same way, let your light shine before others, so that they may see your good works and give glory to your Father who is in heaven.",
+    "AMP": "Let your light shine before men in such a way that they may see your good works, and glorify your Father who is in heaven.",
+    "NLT": "In the same way, let your good deeds shine out for all to see, so that everyone will praise your heavenly Father.",
+    "MSG": "Now that I’ve put you there on a hilltop, on a light stand—shine! Keep open house; be generous with your lives. By opening up to others, you’ll prompt people to open up with God, this generous Father in heaven."
+  },
+  "John 12:32": {
+    "KJV": "And I, if I be lifted up from the earth, will draw all men unto me.",
+    "NKJV": "And I, if I am lifted up from the earth, will draw all peoples to Myself.”",
+    "NIV": "And I, when I am lifted up from the earth, will draw all people to myself.”",
+    "ESV": "And I, when I am lifted up from the earth, will draw all people to myself.”",
+    "AMP": "And I, if and when I am lifted up from the earth [on the cross], will draw all people to Myself [gentiles, as well as Jews].”",
+    "NLT": "And when I am lifted up from the earth, I will draw everyone to myself.”",
+    "MSG": "And I, as I am lifted up from the earth, will attract everyone to me and gather them around me.”"
+  },
+  "Acts 4:13": {
+    "KJV": "Now when they saw the boldness of Peter and John, and perceived that they were unlearned and ignorant men, they marvelled; and they took knowledge of them, that they had been with Jesus.",
+    "NKJV": "Now when they saw the boldness of Peter and John, and perceived that they were uneducated and untrained men, they marveled. And they realized that they had been with Jesus.",
+    "NIV": "When they saw the courage of Peter and John and realized that they were unschooled, ordinary men, they were astonished and they took note that these men had been with Jesus.",
+    "ESV": "Now when they saw the boldness of Peter and John, and perceived that they were uneducated, common men, they were astonished. And they recognized that they had been with Jesus.",
+    "AMP": "Now when the men of the Sanhedrin saw the confidence and boldness of Peter and John, and grasped the fact that they were uneducated and untrained [ordinary] men, they were astounded, and began to recognize that they had been with Jesus.",
+    "NLT": "The members of the council were amazed when they saw the boldness of Peter and John, for they could see that they were ordinary men with no special training in the Scriptures. They also recognized them as men who had been with Jesus.",
+    "MSG": "They couldn't take their eyes off them—Peter and John standing there so confident, so sure of themselves! Their fascination deepened when they realized these two were laymen with no training in Scripture or formal education. They recognized them as companions of Jesus."
+  },
+  "John 14:3": {
+    "KJV": "And if I go and prepare a place for you, I will come again, and receive you unto myself; that where I am, there ye may be also.",
+    "NKJV": "And if I go and prepare a place for you, I will come again and receive you to Myself; that where I am, there you may be also.",
+    "NIV": "And if I go and prepare a place for you, I will come back and take you to be with me that you also may be where I am.",
+    "ESV": "And if I go and prepare a place for you, I will come again and will take you to myself, that where I am you may be also.",
+    "AMP": "And if I go and prepare a place for you, I will come back again and I will take you to Myself, so that where I am you may be also.",
+    "NLT": "When everything is ready, I will come and get you, so that you will always be with me where I am.",
+    "MSG": "And if I’m going on to prepare a place for you, I’ll surely come back and get you so that where I am, you’ll be, too."
+  },
+  "John 14:23": {
+    "KJV": "Jesus answered and said unto him, If a man love me, he will keep my words: and my Father will love him, and we will come unto him, and make our abode with him.",
+    "NKJV": "Jesus answered and said to him, “If anyone loves Me, he will keep My word; and My Father will love him, and We will come to him and make Our home with him.",
+    "NIV": "Jesus replied, “Anyone who loves me will obey my teaching. My Father will love them, and we will come to them and make our home with them.",
+    "ESV": "Jesus answered him, “If anyone loves me, he will keep my word, and my Father will love him, and we will come to him and make our home with him.",
+    "AMP": "Jesus answered, “If anyone [really] loves Me, he will keep My word (teaching); and My Father will love him, and We will come to him and make Our abode (home) with him.",
+    "NLT": "Jesus replied, “All who love me will do what I say. My Father will love them, and we will come and make our home with each of them.",
+    "MSG": "Jesus said, “Because I love you, I will do what I say. My Father will love you, and we will come to you and live with you."
+  },
+  "Matthew 10:22": {
+    "KJV": "And ye shall be hated of all men for my name's sake: but he that endureth to the end shall be saved.",
+    "NKJV": "And you will be hated by all for My name’s sake. But he who endures to the end will be saved.",
+    "NIV": "You will be hated by everyone because of me, but the one who stands firm to the end will be saved.",
+    "ESV": "and you will be hated by all for my name's sake. But the one who endures to the end will be saved.",
+    "AMP": "And you will be hated by everyone because of [your association with] My name, but it is the one who has patiently persevered and endured to the end who will be saved.",
+    "NLT": "And all nations will hate you because you are my followers. But everyone who endures to the end will be saved.",
+    "MSG": "There’s no getting around it: You’re in for a hard time of it. But there’s no reason to quit. Hang in there to the end. That’s what counts."
   },
 
-  "Matthew 6:25": {
-    "KJV": "25 Therefore I say unto you, Take no thought for your life, what ye shall eat, or what ye shall drink; nor yet for your body, what ye shall put on. Is not the life more than meat, and the body than raiment?",
-    "NKJV": "25 “Therefore I say to you, do not worry about your life, what you will eat or what you will drink; nor about your body, what you will put on. Is not life more than food and the body more than clothing?",
-    "NIV": "25 “Therefore I tell you, do not worry about your life, what you will eat or drink; or about your body, what you will wear. Is not life more than food, and the body more than clothes?",
-    "ESV": "25 “Therefore I tell you, do not be anxious about your life, what you will eat or what you will drink, nor about your body, what you will wear. Is not life more than food, and the body more than clothing?",
-    "AMP": "25 “Therefore I tell you, stop being worried or anxious (perpetually uneasy, distracted) about your life, as to what you will eat or what you will drink; nor about your body, as to what you will wear. Is not life more than food, and the body more than clothing?",
-    "NLT": "25 “That is why I tell you not to worry about everyday life—whether you have enough food and drink, or enough clothes to wear. Isn’t life more than food, and your body more than clothing?",
-    "MSG": "25 “If you decide for God, living a life of God-worship, it follows that you don’t fuss about what’s on the table at mealtimes or whether the clothes in your closet are in fashion. There is far more to your life than the food you put in your stomach, more to your outer appearance than the clothes you hang on your body."
+  "John 15:20": {
+    "KJV": "Remember the word that I said unto you, The servant is not greater than his lord. If they have persecuted me, they will also persecute you; if they have kept my saying, they will keep yours also.",
+    "NKJV": "Remember the word that I said to you, ‘A servant is not greater than his master.’ If they persecuted Me, they will also persecute you. If they kept My word, they will keep yours also.",
+    "NIV": "Remember what I told you: ‘A servant is not greater than his master.’ If they persecuted me, they will persecute you also. If they obeyed my teaching, they will obey yours also.",
+    "ESV": "Remember the word that I said to you, ‘A servant is not greater than his master.’ If they persecuted me, they will also persecute you. If they kept my word, they will also keep yours.",
+    "AMP": "Remember [and continue to meditate on] the word that I said to you, ‘A servant is not greater than his master.’ If they persecuted Me, they will also persecute you; if they kept My word, they will keep yours also.",
+    "NLT": "Do you remember what I told you? ‘A slave is not greater than the master.’ Since they persecuted me, naturally they will persecute you. And if they had listened to me, they would listen to you.",
+    "MSG": "Remember what I told you: ‘A servant is not greater than the master.’ If they threw rocks at me, they’ll throw rocks at you; if they listened to me, they’ll listen to you."
   },
 
-  "Matthew 6:26": {
-    "KJV": "26 Behold the fowls of the air: for they sow not, neither do they reap, nor gather into barns; yet your heavenly Father feedeth them. Are ye not much better than they?",
-    "NKJV": "26 Look at the birds of the air, for they neither sow nor reap nor gather into barns; yet your heavenly Father feeds them. Are you not of more value than they?",
-    "NIV": "26 Look at the birds of the air; they do not sow or reap or store away in barns, and yet your heavenly Father feeds them. Are you not much more valuable than they?",
-    "ESV": "26 Look at the birds of the air: they neither sow nor reap nor gather into barns, and yet your heavenly Father feeds them. Are you not of more value than they?",
-    "AMP": "26 Look at the birds of the air; they neither sow [seed] nor reap [the harvest] nor gather [the crops] into barns, and yet your heavenly Father keeps feeding them. Are you not worth much more than they?",
-    "NLT": "26 Look at the birds. They don’t plant or harvest or store food in barns, for your heavenly Father feeds them. And aren’t you far more valuable to him than they are?",
-    "MSG": "26 Look at the birds, free and unfettered, not tied down to a job description, careless in the care of God. And you count far more to him than birds."
+  "John 14:12": {
+    "KJV": "Verily, verily, I say unto you, He that believeth on me, the works that I do shall he do also; and greater works than these shall he do; because I go unto my Father.",
+    "NKJV": "“Most assuredly, I say to you, he who believes in Me, the works that I do he will do also; and greater works than these he will do, because I go to My Father.",
+    "NIV": "Very truly I tell you, whoever believes in me will do the works I have been doing, and they will do even greater things than these, because I am going to the Father.",
+    "ESV": "“Truly, truly, I say to you, whoever believes in me will also do the works that I do; and greater works than these will he do, because I am going to the Father.",
+    "AMP": "I assure you and most solemnly say to you, anyone who believes in Me [as Savior] will also do the things that I do; and he will do even greater things than these [in extent and outreach], because I am going to the Father.",
+    "NLT": "“I tell you the truth, anyone who believes in me will do the same works I have done, and even greater works, because I am going to be with the Father.",
+    "MSG": "The person who trusts me will not only do what I’m doing but even greater things, because I, on my way to the Father, am giving you the same work to do that I’ve been doing."
   },
 
-  "Matthew 6:28": {
-    "KJV": "28 And why take ye thought for raiment? Consider the lilies of the field, how they grow; they toil not, neither do they spin:",
-    "NKJV": "28 “So why do you worry about clothing? Consider the lilies of the field, how they grow: they neither toil nor spin;",
-    "NIV": "28 “And why do you worry about clothes? See how the flowers of the field grow. They do not labor or spin.",
-    "ESV": "28 And why are you anxious about clothing? Consider the lilies of the field, how they grow: they neither toil nor spin,",
-    "AMP": "28 And why are you worried about clothing? See how the lilies and wildflowers of the field grow; they do not labor nor do they spin [wool to make clothing],",
-    "NLT": "28 “And why worry about your clothing? Look at the lilies of the field and how they grow. They don’t work or make their clothing,",
-    "MSG": "28 Instead of looking at the fashions, walk out into the fields and look at the wildflowers. They never primp or shop, but have you ever seen color and design quite like it?"
+  "Matthew 7:21": {
+    "KJV": "Not every one that saith unto me, Lord, Lord, shall enter into the kingdom of heaven; but he that doeth the will of my Father which is in heaven.",
+    "NKJV": "“Not everyone who says to Me, ‘Lord, Lord,’ shall enter the kingdom of heaven, but he who does the will of My Father in heaven.",
+    "NIV": "“Not everyone who says to me, ‘Lord, Lord,’ will enter the kingdom of heaven, but only the one who does the will of my Father who is in heaven.",
+    "ESV": "“Not everyone who says to me, ‘Lord, Lord,’ will enter the kingdom of heaven, but the one who does the will of my Father who is in heaven.",
+    "AMP": "“Not everyone who says to Me, ‘Lord, Lord,’ will enter the kingdom of heaven, but only he who does the will of My Father who is in heaven.",
+    "NLT": "“Not everyone who calls out to me, ‘Lord! Lord!’ will enter the Kingdom of Heaven. Only those who actually do the will of my Father in heaven will enter.",
+    "MSG": "“Knowing the correct password—saying ‘Master, Master,’ for instance—isn’t going to get you anywhere with me. What is required is serious obedience—doing what my Father wills."
   },
 
-  "Matthew 6:27": {
-    "KJV": "27 Which of you by taking thought can add one cubit unto his stature?",
-    "NKJV": "27 Which of you by worrying can add one cubit to his stature?",
-    "NIV": "27 Can any one of you by worrying add a single hour to your life?",
-    "ESV": "27 And which of you by being anxious can add a single hour to his span of life?",
-    "AMP": "27 And who of you by being worried can add one hour to his [long] life?",
-    "NLT": "27 Can all your worries add a single moment to your life?",
-    "MSG": "27 Has anyone by fussing in front of the mirror ever gotten taller by so much as an inch?"
+  "John 3:16": {
+    "KJV": "For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life.",
+    "NKJV": "For God so loved the world that He gave His only begotten Son, that whoever believes in Him should not perish but have everlasting life.",
+    "NIV": "For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life.",
+    "ESV": "“For God so loved the world, that he gave his only Son, that whoever believes in him should not perish but have eternal life.",
+    "AMP": "“For God so [greatly] loved and dearly prized the world, that He [even] gave His [One and] only begotten Son, so that whoever believes and trusts in Him [as Savior] shall not perish, but have eternal life.",
+    "NLT": "“For this is how God loved the world: He gave his one and only Son, so that everyone who believes in him will not perish but have eternal life.",
+    "MSG": "“This is how much God loved the world: He gave his Son, his one and only Son. And this is why: so that no one need be destroyed; by believing in him, anyone can have a whole and lasting life."
+  },
+    "Matthew 7:22-23": {
+        "KJV": "Many will say to me in that day, Lord, Lord, have we not prophesied in thy name? and in thy name have cast out devils? and in thy name done many wonderful works? And then will I profess unto them, I never knew you: depart from me, ye that work iniquity.",
+        "NKJV": "Many will say to Me in that day, ‘Lord, Lord, have we not prophesied in Your name, cast out demons in Your name, and done many wonders in Your name?’ And then I will declare to them, ‘I never knew you; depart from Me, you who practice lawlessness!’",
+        "NIV": "Many will say to me on that day, ‘Lord, Lord, did we not prophesy in your name and in your name drive out demons and in your name perform many miracles?’ Then I will tell them plainly, ‘I never knew you. Away from me, you evildoers!’",
+        "ESV": "On that day many will say to me, ‘Lord, Lord, did we not prophesy in your name, and cast out demons in your name, and do many mighty works in your name?’ And then will I declare to them, ‘I never knew you; depart from me, you workers of lawlessness.’",
+        "AMP": "Many will say to Me on that day [when I judge them], ‘Lord, Lord, did we not prophesy in Your name, and in Your name cast out demons, and in Your name do many miracles?’ And then I will declare to them publicly, ‘I never knew you; depart from Me [you are banished from My presence], you who act wickedly [disregarding My commands].’",
+        "NLT": "On judgment day many will say to me, ‘Lord! Lord! We prophesied in your name and cast out demons in your name and performed many miracles in your name.’ But I will reply, ‘I never knew you. Get away from me, you who break God’s laws.’",
+        "MSG": "I can hear it now—that day of judgment—with many stepping up and saying, ‘Master, Master, we preached the Message, we smashed the demons, our super-spiritual projects had everyone talking.’ And do you know what I am going to say? ‘You missed the boat. All you did was use me to make yourselves important. You don’t impress me one bit. You’re out of here.’"
+    },
+        "John 14:6": {
+    "KJV": "6 Jesus saith unto him, I am the way, the truth, and the life: no man cometh unto the Father, but by me.",
+    "NKJV": "6 Jesus said to him, “I am the way, the truth, and the life. No one comes to the Father except through Me.",
+    "NIV": "6 Jesus answered, “I am the way and the truth and the life. No one comes to the Father except through me.",
+    "ESV": "6 Jesus said to him, “I am the way, and the truth, and the life. No one comes to the Father except through me.",
+    "AMP": "6 Jesus said to him, “I am the [only] Way [to God] and the [real] Truth and the [real] Life; no one comes to the Father but through Me.",
+    "NLT": "6 Jesus told him, “I am the way, the truth, and the life. No one can come to the Father except through me.",
+    "MSG": "6 Jesus said, “I am the Road, also the Truth, also the Life. No one gets to the Father apart from me."
   },
 
-  "Genesis 2:8": {
-    "KJV": "8 And the Lord God planted a garden eastward in Eden; and there he put the man whom he had formed.",
-    "NKJV": "8 The Lord God planted a garden eastward in Eden, and there He put the man whom He had formed.",
-    "NIV": "8 Now the Lord God had planted a garden in the east, in Eden; and there he put the man he had formed.",
-    "ESV": "8 And the Lord God planted a garden in Eden, in the east, and there he put the man whom he had formed.",
-    "AMP": "8 And the Lord God planted a garden toward the east, in Eden [a land of happiness and plenty]; and there He put the man whom He had formed (fashioned, constituted).",
-    "NLT": "8 Then the Lord God planted a garden in Eden in the east, and there he placed the man he had made.",
-    "MSG": "8 Then God planted a garden in Eden, in the east. He put the Man he had just made in it."
+  "Daniel 11:32": {
+    "KJV": "32 And such as do wickedly against the covenant shall he corrupt by flatteries: but the people that do know their God shall be strong, and do exploits.",
+    "NKJV": "32 Those who do wickedly against the covenant he shall corrupt with flattery; but the people who know their God shall be strong, and carry out great exploits.",
+    "NIV": "32 With flattery he will corrupt those who have violated the covenant, but the people who know their God will firmly resist him.",
+    "ESV": "32 He shall seduce with flattery those who violate the covenant, but the people who know their God shall stand firm and take action.",
+    "AMP": "32 With smooth words [of flattery and promises] he will corrupt and seduce those who [abandon the precept of the law and] violate the covenant, but the people who know their God will be strong and take action.",
+    "NLT": "32 He will flatter and win over those who have violated the covenant. But the people who know their God will be strong and will resist him.",
+    "MSG": "32 By the use of smooth, flattering words he will corrupt those who betray the covenant. But the people who know their God will stand firm and take action."
   },
 
-  "Matthew 6:31-32": {
-    "KJV": "31 Therefore take no thought, saying, What shall we eat? or, What shall we drink? or, Wherewithal shall we be clothed? 32 (For after all these things do the Gentiles seek:) for your heavenly Father knoweth that ye have need of all these things.",
-    "NKJV": "31 “Therefore do not worry, saying, ‘What shall we eat?’ or ‘What shall we drink?’ or ‘What shall we wear?’ 32 For after all these things the Gentiles seek. For your heavenly Father knows that you need all these things.",
-    "NIV": "31 So do not worry, saying, ‘What shall we eat?’ or ‘What shall we drink?’ or ‘What shall we wear?’ 32 For the pagans run after all these things, and your heavenly Father knows that you need them.",
-    "ESV": "31 Therefore do not be anxious, saying, ‘What shall we eat?’ or ‘What shall we drink?’ or ‘What shall we wear?’ 32 For the Gentiles seek after all these things, and your heavenly Father knows that you need them all.",
-    "AMP": "31 Therefore do not worry or be anxious (perpetually uneasy, distracted), saying, ‘What are we going to eat?’ or ‘What are we going to drink?’ or ‘What are we going to wear?’ 32 For the [pagan] Gentiles eagerly seek all these things; but your heavenly Father knows that you need them.",
-    "NLT": "31 “So don’t worry about these things, saying, ‘What will we eat? What will we drink? What will we wear?’ 32 These things dominate the thoughts of unbelievers, but your heavenly Father already knows all your needs.",
-    "MSG": "31-32 What I’m trying to do here is to get you to relax, to not be so preoccupied with getting, so you can respond to God’s giving. People who don’t know God and the way he works fuss over these things, but you know both God and how he works."
+  "John 8:32": {
+    "KJV": "32 And ye shall know the truth, and the truth shall make you free.",
+    "NKJV": "32 And you shall know the truth, and the truth shall make you free.”",
+    "NIV": "32 Then you will know the truth, and the truth will set you free.”",
+    "ESV": "32 and you will know the truth, and the truth will set you free.”",
+    "AMP": "32 And you will know the truth [regarding salvation], and the truth will set you free [from the penalty of sin].”",
+    "NLT": "32 And you will know the truth, and the truth will set you free.”",
+    "MSG": "32 Then you will experience for yourselves the truth, and the truth will free you.”"
   },
 
-  "Matthew 6:30": {
-    "KJV": "30 Wherefore, if God so clothe the grass of the field, which to day is, and to morrow is cast into the oven, shall he not much more clothe you, O ye of little faith?",
-    "NKJV": "30 Now if God so clothes the grass of the field, which today is, and tomorrow is thrown into the oven, will He not much more clothe you, O you of little faith?",
-    "NIV": "30 If that is how God clothes the grass of the field, which is here today, and tomorrow is thrown into the fire, will he not much more clothe you—you of little faith?",
-    "ESV": "30 But if God so clothes the grass of the field, which today is alive and tomorrow is thrown into the oven, will he not much more clothe you, O you of little faith?",
-    "AMP": "30 But if God so clothes the grass of the field, which is alive and green today and tomorrow is [cut and] thrown into the furnace, will He not much more clothe you? You of little faith!",
-    "NLT": "30 And if God cares so wonderfully for wildflowers that are here today and thrown into the fire tomorrow, he will certainly care for you. Why do you have so little faith?",
-    "MSG": "30 If God gives such attention to the appearance of wildflowers—most of which are never even seen—don’t you think he’ll attend to you, take pride in you, do his best for you?"
+  "2 Timothy 2:15": {
+    "KJV": "15 Study to shew thyself approved unto God, a workman that needeth not to be ashamed, rightly dividing the word of truth.",
+    "NKJV": "15 Be diligent to present yourself approved to God, a worker who does not need to be ashamed, rightly dividing the word of truth.",
+    "NIV": "15 Do your best to present yourself to God as one approved, a worker who does not need to be ashamed and who correctly handles the word of truth.",
+    "ESV": "15 Do your best to present yourself to God as one approved, a worker who has no need to be ashamed, rightly handling the word of truth.",
+    "AMP": "15 Study and do your best to present yourself to God approved, a workman [tested by trial] who has no reason to be ashamed, accurately handling and skillfully teaching the word of truth.",
+    "NLT": "15 Work hard so you can present yourself to God and receive his approval. Be a good worker, one who does not need to be ashamed and who correctly explains the word of truth.",
+    "MSG": "15 Concentrate on doing your best for God, work you won’t be ashamed of, laying out the truth plain and simple."
   }
 };
 
-
-// const quizQuestions = [
-//     {
-//         q: "What is the main theme or title of this lesson?",
-//         a: [
-//             "The Power of Forgiveness",
-//             "Penalty For Unyielding To God",
-//             "The Blessings of Obedience",
-//             "The History of Galilee"
-//         ],
-//         correct: 1
-//     },
-//     {
-//         q: "According to the Introduction, what is the ultimate aim of every miracle and blessing from God?",
-//         a: [
-//             "To make us famous",
-//             "To solve all financial problems",
-//             "To return man to God in a restoration exercise",
-//             "To prove that Christians are superior"
-//         ],
-//         correct: 2
-//     },
-//     {
-//         q: "In this lesson, what do the mentioned cities (Chorazin, Bethsaida, etc.) represent?",
-//         a: [
-//             "Historical landmarks only",
-//             "Individuals and families who received God’s blessing but turned their backs on Him",
-//             "The only places where Jesus preached",
-//             "Ancient trade routes"
-//         ],
-//         correct: 1
-//     },
-//     {
-//         q: "What does the city 'Bethsaida' mean and what does it represent in the lesson?",
-//         a: [
-//             "House of Bread; represents prosperity",
-//             "Fortified city; represents arrogance",
-//             "House of Fishing; represents those delivered from struggling who now ignore God",
-//             "City of Palms; represents peace"
-//         ],
-//         correct: 2
-//     },
-//     {
-//         q: "Which city is described as the headquarters of Jesus' earthly ministry?",
-//         a: [
-//             "Sodom",
-//             "Tyre",
-//             "Capernaum",
-//             "Sidon"
-//         ],
-//         correct: 2
-//     },
-//     {
-//         q: "What character trait of the city of Tyre led God to use conquerors like Alexander the Great to wipe it out?",
-//         a: [
-//             "Arrogance",
-//             "Poverty",
-//             "Lack of intelligence",
-//             "Kindness"
-//         ],
-//         correct: 0
-//     },
-//     {
-//         q: "The lesson 'THE DENOUNCE' suggests that God does what to the ungrateful?",
-//         a: [
-//             "Forces them to obey",
-//             "Openly withdraws from them",
-//             "Gives them more miracles",
-//             "Changes His mind about judgment"
-//         ],
-//         correct: 1
-//     },
-//     {
-//         q: "According to 'GOD’S CONCENTRATION,' why have many received greater attention from God?",
-//         a: [
-//             "Because they are better than others",
-//             "Due to the nature of their problems",
-//             "Because they paid for it",
-//             "By accident"
-//         ],
-//         correct: 1
-//     },
-//     {
-//         q: "What is the memory verse for this lesson?",
-//         a: [
-//             "John 3:16",
-//             "Psalm 23:1",
-//             "Matthew 22:37",
-//             "Genesis 1:1"
-//         ],
-//         correct: 2
-//     },
-//     {
-//         q: "According to the conclusion and Luke 13:4-5, what does God expect from those who receive His blessings?",
-//         a: [
-//             "That they should become wealthy",
-//             "That they should yield themselves to Him",
-//             "That they should build large monuments",
-//             "That they should stop working"
-//         ],
-//         correct: 1
-//     }
-// ];
 const quizQuestions = [
     {
         q: "What is the main theme or title of this lesson?",
         a: [
-            "Penalty For Unyielding To God",
-            "Do The First Thing First (Part 1)",
+            "Doing The First Thing First",
+            "IMITATING CHRIST JESUS",
             "The Power of Faith",
-            "God's Judgment on Cities"
+            "Living Without Boundaries"
         ],
         correct: 1
-    },
-    {
-        q: "According to the introduction, what should man primarily live for?",
-        a: [
-            "Material success",
-            "Personal happiness",
-            "God’s pleasure",
-            "Fame and recognition"
-        ],
-        correct: 2
     },
     {
         q: "What is the memory verse of this lesson?",
         a: [
             "Matthew 6:33",
-            "James 4:8",
-            "Revelation 4:11",
-            "Genesis 2:8"
-        ],
-        correct: 1
-    },
-    {
-        q: "According to the lesson, what problem did many followers of Christ have?",
-        a: [
-            "They did not believe in God",
-            "They were too focused on material things",
-            "They refused to pray",
-            "They lacked knowledge of scripture"
-        ],
-        correct: 1
-    },
-    {
-        q: "What does Jesus teach about worry in Matthew 6:25?",
-        a: [
-            "It helps solve problems",
-            "It adds to your life",
-            "You should not be worried",
-            "It is necessary for success"
+            "John 3:16",
+            "Matthew 5:48",
+            "Acts 4:13"
         ],
         correct: 2
     },
     {
-        q: "What example did Jesus use to show God's provision?",
+        q: "According to the lesson, what does 'Imitating Christ' simply mean?",
         a: [
-            "Kings and rulers",
-            "Birds and flowers",
-            "Farmers and traders",
-            "Soldiers and workers"
+            "Going to church every day",
+            "Copying the way Jesus behaves and talks",
+            "Performing miracles",
+            "Becoming a religious leader"
         ],
         correct: 1
     },
     {
-        q: "According to the lesson, what effect do anxious thoughts have?",
+        q: "What did the elders notice about the disciples in Acts 4:13?",
         a: [
-            "They increase wisdom",
-            "They add to life",
-            "They subtract and can lead to sin and sickness",
-            "They bring success"
+            "They were highly educated",
+            "They were wealthy men",
+            "They had been with Jesus",
+            "They were expert speakers"
         ],
         correct: 2
     },
     {
-        q: "Why is provision important to God according to the lesson?",
+        q: "Why is it necessary to 'Know the Lord' to successfully imitate Him?",
         a: [
-            "Because man demanded it",
-            "Because God made man and placed him in a garden",
-            "Because angels need it",
-            "Because it increases wealth"
+            "To gain high status in church",
+            "Because no one can imitate an unknown person",
+            "To become famous",
+            "To prove intelligence"
         ],
         correct: 1
     },
     {
-        q: "What assurance does the lesson give about God and our needs?",
+        q: "What is a common mistake among Christians mentioned in the lesson regarding character?",
         a: [
-            "God ignores our needs",
-            "God knows our needs and will provide",
-            "God provides only for some people",
-            "God provides only after suffering"
+            "They focus too much on character",
+            "They have charisma and religious cloaks but no trait of Godly character",
+            "They do not have the Holy Spirit",
+            "They study the Bible too much"
         ],
         correct: 1
     },
     {
-        q: "According to the lesson, what is more valuable than material things?",
+        q: "Who is described as the 'Pacesetter' for the many sons born to God?",
         a: [
-            "Gold and silver",
-            "Education",
-            "Salvation and life",
-            "Fame"
+            "The Apostle Paul",
+            "The Elders of Israel",
+            "The Lord Jesus Christ",
+            "The Disciples"
         ],
         correct: 2
+    },
+    {
+        q: "According to John 14:6, how can an individual reach God?",
+        a: [
+            "Through hard work",
+            "Through religious traditions",
+            "Only through Christ Jesus",
+            "By being uneducated and ordinary"
+        ],
+        correct: 2
+    },
+    {
+        q: "What is the 'identification mark' of a believer mentioned in the lesson?",
+        a: [
+            "Their religious title",
+            "Their church attendance",
+            "The manifestation of His character",
+            "The amount of scriptures they know"
+        ],
+        correct: 2
+    },
+    {
+        q: "Which scripture mentions that we will face persecution for His name's sake?",
+        a: [
+            "John 3:16",
+            "Matthew 10:22",
+            "Daniel 11:32",
+            "Matthew 5:48"
+        ],
+        correct: 1
+    },
+    {
+        q: "What is the ultimate consequence of failing to imitate Christ according to Matthew 7:22-23?",
+        a: [
+            "Missing a church service",
+            "Rejection by the Lord",
+            "Loss of material wealth",
+            "Lack of charisma"
+        ],
+        correct: 1
     }
 ];
 
@@ -538,7 +471,9 @@ const SundaySchoolApp = () => {
         introScriptures: string[];
         lessonIntroScriptures: string[];
         aims: string;
+        aimsScriptures: string[];
         objectives: string;
+        objectivesScriptures: string[];
         lessonIntro: string;
         lessonPoints: LessonPoint[];
         conclusion: string;
@@ -551,153 +486,145 @@ const SundaySchoolApp = () => {
 
 
 
-    const [contentData, setContentData] = useState<ContentData>({
-    lessonDate: "March 29, 2026",
-    lessonTitle: "DO THE FIRST THING FIRST (PART 1)",
+const [contentData, setContentData] = useState<ContentData>({
+    lessonDate: "April 12, 2026",
+    lessonTitle: "IMITATING CHRIST JESUS",
 
     memoryVerse:
-        "Draw nigh to God and he will draw nigh to you. Cleanse your hands, ye sinners; and purify your hearts, ye double minded. - James 4:8",
-    memoryVerseRef: "James 4:8",
+        "Be ye therefore perfect, even as your Father which is in heaven is perfect - Matt 5:48",
+    memoryVerseRef: "Matthew 5:48",
 
-    introScriptures: ["Matthew 6:25-34"],
-
-    lessonIntroScriptures: ["Matthew 6:25-34"],
+    introScriptures: ["Acts 4:13-14"],
+    lessonIntroScriptures: ["Matthew 7:13-14", "John 3:36", "Matthew 3:17", "Matthew 17:5", "John 14:6"],
 
     introduction:
-        "Almost everyone that returns to God through the Lord Jesus has a handful of needs that they require God to meet almost immediately. Only a few people seek God for what He wants of them and even fewer consider God’s concern. However, it is important to understand that man was created for God’s pleasure and not the other way round. Until God finds pleasure in you, you cannot find pleasure in Him.",
+        "Giving the chance many Christian believers will prefer living without boundaries but the Lord who saved us and His kingdom has a standard to maintain. Matt. 7:13, 14 (The narrow gate and way), Jn. 3:36. Jesus is God's model and standard to mankind for a relationship with him and entry to his kingdom. Matt. 3:17; 17:5. In this vein, there is a glaring demand for believers to be like Jesus. Jn. 14:6. Imitating Christ therefore simply means copying the way Jesus behaves and talks (Character).",
 
     aims:
-        "To create a good relationship between man and his God.",
+        "That the believer may be in the image and likeness of Christ Jesus",
+
+    aimsScriptures: [],
 
     objectives:
-        "To achieve a double side pleasure that God delights to",
+        "That the child of God may have God's approval, relationship and kingdom benefits.",
+
+    objectivesScriptures: [],
 
     lessonIntro:
-        "It is obvious that many followers of Christ then were so worried and anxious like our days about material things instead of seeking to please God. They realized that the more they sought for it the farther the substances were from them and were worried. Jesus was therefore addressing this audience of God's formula of receiving the things they so desired.",
+        "Some disciples of Jesus were apprehended by a company of Israel's elders with the charges of blasphemy for preaching the gospel. After every form of intimidation and threat the elders saw something unique with these disciples. They were noticed for being like Jesus and a conclusive investigation revealed that they had being with the Lord Jesus. Who have you being with and who do you look like?",
 
     lessonPoints: [
         {
-            title: "CONSIDERING THE REALITIES:",
+            title: "HOW TO IMITATE CHRIST",
             content:
-                "There are things that are reflected in this text that the Lord wants us to consider",
+                "To successfully imitate Christ, one must move beyond outward religious appearance to a true transformation of character.",
             scriptures: [],
-            // subPoints: [
-            //     {
-            //         title: "THOUGHTS AND WORRY",
-            //         content:
-            //             "Thoughts flow and appeal to a man. Do your best not to be worried about the issues in your mind – Vs 25",
-            //             scriptures: ["Matthew 6:25"]
-            //     },
-            //     {
-            //         title: "GOD CARES FOR CREATION",
-            //         content:
-            //             "Birds and flowers don't labour yet God takes care of them – Vs 26, 28",
-            //     },
-            //     {
-            //         title: "",
-            //         content:
-            //             "You are better and preferred; How much more will God provide for you – Vs 26",
-            //     },
-            //     {
-            //         title: "(d)",
-            //         content:
-            //             "Thoughts never add but subtracts in the ways of causing sin and sickness – Vs 27",
-            //     }
-            // ],
-              subPoints: [
+            subPoints: [
                 {
-                    title: "THOUGHTS AND WORRY",
+                    title: "KNOW THE LORD",
                     content:
-                        "Thoughts flow and appeal to a man. Do your best not to worry about the issues in your mind.",
-                    scriptures: ["Matthew 6:25"]
+                        "You have to know the Lord Jesus to be able to imitate Him. No one can imitate an unknown person. Dan 11:32, Jn. 8:32",
+                    scriptures: ["Daniel 11:32", "John 8:32"]
                 },
                 {
-                    title: "GOD CARES FOR CREATION",
+                    title: "STUDY HIS CHARACTER",
                     content:
-                        "Birds and flowers do not labour, yet God takes care of them.",
-                    scriptures: ["Matthew 6:26", "Matthew 6:28"]
+                        "Most Christians have charisma, the Holy Spirit and a religious cloak but have not trait of Godly character. 2 Tim. 2:15, Mk. 3:14. You need to know his character to be like him successfully.",
+                    scriptures: ["2 Timothy 2:15", "Mark 3:14"]
                 },
                 {
-                    title: "YOUR VALUE",
-                    content:
-                        "You are better and more valued; how much more will God provide for you.",
-                    scriptures: ["Matthew 6:26"]
-                },
-                {
-                    title: "EFFECT OF WORRY",
-                    content:
-                        "Worry does not add anything but subtracts, leading to sin and sickness.",
-                    scriptures: ["Matthew 6:27"]
+                    title: "DETERMINATION",
+                    content: 
+                        "Be determined to be like Jesus because it is possible. Titus 2:12",
+                    scriptures: ["Titus 2:12"]
                 }
             ],
         },
-        // {
-        //     title: "PROVISION IS PARAMOUNT IN GOD'S HEART:",
-        //     content:
-        //         "God made man and gave him a garden and this is because provision is paramount in his heart for man – Gen 2:8. Yield yourself to him and wait for his provision. Let the revelation and facts Jesus gave below incite us to trust God to supply in his terms. That",
-        //     scriptures: [],
-        //     subPoints: [
-        //         {
-        //             title: "(a)",
-        //             content:
-        //                 "God knows your needs and he his too good and faithful to ignore it. Vs 31-32",
-        //         },
-        //         {
-        //             title: "(b)",
-        //             content:
-        //                 "God has a better package for mankind than birds and flowers. Work with this faith and you will reach the place of receiving – Vs 30",
-        //         },
-        //         {
-        //             title: "(c)",
-        //             content:
-        //                 "God has already given you what is best and more valuable. Your salvation and life is more valuable than materials you seek; because dead men don't seek things. God started to give the best to let us know that the less valuables are no stress to give.",
-        //         }
-        //     ],
-        // }
         {
-            title: "PROVISION IS PARAMOUNT IN GOD’S HEART:",
+            title: "WHY IMITATE CHRIST",
             content:
-                "God created man and placed him in a garden, showing that provision is important to Him. We must yield to Him and trust His provision.",
-            scriptures: ["Genesis 2:8"],
+                "Imitating Christ is the requirement for reaching God and serves as a testimony to others.",
+            scriptures: ["Matthew 10:25"],
             subPoints: [
                 {
-                    title: "GOD KNOWS YOUR NEEDS",
+                    title: "HE IS OUR PACESETTER",
                     content:
-                        "God knows your needs and is too faithful to ignore them.",
-                    scriptures: ["Matthew 6:31-32"]
+                        "Because He is the pacesetter for the many sons that must be born to God. Col. 1:18-19, Heb 2:10.",
+                    scriptures: ["Colossians 1:18-19", "Hebrews 2:10"]
                 },
                 {
-                    title: "GOD’S BETTER PLAN",
-                    content:
-                        "God has a better plan for mankind than for birds and flowers. Trust Him and you will receive.",
-                    scriptures: ["Matthew 6:30"]
+                    title: "SERVANT AND MASTER",
+                    content: 
+                        "It will suffice that a servant becomes like his master - Matt. 10:25",
+                    scriptures: ["Matthew 10:25"]
                 },
                 {
-                    title: "THE BEST GIFT",
+                    title: "ACCESS TO THE FATHER",
                     content:
-                        "God has already given you what is most valuable—your salvation and life. Material things are lesser and easier for Him to provide.",
-                    scriptures: []
+                        "No man can reach God except through Christ. This means that an individual can only go to God in the image and likeness of Jesus to receive attention. Jn. 14:6",
+                    scriptures: ["John 14:6"]
+                },
+                {
+                    title: "AN IDENTIFICATION MARK",
+                    content:
+                        "The manifestation of his character is an identification mark of a believer aimed at drawing others to Jesus. Matt. 5:16, Jn. 12:32",
+                    scriptures: ["Matthew 5:16", "John 12:32"]
+                }
+            ],
+        },
+        {
+            title: "RESULTS OF IMITATING CHRIST",
+            content:
+                "Imitating Jesus brings both spiritual rewards and earthly challenges.",
+            scriptures: ["Acts 4:13"],
+            subPoints: [
+                {
+                    title: "TRANSFORMATION",
+                    content: 
+                        "One becomes like Christ Jesus. Acts 4:13",
+                    scriptures: ["Acts 4:13"]
+                },
+                {
+                    title: "DIVINE APPROVAL",
+                    content:
+                        "One receives the Father's approval and entry to Heaven. Jn. 14:3, 23",
+                    scriptures: ["John 14:3", "John 14:23"]
+                },
+                {
+                    title: "PERSECUTION AND POWER",
+                    content:
+                        "One will face persecution. Matt. 10:22, Jn. 15:20. However, you will also operate like Jesus on earth. Jn. 14:12",
+                    scriptures: ["Matthew 10:22", "John 15:20", "John 14:12"]
+                },
+                {
+                    title: "ETERNAL REWARD",
+                    content: 
+                        "One will receive eternal reward. Matt. 7:21, Jn. 3:16",
+                    scriptures: ["Matthew 7:21", "John 3:16"]
+                },
+
+                {
+                    title: "FAILURE TO IMITATE CHRIST",
+                    content:
+                        "The consequences are numerous and grievous but above all one will face rejection. Matt. 7:22-23.",
+                    scriptures: ["Matthew 7:22-23"],
                 }
             ],
         }
-
-
     ],
 
     conclusion:
-        "It is easy to receive from God if we understand and walk with him.",
+        "Start to imitate Christ from this moment and everything that responds to Jesus will begin to respond to you. Failure to imitate Christ leads to numerous consequences, above all one will face rejection. Matt. 7:22-23.",
 
-    conclusionScriptures: [],
+    conclusionScriptures: ["Matthew 7:22-23"],
 
     prayerPoints: [
-        "Father, help me to seek You above material things.",
-        "Lord, remove every worry from my heart.",
-        "Father, help me to trust in Your provision.",
-        "Lord, help me to value my salvation above all things."
+        "Lord, help me to study and mirror Your character daily.",
+        "Father, let the life of Jesus be clearly seen in me.",
+        "Lord, grant me the determination to walk in Your footsteps regardless of persecution.",
+        "Father, may my life be a mark that draws others closer to Your kingdom."
     ],
 });
-
-
 
     const formatScriptureText = (text: string) => {
         const parts = text.split(/(\d+)/);
@@ -977,7 +904,7 @@ const SundaySchoolApp = () => {
 
 
         if (appLoading) {
-    const animatedText = "Liberated Already".split("");
+    const animatedText = "Progress Through Thanksgiving".split("");
 
     return (
         <div className="fixed inset-0 bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-700 flex items-center justify-center z-50">
@@ -1084,7 +1011,7 @@ const SundaySchoolApp = () => {
                             Sunday School Lesson
                         </h1>
                         <p className="text-xl opacity-80">
-                            DO THE FIRST THING FIRST - PART 1
+                            IMITATING CHRIST JESUS
                         </p>
                     </div>
                     <div className="grid md:grid-cols-2 gap-6">
@@ -1356,19 +1283,19 @@ const SundaySchoolApp = () => {
                                 </div>
                                 <div>
                                     <h3 className="text-2xl font-bold mb-3">
-                                        Text: Matthew 6:25-34
+                                        Text: Acts 4:13-14
                                     </h3>
                                     <div className="flex gap-2 flex-wrap">
                                         <button
                                             onClick={() =>
                                                 showBibleVersions(
-                                                    "Matthew 6:25-34"
+                                                    "Acts 4:13-14"
                                                 )
                                             }
                                             className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition flex items-center gap-2"
                                         >
                                         <BookOpen size={16} />
-                                            Read  Matthew 6:25-34
+                                            Read  Acts 4:13-14
                                         </button>
 
                                     </div>
@@ -1396,66 +1323,25 @@ const SundaySchoolApp = () => {
                                     ) : (
                                         <p className="leading-relaxed">
                                             {contentData.introduction}
-                                            <div className="grid grid-cols-2 sm:flex sm:flex-wrap gap-3 mt-4">
-                                                {/* <button
-                                                onClick={() =>
-                                                    showBibleVersions(
-                                                        "Jeremiah 17:5"
-                                                    )
-                                                }
-                                            className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 mt-2 rounded-lg transition flex items-center gap-2 text-sm"
-                                            > */}
-                                            {/* <BookOpen size={16} />
-                                                Jeremiah 17:5
-                                            </button>
-
-                                            <button
-                                                onClick={() =>
-                                                    showBibleVersions(
-                                                        "Psalm 121:2"
-                                                    )
-                                                }
-                                            className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 mt-2 rounded-lg transition flex items-center gap-2 text-sm"
-                                            >
-                                                <BookOpen size={16} />
-                                                    Psalm 121:2
-                                                </button>
-
-                                                <button
-                                                    onClick={() =>
-                                                        showBibleVersions(
-                                                            "1 Samuel 2:9"
-                                                        )
-                                                    }
-                                                    className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 mt-2 rounded-lg transition flex items-center gap-2 text-sm">
-                                                    <BookOpen size={16} />
-                                                        1 Samuel 2:9
-                                                </button>
-
-
-                                                <button
-                                                    onClick={() =>
-                                                        showBibleVersions(
-                                                            "Romans 3:12"
-                                                        )
-                                                    }
-                                                    className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 mt-2 rounded-lg transition flex items-center gap-2 text-sm">
-                                                    <BookOpen size={16} />
-                                                        Romans 3:12
-                                                </button>
-                                                <button
-                                                    onClick={() =>
-                                                        showBibleVersions(
-                                                            "Matthew 28:18"
-                                                        )
-                                                    }
-                                                    className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 mt-2 rounded-lg transition flex items-center gap-2 text-sm">
-                                                    <BookOpen size={16} />
-                                                        Matthew 28:18
-                                                </button> */}
-                                                    
-
-                                            </div>
+                                            <div className="mt-4 flex flex-wrap gap-2">
+                                            {contentData.lessonIntroScriptures.map(
+                                                (scripture) => (
+                                                    <button
+                                                        key={scripture}
+                                                        onClick={() =>
+                                                            showBibleVersions(
+                                                                scripture
+                                                            )
+                                                        }
+                                                        className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition flex items-center gap-2 text-sm"
+                                                    >
+                                                        <BookOpen size={14} />
+                                                        {scripture}
+                                                    </button>
+                                                )
+                                            )}
+                                    
+                                        </div>
                                             
                                         </p>
                                         
@@ -1469,6 +1355,8 @@ const SundaySchoolApp = () => {
                                             : "bg-green-50"
                                     } p-6 rounded-lg`}
                                 >
+                                    
+                                   
                                     <h3 className="text-xl font-bold mb-3">
                                         Aims and Objectives
                                     </h3>
@@ -1572,7 +1460,7 @@ const SundaySchoolApp = () => {
                                 ) : (
                                     <p className="leading-relaxed mb-4">
                                         {contentData.lessonIntro}
-                                        <div className="mt-4 flex flex-wrap gap-2">
+                                        {/* <div className="mt-4 flex flex-wrap gap-2">
                                             {contentData.lessonIntroScriptures.map(
                                                 (scripture) => (
                                                     <button
@@ -1590,7 +1478,7 @@ const SundaySchoolApp = () => {
                                                 )
                                             )}
                                     
-                                        </div>
+                                        </div> */}
                                         
                                     </p>
                                     
@@ -1948,119 +1836,115 @@ const SundaySchoolApp = () => {
                         )}
             
 
-                      
-                       {activeTab === "application" && (
-    <div className="space-y-6">
-        <h3 className="text-2xl font-bold mb-4">Personal Application</h3>
+        {activeTab === "application" && (
+            <div className="space-y-6">
+                <h3 className="text-2xl font-bold mb-4">Personal Application</h3>
 
-        {/* Self-Assessment */}
-        <div
-            className={`${
-                darkMode
-                    ? "bg-gray-700"
-                    : "bg-gradient-to-r from-blue-50 to-indigo-50"
-            } p-6 rounded-lg`}
-        >
-            <h4 className="text-xl font-semibold mb-4">
-                Self-Assessment: Seeking God First
-            </h4>
-
-            <p className="mb-4">
-                On a scale of 1 to 10, how well do you seek God first and trust
-                Him for your needs instead of worrying about material things
-                (Matthew 6:25–34)?
-            </p>
-
-            <div className="flex items-center gap-4">
-                <input
-                    type="range"
-                    min="1"
-                    max="10"
-                    value={faithRating}
-                    onChange={(e) => setFaithRating(Number(e.target.value))}
-                    className="flex-1"
-                />
-                <span className="text-2xl font-bold text-blue-600">
-                    {faithRating}/10
-                </span>
-            </div>
-
-            <p className="mt-3 text-sm italic">
-                {faithRating >= 8
-                    ? "Excellent! You are learning to trust God and seek Him first. Continue walking in this understanding."
-                    : faithRating >= 5
-                    ? "You are growing. Ask God to help you trust Him more and reduce worry in your life."
-                    : "This is a call to realign your priorities. Ask God to help you seek Him first and trust His provision."}
-            </p>
-        </div>
-
-        {/* Personal Decisions */}
-        <div
-            className={`${
-                darkMode
-                    ? "bg-gray-700"
-                    : "bg-white border border-gray-200"
-            } p-6 rounded-lg`}
-        >
-            <h4 className="text-xl font-semibold mb-4">
-                Personal Decisions: Seeking God First
-            </h4>
-
-            <div className="flex flex-col sm:flex-row gap-2 mb-4">
-                <input
-                    type="text"
-                    value={commitmentInput}
-                    onChange={(e) => setCommitmentInput(e.target.value)}
-                    placeholder="Write a personal decision (e.g., trust God instead of worrying, seek Him daily, depend on His provision, focus on pleasing Him)..."
-                    className={`flex-1 px-4 py-2 rounded-lg border ${
+                {/* Self-Assessment */}
+                <div
+                    className={`${
                         darkMode
-                            ? "bg-gray-800 border-gray-600"
-                            : "bg-white border-gray-300"
-                    }`}
-                    onKeyPress={(e) =>
-                        e.key === "Enter" && addCommitment()
-                    }
-                />
-                <button
-                    onClick={addCommitment}
-                    className="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-lg transition flex items-center justify-center gap-2 w-full sm:w-auto"
+                            ? "bg-gray-700"
+                            : "bg-gradient-to-r from-blue-50 to-indigo-50"
+                    } p-6 rounded-lg`}
                 >
-                    <Save size={16} /> Save
-                </button>
-            </div>
+                    <h4 className="text-xl font-semibold mb-4">
+                        Self-Assessment: Walking as He Walked
+                    </h4>
 
-            <div className="space-y-2">
-                {commitments.map((commitment, idx) => (
-                    <div
-                        key={idx}
-                        className={`${
-                            darkMode ? "bg-gray-800" : "bg-gray-50"
-                        } p-3 rounded-lg flex items-start gap-3`}
-                    >
-                        <CheckCircle
-                            className="text-green-600 mt-1"
-                            size={20}
+                    <p className="mb-4">
+                        On a scale of 1 to 10, how well does your daily conduct reflect the character of Christ? 
+                        Are you actively "denying ungodliness" and living "soberly, righteously, and godly" (Titus 2:12)?
+                    </p>
+
+                    <div className="flex items-center gap-4">
+                        <input
+                            type="range"
+                            min="1"
+                            max="10"
+                            value={faithRating}
+                            onChange={(e) => setFaithRating(Number(e.target.value))}
+                            className="flex-1"
                         />
-                        <div className="flex-1">
-                            <p>{commitment.text}</p>
-                            <p className="text-xs opacity-70 mt-1">
-                                {commitment.date}
-                            </p>
-                        </div>
+                        <span className="text-2xl font-bold text-blue-600">
+                            {faithRating}/10
+                        </span>
                     </div>
-                ))}
-            </div>
 
-            <p className="mt-4 text-sm italic text-gray-500">
-                Jesus teaches that life is more than food, clothing, and
-                material things. God cares for the birds and flowers, and you
-                are much more valuable than they are (Matthew 6:25–30). When you
-                seek God first and trust Him, He will provide all your needs.
-                Avoid worry and focus on pleasing God daily.
-            </p>
-        </div>
-    </div>
-)}
+                    <p className="mt-3 text-sm italic">
+                        {faithRating >= 8
+                            ? "Excellent! Your growth in Christ-like character is evident. Continue to stay close to the Master."
+                            : faithRating >= 5
+                            ? "You are progressing. Ask the Holy Spirit to help you bridge the gap between charisma and character."
+                            : "This is a call to a deeper transformation. Spend more time 'with Jesus' to reflect His image (Acts 4:13)."}
+                    </p>
+                </div>
+
+                {/* Personal Decisions */}
+                <div
+                    className={`${
+                        darkMode
+                            ? "bg-gray-700"
+                            : "bg-white border border-gray-200"
+                    } p-6 rounded-lg`}
+                >
+                    <h4 className="text-xl font-semibold mb-4">
+                        Personal Decisions: Commitment to Imitate
+                    </h4>
+
+                    <div className="flex flex-col sm:flex-row gap-2 mb-4">
+                        <input
+                            type="text"
+                            value={commitmentInput}
+                            onChange={(e) => setCommitmentInput(e.target.value)}
+                            placeholder="E.g., I will study His character daily, I will choose to react with love instead of anger..."
+                            className={`flex-1 px-4 py-2 rounded-lg border ${
+                                darkMode
+                                    ? "bg-gray-800 border-gray-600"
+                                    : "bg-white border-gray-300"
+                            }`}
+                            onKeyPress={(e) =>
+                                e.key === "Enter" && addCommitment()
+                            }
+                        />
+                        <button
+                            onClick={addCommitment}
+                            className="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-lg transition flex items-center justify-center gap-2 w-full sm:w-auto"
+                        >
+                            <Save size={16} /> Save
+                        </button>
+                    </div>
+
+                    <div className="space-y-2">
+                        {commitments.map((commitment, idx) => (
+                            <div
+                                key={idx}
+                                className={`${
+                                    darkMode ? "bg-gray-800" : "bg-gray-50"
+                                } p-3 rounded-lg flex items-start gap-3`}
+                            >
+                                <CheckCircle
+                                    className="text-green-600 mt-1"
+                                    size={20}
+                                />
+                                <div className="flex-1">
+                                    <p>{commitment.text}</p>
+                                    <p className="text-xs opacity-70 mt-1">
+                                        {commitment.date}
+                                    </p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+
+                    <p className="mt-4 text-sm italic text-gray-500">
+                        Imitating Christ isn't about outward religious appearance, but a total change of lifestyle. 
+                        As you copy the way Jesus behaves and talks, the world will take knowledge that you have been with Him (Acts 4:13). 
+                        Remember: the goal is to be in His image and likeness.
+                    </p>
+                </div>
+            </div>
+        )}
 
 
 
