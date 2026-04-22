@@ -396,7 +396,7 @@ const addCommitment = () => {
 
 
 const [contentData, setContentData] = useState<ContentData>({
-    lessonDate: "April 19, 2026",
+    lessonDate: "April 26, 2026",
     lessonTitle: "LOVING THE LORD YOUR GOD",
 
     memoryVerse:
